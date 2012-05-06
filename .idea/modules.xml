@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidIntelliJStarter.iml" filepath="$PROJECT_DIR$/AndroidIntelliJStarter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BensDeals.iml" filepath="$PROJECT_DIR$/BensDeals.iml" />
       <module fileurl="file://$PROJECT_DIR$/Robolectric.iml" filepath="$PROJECT_DIR$/Robolectric.iml" />
     </modules>
   </component>
