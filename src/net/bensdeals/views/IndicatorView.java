@@ -21,6 +21,10 @@ public class IndicatorView extends View {
         postInvalidate();
     }
 
+    public int getSelected() {
+        return selected;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         int width = getWidth() / TOTAL_COUNT;

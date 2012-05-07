@@ -40,6 +40,8 @@ import android.widget.Scroller;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import static java.lang.Integer.MAX_VALUE;
+
 public class GalleryView<T extends BaseAdapter> extends AdapterView<T> {
     public boolean mAlwaysOverrideTouch = true;
     protected T mAdapter;
@@ -47,7 +49,7 @@ public class GalleryView<T extends BaseAdapter> extends AdapterView<T> {
     private int mRightViewIndex = 0;
     protected int mCurrentX;
     protected int mNextX;
-    private int mMaxX = Integer.MAX_VALUE;
+    private int mMaxX = MAX_VALUE;
     private int mDisplayOffset = 0;
     protected Scroller mScroller;
     private GestureDetector mGesture;
@@ -56,6 +58,7 @@ public class GalleryView<T extends BaseAdapter> extends AdapterView<T> {
     private OnItemClickListener mOnItemClicked;
     private OnItemLongClickListener mOnItemLongClicked;
     private boolean mDataChanged = false;
+    private OnIndexChanged onIndexChangedListener;
 
     public GalleryView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -73,7 +76,7 @@ public class GalleryView<T extends BaseAdapter> extends AdapterView<T> {
         mDisplayOffset = 0;
         mCurrentX = 0;
         mNextX = 0;
-        mMaxX = Integer.MAX_VALUE;
+        mMaxX = MAX_VALUE;
         mScroller = new Scroller(getContext());
         mGesture = new GestureDetector(getContext(), new GalleryGestureDetector(this));
     }
@@ -111,7 +114,6 @@ public class GalleryView<T extends BaseAdapter> extends AdapterView<T> {
             invalidate();
             requestLayout();
         }
-
     };
 
     @Override
@@ -201,7 +203,6 @@ public class GalleryView<T extends BaseAdapter> extends AdapterView<T> {
                     requestLayout();
                 }
             });
-
         }
     }
 
@@ -219,6 +220,7 @@ public class GalleryView<T extends BaseAdapter> extends AdapterView<T> {
             edge = child.getLeft();
         }
         fillListLeft(edge, dx);
+        if(onIndexChangedListener!= null) onIndexChangedListener.indexChanged(mLeftViewIndex, mRightViewIndex);
     }
 
     private void fillListRight(int rightEdge, final int dx) {
@@ -257,7 +259,6 @@ public class GalleryView<T extends BaseAdapter> extends AdapterView<T> {
             removeViewInLayout(child);
             mLeftViewIndex++;
             child = getChildAt(0);
-
         }
 
         child = getChildAt(getChildCount() - 1);
@@ -320,5 +321,13 @@ public class GalleryView<T extends BaseAdapter> extends AdapterView<T> {
 
     public int getLeftViewIndex() {
         return mLeftViewIndex;
+    }
+
+    public void setOnIndexChangedListener(OnIndexChanged onIndexChangedListener) {
+        this.onIndexChangedListener = onIndexChangedListener;
+    }
+
+    public interface OnIndexChanged {
+        public void indexChanged(int leftIndex, int rightIndex);
     }
 }
