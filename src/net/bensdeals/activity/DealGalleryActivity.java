@@ -28,10 +28,7 @@ public class DealGalleryActivity extends BaseActivity {
             @Override
             public void indexChanged(int leftIndex, int rightIndex) {
                 int position = (rightIndex + leftIndex) / 2 + 1;
-                if (position != indicatorView.getSelected()) {
-                    galleryView.setSelection(position);
-                    indicatorView.setSelected(position > 0 ? position : 1);
-                }
+                indicatorView.setSelected(position > 0 ? position : 1);
             }
         });
         galleryView.setAdapter(adapter);

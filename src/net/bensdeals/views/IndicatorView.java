@@ -17,12 +17,9 @@ public class IndicatorView extends View {
     }
 
     public void setSelected(int selected) {
+        if(this.selected == selected) return;
         this.selected = selected;
         postInvalidate();
-    }
-
-    public int getSelected() {
-        return selected;
     }
 
     @Override
