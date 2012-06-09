@@ -7,6 +7,7 @@ import com.xtremelabs.robolectric.shadows.ShadowDialog;
 import net.bensdeals.R;
 import net.bensdeals.adapter.GalleryAdapter;
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
+import net.bensdeals.util.TestImageLoader;
 import net.bensdeals.util.TestRemoteTask;
 import net.bensdeals.views.IndicatorView;
 import net.bensdeals.views.gallery.GalleryView;
@@ -21,6 +22,7 @@ import static com.xtremelabs.robolectric.Robolectric.shadowOf;
 @RunWith(RobolectricTestRunnerWithInjection.class)
 public class DealGalleryActivityTest {
     @Inject DealGalleryActivity activity;
+    @Inject TestImageLoader imageLoader;
     @InjectView(R.id.deal_gallery) GalleryView galleryView;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
     @Inject TestRemoteTask remoteTask;
@@ -80,5 +82,13 @@ public class DealGalleryActivityTest {
         remoteTask.simulateResponse("homepage.xml");
         expect(indicatorView.selected).toEqual(1);
         expect(shadowOf(indicatorView).postInvalidateWasCalled()).toBeTrue();
+    }
+
+    @Test
+    public void shouldCancelPendingImageLoadingOnExit() throws Exception {
+        activity.onCreate(null);
+        expect(imageLoader.cancelOutstandingRequestsWasCalled()).toBeFalse();
+        activity.onPause();
+        expect(imageLoader.cancelOutstandingRequestsWasCalled()).toBeTrue();
     }
 }

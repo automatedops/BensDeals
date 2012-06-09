@@ -1,16 +1,21 @@
 package net.bensdeals.model;
 
 import com.google.inject.internal.Lists;
+import net.bensdeals.util.ALog;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 
+import static net.bensdeals.network.core.Xmls.getDocument;
 import static net.bensdeals.network.core.Xmls.getDocumentFromStream;
 
-public class Deal implements Serializable{
+public class Deal implements Serializable {
     private static final String prefix = "src=\"";
     public static final String DEAL_NODE_NAME = "item";
     String title;
@@ -23,40 +28,45 @@ public class Deal implements Serializable{
         return title;
     }
 
-    public void setTitle(String title) {
+    public Deal setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Deal setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public Deal setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
     }
 
     public String getLink() {
         return link;
     }
 
-    public void setLink(String link) {
+    public Deal setLink(String link) {
         this.link = link;
+        return this;
     }
 
     public String getDate() {
         return data;
     }
 
-    public void setData(String data) {
+    public Deal setData(String data) {
         this.data = data;
+        return this;
     }
 
     public Deal parse(NodeList nodeList) {
@@ -86,20 +96,33 @@ public class Deal implements Serializable{
         this.description = desc.substring(tempUrl.length() + 2);
     }
 
+    public synchronized static List<Deal> parseXml(String responseBody) throws IOException, SAXException, ParserConfigurationException {
+        List<Deal> deals = Lists.newArrayList();
+        try {
+            getFromNode(deals, getDocument(responseBody).getElementsByTagName("channel").item(0).getChildNodes());
+        } catch (Exception e) {
+            ALog.e(e);
+        }
+        return deals;
+    }
+
     public synchronized static List<Deal> parseXml(InputStream inputStream) {
         List<Deal> deals = Lists.newArrayList();
         try {
-            NodeList channel = getDocumentFromStream(inputStream).getElementsByTagName("channel").item(0).getChildNodes();
-            for (int i = 0; i < channel.getLength(); i++) {
-                Node item = channel.item(i);
-                if (!DEAL_NODE_NAME.equals(item.getNodeName())) continue;
-                NodeList childNodes = item.getChildNodes();
-                if (childNodes == null) continue;
-                deals.add(new Deal().parse(childNodes));
-            }
+            getFromNode(deals, getDocumentFromStream(inputStream).getElementsByTagName("channel").item(0).getChildNodes());
         } catch (Exception e) {
-            System.out.println(e.toString());
+            ALog.e(e);
         }
         return deals;
+    }
+
+    private static void getFromNode(List<Deal> deals, NodeList channel) {
+        for (int i = 0; i < channel.getLength(); i++) {
+            Node item = channel.item(i);
+            if (!DEAL_NODE_NAME.equals(item.getNodeName())) continue;
+            NodeList childNodes = item.getChildNodes();
+            if (childNodes == null) continue;
+            deals.add(new Deal().parse(childNodes));
+        }
     }
 }

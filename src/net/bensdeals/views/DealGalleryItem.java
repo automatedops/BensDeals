@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.google.inject.Inject;
 import net.bensdeals.R;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.ImageLoader;
@@ -12,6 +13,7 @@ import net.bensdeals.network.ImageLoader;
 import static android.text.Html.fromHtml;
 
 public class DealGalleryItem extends LinearLayout {
+    @Inject ImageLoader imageLoader;
     private TextView titleText;
     private ImageView imageView;
     private TextView descText;
@@ -30,7 +32,7 @@ public class DealGalleryItem extends LinearLayout {
         imageView.getLayoutParams().height = (int) (heightPixels * 0.45);
     }
 
-    public DealGalleryItem render(Deal deal, ImageLoader imageLoader) {
+    public DealGalleryItem render(Deal deal) {
         imageView.setImageDrawable(null);
         titleText.setText(fromHtml(deal.getTitle()));
         descText.setText(fromHtml(deal.getDescription()));

@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
+import java.util.zip.GZIPInputStream;
 
 /**
  * Created with IntelliJ IDEA.11.1
@@ -72,7 +73,8 @@ public class Http {
 
         public InputStream getResponseStream() throws IOException {
             if (accessCount-- < 0) throw new RuntimeException("http response only can access once");
-            return httpResponse.getEntity().getContent();
+            InputStream gzippedResponse = httpResponse.getEntity().getContent();
+            return new GZIPInputStream(gzippedResponse);
         }
     }
 }

@@ -16,8 +16,8 @@ public abstract class ApiRequest {
 
     public Map<String, String> getHeaders() {
         HashMap<String, String> hashMap = Maps.newHashMap();
-        hashMap.put("Content-type", "application/json");
-        hashMap.put("Accept", "application/json");
+        hashMap.put("Accept", "*/*");
+        hashMap.put("Accept-Encoding", "gzip, deflate");
         return hashMap;
     }
 

@@ -1,5 +1,8 @@
 package net.bensdeals.network.core;
 
+import net.bensdeals.util.StringUtil;
+
+import java.io.IOException;
 import java.io.InputStream;
 
 @SuppressWarnings("unused")
@@ -18,6 +21,10 @@ public class ApiResponse {
 
     public InputStream getResponseStream() {
         return responseStream;
+    }
+
+    public String getResponseBody() throws IOException {
+        return StringUtil.fromStream(responseStream);
     }
 
     public boolean isSuccess() {
