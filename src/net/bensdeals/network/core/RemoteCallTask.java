@@ -26,7 +26,7 @@ class RemoteCallTask extends AsyncTask<ApiRequest, Void, ApiResponse> {
             } else {
                 response = httpProvider.get().post(apiRequest);
             }
-            return new ApiResponse(response.getStatusCode(), response.getResponseBody());
+            return new ApiResponse(response.getStatusCode(), response.getResponseStream());
         } catch (Exception e) {
             Log.i(RemoteTask.TAG, e.getStackTrace()[0].toString());
         }

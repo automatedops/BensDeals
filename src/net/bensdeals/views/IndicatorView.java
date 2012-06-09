@@ -9,7 +9,7 @@ import android.view.View;
 
 public class IndicatorView extends View {
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private int selected = 0;
+    public int selected = 0;
     private static final int TOTAL_COUNT = 20 + 1;
 
     public IndicatorView(Context context, AttributeSet attrs) {

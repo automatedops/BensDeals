@@ -1,6 +1,7 @@
 package net.bensdeals.model;
 
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
+import net.bensdeals.util.StringUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +10,6 @@ import java.util.List;
 
 import static com.pivotallabs.robolectricgem.expect.Expect.expect;
 import static net.bensdeals.model.Deal.parseXml;
-import static net.bensdeals.util.TestParseUtil.fromXMLFile;
 
 @RunWith(RobolectricTestRunnerWithInjection.class)
 public class DealTest {
@@ -17,7 +17,7 @@ public class DealTest {
 
     @Before
     public void setUp() throws Exception {
-        deals = parseXml(fromXMLFile("homepage.xml"));
+        deals = parseXml(StringUtil.responseAsStream("homepage.xml"));
     }
 
     @Test
@@ -38,21 +38,5 @@ public class DealTest {
     @Test
     public void shouldUseLargeImageUrl() throws Exception {
         expect(deals.get(0).getImageUrl()).toEqual("http://cdn2.bensimages.com/img118828l.jpg");
-    }
-
-    @Test
-    public void shouldTestParseDealXml() throws Exception {
-        String desc = "<img align=\"right\" src=\"http://cdn1.bensimages.com/img63536.jpg\" />Advance " +
-                "Auto Parts is offering $10 off $30+ (33%) or $20 off $50+ (40%) or $30 off $100+ (30%) " +
-                "with coupon code <B>A123</B>. In-store pickup is available for most products, and orders " +
-                "over $75 ship free.<br><br><li>20% off Sitewide with code <B>P20</b><br><li>$30 off $75+ " +
-                "(40%) with code <B>BIG30</b><br><li>$50 off $150+ (33%) with code <B>VISA</b>";
-
-        String imageUrl = desc.substring(0, desc.indexOf("/>"));
-        desc = desc.substring(imageUrl.length() + 2);
-        String prefix = "src=\"";
-        String substring = imageUrl.substring(imageUrl.indexOf(prefix) + prefix.length(), imageUrl.lastIndexOf("\""));
-        System.out.println("substring = " + substring);
-        System.out.println("desc = " + desc);
     }
 }

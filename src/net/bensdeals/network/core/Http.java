@@ -9,10 +9,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
@@ -61,39 +59,20 @@ public class Http {
     }
 
     public static class Response {
-        private static final int BUFFER_SIZE = 4096;
-        private int statusCode;
-        private String responseBody;
+        private int accessCount = 1;
+        private HttpResponse httpResponse;
 
         public Response(HttpResponse httpResponse) {
-            statusCode = httpResponse.getStatusLine().getStatusCode();
-            try {
-                responseBody = fromStream(httpResponse.getEntity().getContent());
-            } catch (IOException e) {
-                throw new RuntimeException("error reading response body", e);
-            }
+            this.httpResponse = httpResponse;
         }
 
         public int getStatusCode() {
-            return statusCode;
+            return httpResponse.getStatusLine().getStatusCode();
         }
 
-        public String getResponseBody() {
-            return responseBody;
-        }
-
-        public String fromStream(InputStream inputStream) throws IOException {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream), BUFFER_SIZE);
-            StringBuilder stringBuilder = new StringBuilder();
-            String line;
-            try {
-                while ((line = reader.readLine()) != null) {
-                    stringBuilder.append(line);
-                }
-            } finally {
-                inputStream.close();
-            }
-            return stringBuilder.toString();
+        public InputStream getResponseStream() throws IOException {
+            if (accessCount-- < 0) throw new RuntimeException("http response only can access once");
+            return httpResponse.getEntity().getContent();
         }
     }
 }

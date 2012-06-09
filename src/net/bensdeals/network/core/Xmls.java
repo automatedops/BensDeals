@@ -26,6 +26,12 @@ public class Xmls {
         return document;
     }
 
+    public static Document getDocumentFromStream(InputStream inputStream) throws SAXException, IOException, ParserConfigurationException {
+        Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputStream);
+        document.normalize();
+        return document;
+    }
+
     public static Element getElement(Document document, String tagName, int index) {
         return (Element) document.getElementsByTagName(tagName).item(index);
     }

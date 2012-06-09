@@ -4,10 +4,11 @@ import com.google.inject.internal.Lists;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 
-import static net.bensdeals.network.core.Xmls.getDocument;
+import static net.bensdeals.network.core.Xmls.getDocumentFromStream;
 
 public class Deal implements Serializable{
     private static final String prefix = "src=\"";
@@ -85,10 +86,10 @@ public class Deal implements Serializable{
         this.description = desc.substring(tempUrl.length() + 2);
     }
 
-    public static List<Deal> parseXml(String responseBody) {
+    public synchronized static List<Deal> parseXml(InputStream inputStream) {
         List<Deal> deals = Lists.newArrayList();
         try {
-            NodeList channel = getDocument(responseBody).getElementsByTagName("channel").item(0).getChildNodes();
+            NodeList channel = getDocumentFromStream(inputStream).getElementsByTagName("channel").item(0).getChildNodes();
             for (int i = 0; i < channel.getLength(); i++) {
                 Node item = channel.item(i);
                 if (!DEAL_NODE_NAME.equals(item.getNodeName())) continue;

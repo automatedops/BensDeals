@@ -1,31 +1,23 @@
 package net.bensdeals.network.core;
 
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+import java.io.InputStream;
 
 @SuppressWarnings("unused")
 public class ApiResponse {
     private int httpResponseCode;
-    private String responseBody;
+    private final InputStream responseStream;
 
-    public ApiResponse(int httpCode, String responseBody) {
+    public ApiResponse(int httpCode, InputStream responseStream) {
         this.httpResponseCode = httpCode;
-        this.responseBody = responseBody;
+        this.responseStream = responseStream;
     }
 
     public int getResponseCode() {
         return httpResponseCode;
     }
 
-    public String getResponseBody() {
-        return responseBody;
-    }
-
-    public Document getResponseDocument() throws IOException, SAXException, ParserConfigurationException {
-        return Xmls.getDocument(getResponseBody());
+    public InputStream getResponseStream() {
+        return responseStream;
     }
 
     public boolean isSuccess() {
@@ -38,9 +30,6 @@ public class ApiResponse {
 
     @Override
     public String toString() {
-        return "ApiResponse{" +
-                "httpResponseCode=" + httpResponseCode +
-                ", responseBody='" + responseBody + '\'' +
-                '}';
+        return "ApiResponse{ httpResponseCode=" + httpResponseCode + " }";
     }
 }
