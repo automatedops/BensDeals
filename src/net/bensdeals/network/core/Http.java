@@ -2,12 +2,14 @@ package net.bensdeals.network.core;
 
 import com.google.inject.Inject;
 import net.bensdeals.provider.HttpClientProvider;
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
+import roboguice.util.Strings;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,11 +62,17 @@ public class Http {
     }
 
     public static class Response {
-        private int accessCount = 1;
         private HttpResponse httpResponse;
 
         public Response(HttpResponse httpResponse) {
             this.httpResponse = httpResponse;
+        }
+
+        public boolean isGzipResponse() {
+            Header firstHeader = httpResponse.getFirstHeader("Content-Encoding");
+            if(firstHeader == null) return false;
+            String name = firstHeader.getValue();
+            return !Strings.isEmpty(name) && name.contains("gzip");
         }
 
         public int getStatusCode() {
@@ -72,9 +80,11 @@ public class Http {
         }
 
         public InputStream getResponseStream() throws IOException {
-            if (accessCount-- < 0) throw new RuntimeException("http response only can access once");
-            InputStream gzippedResponse = httpResponse.getEntity().getContent();
-            return new GZIPInputStream(gzippedResponse);
+            return httpResponse.getEntity().getContent();
+        }
+
+        public InputStream getZipppedResponseStream() throws IOException {
+            return new GZIPInputStream(httpResponse.getEntity().getContent());
         }
     }
 }

@@ -3,12 +3,9 @@ package net.bensdeals.network.core;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -19,14 +16,11 @@ import java.io.InputStream;
  */
 public class Xmls {
 
-    public static Document getDocument(String xmlString) throws SAXException, IOException, ParserConfigurationException {
-        InputStream inputStream = new ByteArrayInputStream(xmlString.getBytes());
-        Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputStream);
-        document.normalize();
-        return document;
+    public static Document getDocument(String xmlString) throws Exception {
+        return getDocumentFromStream(new ByteArrayInputStream(xmlString.getBytes()));
     }
 
-    public static Document getDocumentFromStream(InputStream inputStream) throws SAXException, IOException, ParserConfigurationException {
+    public static Document getDocumentFromStream(InputStream inputStream) throws Exception {
         Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputStream);
         document.normalize();
         return document;

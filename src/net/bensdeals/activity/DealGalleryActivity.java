@@ -1,18 +1,23 @@
 package net.bensdeals.activity;
 
 import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import com.google.inject.Inject;
 import net.bensdeals.R;
 import net.bensdeals.adapter.GalleryAdapter;
-import net.bensdeals.network.api.DealsApiRequest;
-import net.bensdeals.network.callbacks.ApiResponseCallbacks;
-import net.bensdeals.network.core.ApiResponse;
+import net.bensdeals.model.Deal;
+import net.bensdeals.util.ALog;
 import net.bensdeals.utils.LayoutInflaterWithInjection;
 import net.bensdeals.views.IndicatorView;
 import net.bensdeals.views.gallery.GalleryView;
 import roboguice.inject.InjectView;
+
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.List;
 
 import static net.bensdeals.model.Deal.parseXml;
 
@@ -30,22 +35,34 @@ public class DealGalleryActivity extends BaseActivity {
         galleryView.setOnIndexChangedListener(new GalleryOnIndexChanged());
         galleryView.setAdapter(adapter);
         createLoadingDialog();
-        makeRequest();
+        fetchXML();
     }
 
-    protected void makeRequest() {
-        remoteTask.makeRequest(new DealsApiRequest(), new ApiResponseCallbacks() {
+    private void fetchXML() {
+        new AsyncTask<Void, Void, List<Deal>>() {
             @Override
-            public void onSuccess(ApiResponse response) {
-                adapter.replaceAll(parseXml(response.getResponseStream()));
-                indicatorView.setSelected(1);
+            protected List<Deal> doInBackground(Void... voids) {
+                try {
+                    URL url = new URL("http://bensbargains.net/rss/");
+                    URLConnection conn = url.openConnection();
+                    InputStream inputStream = conn.getInputStream();
+                    return parseXml(inputStream);
+                } catch (Exception e) {
+                    ALog.e(e);
+                }
+                return null;
             }
 
             @Override
-            public void onComplete() {
+            protected void onPostExecute(List<Deal> deals) {
+                super.onPostExecute(deals);
                 dialog.dismiss();
+                if (deals!= null && !deals.isEmpty()) {
+                    adapter.replaceAll(deals);
+                    indicatorView.setSelected(1);
+                }
             }
-        });
+        }.execute(((Void) null));
     }
 
     protected void createLoadingDialog() {

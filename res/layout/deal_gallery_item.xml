@@ -34,12 +34,21 @@
                 android:ellipsize="end"
                 />
             <TextView
-                style="@style/fill"
+                style="@style/fill_no_height"
                 android:id="@+id/desc_text"
                 android:lineSpacingMultiplier="1.1"
                 android:textColor="@color/solid_white"
-                android:lines="7"
+                android:lines="6"
                 android:ellipsize="end"/>
+            <LinearLayout
+                style="@style/block"
+                android:gravity="right">
+                <ImageView
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:src="@android:drawable/ic_menu_share"
+                    />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </net.bensdeals.views.DealGalleryItem>

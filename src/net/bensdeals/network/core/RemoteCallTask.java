@@ -1,9 +1,9 @@
 package net.bensdeals.network.core;
 
 import android.os.AsyncTask;
-import android.util.Log;
 import com.google.inject.Provider;
 import net.bensdeals.network.callbacks.ApiResponseCallbacks;
+import net.bensdeals.util.ALog;
 
 import static net.bensdeals.network.core.Http.Response;
 
@@ -28,7 +28,7 @@ class RemoteCallTask extends AsyncTask<ApiRequest, Void, ApiResponse> {
             }
             return new ApiResponse(response.getStatusCode(), response.getResponseStream());
         } catch (Exception e) {
-            Log.i(RemoteTask.TAG, e.getStackTrace()[0].toString());
+            ALog.e(e);
         }
         return new ErrorApiResponse();
     }

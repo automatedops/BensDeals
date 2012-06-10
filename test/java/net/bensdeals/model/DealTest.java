@@ -26,6 +26,12 @@ public class DealTest {
     }
 
     @Test
+    public void shouldParseAnotherXml() throws Exception {
+        deals = parseXml(StringUtil.responseAsStream("feed.xml"));
+        expect(deals.size()).toEqual(20);
+    }
+
+    @Test
     public void shouldParseDealFeilds() throws Exception {
         Deal deal = deals.get(0);
         expect(deal.getTitle()).toEqual("3-Year Subscription to Muscle &amp; Fitness $9.58 at DiscountMags");

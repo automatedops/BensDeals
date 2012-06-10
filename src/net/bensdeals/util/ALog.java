@@ -10,6 +10,7 @@ public class ALog {
     }
 
     public static void e(Exception e) {
+        i(e.toString());
         StackTraceElement[] stackTrace = e.getStackTrace();
         for (StackTraceElement stackTraceElement : stackTrace) {
             Log.i(TAG, ("  == > " + stackTraceElement.toString()));

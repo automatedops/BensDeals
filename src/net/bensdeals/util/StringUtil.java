@@ -24,6 +24,7 @@ public class StringUtil {
         String line;
         try {
             while ((line = reader.readLine()) != null) {
+                ALog.i(line);
                 stringBuilder.append(line);
             }
         } finally {

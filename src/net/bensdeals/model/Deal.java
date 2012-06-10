@@ -106,13 +106,9 @@ public class Deal implements Serializable {
         return deals;
     }
 
-    public synchronized static List<Deal> parseXml(InputStream inputStream) {
+    public synchronized static List<Deal> parseXml(InputStream inputStream) throws Exception {
         List<Deal> deals = Lists.newArrayList();
-        try {
-            getFromNode(deals, getDocumentFromStream(inputStream).getElementsByTagName("channel").item(0).getChildNodes());
-        } catch (Exception e) {
-            ALog.e(e);
-        }
+        getFromNode(deals, getDocumentFromStream(inputStream).getElementsByTagName("channel").item(0).getChildNodes());
         return deals;
     }
 
