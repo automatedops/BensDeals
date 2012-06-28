@@ -12,13 +12,13 @@ import net.bensdeals.network.ImageLoader;
 
 import static android.text.Html.fromHtml;
 
-public class DealGalleryItem extends LinearLayout {
+public class DealItemView extends LinearLayout {
     @Inject ImageLoader imageLoader;
     private TextView titleText;
     private ImageView imageView;
     private TextView descText;
 
-    public DealGalleryItem(Context context, AttributeSet attrs) {
+    public DealItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -32,7 +32,7 @@ public class DealGalleryItem extends LinearLayout {
         imageView.getLayoutParams().height = (int) (heightPixels * 0.45);
     }
 
-    public DealGalleryItem render(Deal deal) {
+    public DealItemView render(Deal deal) {
         imageView.setImageDrawable(null);
         titleText.setText(fromHtml(deal.getTitle()));
         descText.setText(fromHtml(deal.getDescription()));

@@ -11,13 +11,6 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 
-/**
-* Created with IntelliJ IDEA.
-* User: Wei
-* Date: 12-4-1
-* Time: 下午3:23
-* To change this template use File | Settings | File Templates.
-*/
 public class HttpClientProvider implements Provider<HttpClient> {
     @Override
     public HttpClient get() {

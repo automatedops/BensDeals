@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<net.bensdeals.views.DealGalleryItem
+<net.bensdeals.views.DealItemView
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/block"
     >
@@ -51,4 +51,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</net.bensdeals.views.DealGalleryItem>
+</net.bensdeals.views.DealItemView>

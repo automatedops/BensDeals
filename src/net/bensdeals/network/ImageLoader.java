@@ -29,7 +29,6 @@ public class ImageLoader {
     private ExecutorService drawExecutor;
     final private Map<String, Future<Drawable>> outstandingDownloads = Maps.newHashMap();
     final private Map<ImageView, Future<?>> outstandingDraws = Maps.newHashMap();
-    private Context context;
     private UrlStreamer urlStreamer;
     private Looper mainLooper;
 
@@ -41,7 +40,6 @@ public class ImageLoader {
             UrlStreamer urlStreamer) {
         this.downloadExecutor = downloadExecutor;
         this.drawExecutor = drawExecutor;
-        this.context = context;
         this.urlStreamer = urlStreamer;
         mainLooper = context.getMainLooper();
     }

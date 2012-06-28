@@ -5,10 +5,8 @@ import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import net.bensdeals.activity.DealsApplication;
 import net.bensdeals.network.ImageLoader;
-import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.provider.CacheDirProvider;
 import net.bensdeals.util.TestImageLoader;
-import net.bensdeals.util.TestRemoteTask;
 import org.junit.runners.model.InitializationError;
 import roboguice.config.AbstractAndroidModule;
 
@@ -41,7 +39,6 @@ public class RobolectricTestRunnerWithInjection extends RobolectricTestRunner {
             bind(File.class).annotatedWith(Names.named("cacheDir")).toProvider(CacheDirProvider.class);
             bind(ExecutorService.class).annotatedWith(Names.named("download")).toInstance(newFixedThreadPool(3));
             bind(ExecutorService.class).annotatedWith(Names.named("draw")).toInstance(newFixedThreadPool(2));
-            bind(RemoteTask.class).to(TestRemoteTask.class);
             bind(ImageLoader.class).to(TestImageLoader.class);
         }
     }

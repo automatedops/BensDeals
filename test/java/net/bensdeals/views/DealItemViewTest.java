@@ -15,10 +15,10 @@ import org.junit.runner.RunWith;
 import static com.pivotallabs.robolectricgem.expect.Expect.expect;
 
 @RunWith(RobolectricTestRunnerWithInjection.class)
-public class DealGalleryItemTest {
-    @Inject LayoutInflaterWithInjection<DealGalleryItem> inflater;
+public class DealItemViewTest {
+    @Inject LayoutInflaterWithInjection<DealItemView> inflater;
     @Inject TestImageLoader imageLoader;
-    public DealGalleryItem galleryItem;
+    public DealItemView dealItemView;
     public Deal deal;
     private TextView titleText;
     private ImageView imageView;
@@ -26,16 +26,16 @@ public class DealGalleryItemTest {
 
     @Before
     public void setup() throws Exception {
-        galleryItem = inflater.inflate(R.layout.deal_gallery_item);
+        dealItemView = inflater.inflate(R.layout.deal_gallery_item);
         deal = new Deal().setDescription("deal desc").setLink("some/web/link").setTitle("deal title").setImageUrl("some/deal/image");
-        titleText = (TextView) galleryItem.findViewById(R.id.title_text);
-        imageView = (ImageView) galleryItem.findViewById(R.id.gallery_image);
-        descText = (TextView) galleryItem.findViewById(R.id.desc_text);
+        titleText = (TextView) dealItemView.findViewById(R.id.title_text);
+        imageView = (ImageView) dealItemView.findViewById(R.id.gallery_image);
+        descText = (TextView) dealItemView.findViewById(R.id.desc_text);
     }
 
     @Test
     public void testRender() throws Exception {
-        galleryItem.render(deal);
+        dealItemView.render(deal);
         expect(titleText).toHaveText("deal title");
         expect(descText).toHaveText("deal desc");
         expect(imageLoader.loadedImageUrl(imageView)).toEqual("some/deal/image");

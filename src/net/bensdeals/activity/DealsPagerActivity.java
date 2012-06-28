@@ -3,15 +3,14 @@ package net.bensdeals.activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 import com.google.inject.Inject;
 import net.bensdeals.R;
-import net.bensdeals.adapter.GalleryAdapter;
+import net.bensdeals.adapter.DealsAdapter;
 import net.bensdeals.model.Deal;
 import net.bensdeals.util.ALog;
-import net.bensdeals.utils.LayoutInflaterWithInjection;
 import net.bensdeals.views.IndicatorView;
-import net.bensdeals.views.gallery.GalleryView;
 import roboguice.inject.InjectView;
 
 import java.io.InputStream;
@@ -21,19 +20,17 @@ import java.util.List;
 
 import static net.bensdeals.model.Deal.parseXml;
 
-public class DealGalleryActivity extends BaseActivity {
-    @Inject LayoutInflaterWithInjection<View> inflater;
-    @Inject GalleryAdapter adapter;
-    @InjectView(R.id.deal_gallery) GalleryView galleryView;
+public class DealsPagerActivity extends BaseActivity {
+    @Inject DealsAdapter adapter;
+    @InjectView(R.id.deals_view_pager) ViewPager galleryView;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
     protected ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(inflater.inflate(R.layout.deal_gallery_layout));
-        galleryView.setOnIndexChangedListener(new GalleryOnIndexChanged());
-        galleryView.setAdapter(adapter);
+        setContentView(R.layout.deal_gallery_layout);
+        galleryView.setAdapter(adapter.setOnIndexChangedListener(indicatorView));
         createLoadingDialog();
         fetchXML();
     }
@@ -60,6 +57,8 @@ public class DealGalleryActivity extends BaseActivity {
                 if (deals!= null && !deals.isEmpty()) {
                     adapter.replaceAll(deals);
                     indicatorView.setSelected(1);
+                } else {
+                    Toast.makeText(DealsPagerActivity.this, "Failed to load...", Toast.LENGTH_LONG).show();
                 }
             }
         }.execute(((Void) null));
@@ -67,13 +66,5 @@ public class DealGalleryActivity extends BaseActivity {
 
     protected void createLoadingDialog() {
         dialog = ProgressDialog.show(this, "", "Loading... ");
-    }
-
-    private class GalleryOnIndexChanged implements GalleryView.OnIndexChanged {
-        @Override
-        public void indexChanged(int leftIndex, int rightIndex) {
-            int position = (rightIndex + leftIndex) / 2 + 1;
-            indicatorView.setSelected(position > 0 ? position : 1);
-        }
     }
 }

@@ -35,10 +35,10 @@
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/java" isTestSource="true" />
     </content>
+    <orderEntry type="library" name="Production Libs" level="project" />
     <orderEntry type="library" scope="TEST" name="Test libs" level="project" />
     <orderEntry type="module" module-name="Robolectric" scope="TEST" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Production Libs" level="project" />
     <orderEntry type="jdk" jdkName="Android 2.2 Platform" jdkType="Android SDK" />
   </component>
 </module>

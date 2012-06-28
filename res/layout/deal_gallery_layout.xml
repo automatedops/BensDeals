@@ -10,10 +10,10 @@
         android:layout_width="fill_parent"
         android:layout_alignParentBottom="true"
         />
-    <net.bensdeals.views.gallery.GalleryView
+    <android.support.v4.view.ViewPager
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:id="@+id/deal_gallery"
+        android:id="@+id/deals_view_pager"
         android:layout_above="@id/indicator"
         />
 </RelativeLayout>
