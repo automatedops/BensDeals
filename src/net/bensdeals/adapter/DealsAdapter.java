@@ -41,7 +41,7 @@ public class DealsAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        DealItemView dealItemView = inflater.inflate(R.layout.deal_gallery_item);
+        DealItemView dealItemView = inflater.inflate(R.layout.deal_item_layout);
         container.addView(dealItemView, 0);
         return dealItemView.render(items.get(position));
     }

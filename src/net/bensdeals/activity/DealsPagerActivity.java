@@ -29,7 +29,7 @@ public class DealsPagerActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.deal_gallery_layout);
+        setContentView(R.layout.deal_pager_layout);
         galleryView.setAdapter(adapter.setOnIndexChangedListener(indicatorView));
         createLoadingDialog();
         fetchXML();
