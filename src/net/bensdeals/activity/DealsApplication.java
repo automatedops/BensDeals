@@ -1,8 +1,10 @@
 package net.bensdeals.activity;
 
+import com.crittercism.app.Crittercism;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
+import net.bensdeals.R;
 import net.bensdeals.provider.CacheDirProvider;
 import roboguice.application.RoboApplication;
 
@@ -26,7 +28,7 @@ public class DealsApplication extends RoboApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-//        Crittercism.init(getApplicationContext(), getString(R.string.crittercism_app_id));
+        Crittercism.init(getApplicationContext(), getString(R.string.crittercism_app_id));
     }
 
     private class AppModules implements Module {
