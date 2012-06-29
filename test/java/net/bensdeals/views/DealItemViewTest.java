@@ -57,6 +57,7 @@ public class DealItemViewTest extends TestCase {
     public void shouldHaveShareClickListener() throws Exception {
         dealItemView.render(deal);
         expect(shadowOf(shareButton).getOnClickListener()).not.toBeNull();
+        expect(shadowOf(descText).getOnClickListener()).not.toBeNull();
     }
 
     @Test

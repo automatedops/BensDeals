@@ -2,10 +2,10 @@ package net.bensdeals.util;
 
 import android.content.Context;
 import android.widget.ImageView;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.google.inject.internal.Lists;
+import com.google.inject.internal.Maps;
 import com.google.inject.name.Named;
 import net.bensdeals.network.ImageLoader;
 import net.bensdeals.network.core.UrlStreamer;
