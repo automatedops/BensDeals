@@ -3,6 +3,7 @@ package net.bensdeals.views;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
+import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ public class DealItemView extends LinearLayout {
         titleText = (TextView) findViewById(R.id.title_text);
         imageView = (ImageView) findViewById(R.id.gallery_image);
         descText = (TextView)findViewById(R.id.desc_text);
+        Linkify.addLinks(descText, Linkify.WEB_URLS);
         int heightPixels = getResources().getDisplayMetrics().heightPixels;
         imageView.getLayoutParams().height = (int) (heightPixels * 0.45);
         shareButton = findViewById(R.id.share_button);

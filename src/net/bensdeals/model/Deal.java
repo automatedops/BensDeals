@@ -1,7 +1,7 @@
 package net.bensdeals.model;
 
 import com.google.inject.internal.Lists;
-import net.bensdeals.util.ALog;
+import net.bensdeals.utils.ALog;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;

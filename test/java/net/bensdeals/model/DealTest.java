@@ -1,7 +1,7 @@
 package net.bensdeals.model;
 
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
-import net.bensdeals.util.StringUtil;
+import net.bensdeals.utils.StringUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

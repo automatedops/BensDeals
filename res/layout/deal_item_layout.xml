@@ -36,6 +36,7 @@
                     android:id="@+id/desc_text"
                     android:lineSpacingMultiplier="1.1"
                     android:textColor="@color/solid_white"
+                    android:linksClickable="true"
                     />
                 <LinearLayout
                     style="@style/block"

@@ -9,7 +9,7 @@ import com.google.inject.Inject;
 import net.bensdeals.R;
 import net.bensdeals.adapter.DealsAdapter;
 import net.bensdeals.model.Deal;
-import net.bensdeals.util.ALog;
+import net.bensdeals.utils.ALog;
 import net.bensdeals.views.IndicatorView;
 import roboguice.inject.InjectView;
 

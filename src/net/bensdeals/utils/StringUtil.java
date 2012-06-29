@@ -1,4 +1,4 @@
-package net.bensdeals.util;
+package net.bensdeals.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
