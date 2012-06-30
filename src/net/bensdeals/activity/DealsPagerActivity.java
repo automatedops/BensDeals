@@ -3,6 +3,9 @@ package net.bensdeals.activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 import com.google.inject.Inject;
 import net.bensdeals.R;
@@ -29,11 +32,11 @@ public class DealsPagerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deal_pager_layout);
         galleryView.setAdapter(adapter.setOnIndexChangedListener(indicatorView));
-        createLoadingDialog();
         fetchXML();
     }
 
     private void fetchXML() {
+        createLoadingDialog();
         remoteTask.makeRequest(path, new RemoteTaskCallback() {
             @Override
             public void onTaskSuccess(List<Deal> list) {
@@ -55,5 +58,18 @@ public class DealsPagerActivity extends BaseActivity {
 
     protected void createLoadingDialog() {
         dialog = ProgressDialog.show(this, "", getString(R.string.loading));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        fetchXML();
+        return super.onMenuItemSelected(featureId, item);
     }
 }

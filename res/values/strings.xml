@@ -4,4 +4,5 @@
     <string name="loading">Loading homepage…</string>
     <string name="fail_to_load">Failed to load homepage…</string>
     <string name="crittercism_app_id">4fec01526c36f935a4000005</string>
+    <string name="refresh_title_case">Refresh</string>
 </resources>

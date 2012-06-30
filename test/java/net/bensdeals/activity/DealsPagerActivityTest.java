@@ -9,6 +9,7 @@ import com.xtremelabs.robolectric.shadows.ShadowDialog;
 import net.bensdeals.R;
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
 import net.bensdeals.util.TestImageLoader;
+import net.bensdeals.util.TestRemoteTask;
 import net.bensdeals.views.IndicatorView;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -18,9 +19,10 @@ import roboguice.inject.InjectView;
 import static com.pivotallabs.robolectricgem.expect.Expect.expect;
 
 @RunWith(RobolectricTestRunnerWithInjection.class)
-public class DealGalleryActivityTest {
+public class DealsPagerActivityTest {
     @Inject DealsPagerActivity activity;
     @Inject TestImageLoader imageLoader;
+    @Inject TestRemoteTask remoteTask;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
 
@@ -48,5 +50,11 @@ public class DealGalleryActivityTest {
         expect(imageLoader.cancelOutstandingRequestsWasCalled()).toBeFalse();
         activity.onPause();
         expect(imageLoader.cancelOutstandingRequestsWasCalled()).toBeTrue();
+    }
+
+    @Test
+    public void tappingRefreshMenu_shouldFetchDeals() throws Exception {
+        activity.onMenuItemSelected(0, null);
+        expect(remoteTask.getLatestRequestPath()).toEqual("http://bensbargains.net/rss/");
     }
 }
