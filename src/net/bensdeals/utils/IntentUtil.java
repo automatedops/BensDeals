@@ -8,14 +8,20 @@ import net.bensdeals.model.Deal;
 
 public class IntentUtil {
     public static void intentForShare(Context context, Deal deal) {
-        Intent intent = new Intent();
-        intent.setType("text/html");
-        intent.putExtra(Intent.EXTRA_SUBJECT, deal.getTitle());
-        intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(deal.getDescription()));
-        context.startActivity(Intent.createChooser(intent, "Share via"));
+        try {
+            Intent intent = new Intent();
+            intent.setType("text/html");
+            intent.putExtra(Intent.EXTRA_SUBJECT, deal.getTitle());
+            intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(deal.getDescription()));
+            context.startActivity(Intent.createChooser(intent, "Share via"));
+        } catch (Exception ignored) {
+        }
     }
 
     public static void intentForWeb(Context context, Deal deal) {
-        context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deal.getLink())));
+        try {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deal.getLink())));
+        } catch (Exception ignored) {
+        }
     }
 }
