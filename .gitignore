@@ -7,4 +7,6 @@ bin/
 gen/
 out/
 tmp/
+key/
 local.properties
+ant.properties

@@ -3,7 +3,7 @@
 
     <property file="local.properties"/>
 
-    <property file="ant.properties"/>
+    <property file="key/ant.properties"/>
 
     <loadproperties srcFile="project.properties"/>
 
