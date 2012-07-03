@@ -7,46 +7,57 @@
         style="@style/block"
         android:orientation="vertical"
         android:padding="5dip">
-        <ImageView
+        <net.bensdeals.views.RoundCornerImageView
             style="@style/block"
             android:id="@+id/gallery_image"
             android:scaleType="fitCenter"
-            android:layout_margin="15dip"
+            android:layout_marginTop="15dip"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:layout_marginBottom="5dip"
             android:padding="15dip"
-            android:background="@color/solid_white"/>
-        <ScrollView
-            style="@style/block">
-            <LinearLayout
-                android:id="@+id/gallery_text_container"
-                style="@style/fill"
-                android:layout_marginLeft="15dip"
-                android:layout_marginRight="15dip"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/title_text"
-                    style="@style/block"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:lineSpacingMultiplier="1.1"
-                    android:textColor="@color/solid_white"
-                    android:layout_marginBottom="10dip"
-                    />
-                <TextView
-                    style="@style/fill_no_height"
-                    android:id="@+id/desc_text"
-                    android:lineSpacingMultiplier="1.1"
-                    android:textColor="@color/solid_white"
-                    android:autoLink="web"/>
+            />
+        <net.bensdeals.views.RoundCornerScrollView
+            style="@style/block"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:background="@android:color/transparent"
+            android:padding="10dip"
+            >
+            <ScrollView
+                style="@style/block"
+                android:scrollbars="none">
                 <LinearLayout
-                    style="@style/block"
-                    android:gravity="right">
-                    <ImageView
-                        android:id="@+id/share_button"
-                        android:layout_width="30dip"
-                        android:layout_height="30dip"
-                        android:src="@android:drawable/ic_menu_share"/>
+                    android:id="@+id/gallery_text_container"
+                    style="@style/fill"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/title_text"
+                        style="@style/block"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:lineSpacingMultiplier="1.1"
+                        android:textColor="@color/solid_white"
+                        android:layout_marginBottom="7dip"
+                        />
+                    <TextView
+                        style="@style/fill_no_height"
+                        android:id="@+id/desc_text"
+                        android:lineSpacingMultiplier="1.3"
+                        android:textColor="@color/solid_white"
+                        android:autoLink="web"/>
+                    <LinearLayout
+                        style="@style/block"
+                        android:gravity="right"
+                        android:layout_margin="1dip">
+                        <ImageView
+                            android:id="@+id/share_button"
+                            android:layout_width="30dip"
+                            android:layout_height="30dip"
+                            android:src="@android:drawable/ic_menu_share"/>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
+            </ScrollView>
+        </net.bensdeals.views.RoundCornerScrollView>
     </LinearLayout>
 </net.bensdeals.views.DealItemView>
