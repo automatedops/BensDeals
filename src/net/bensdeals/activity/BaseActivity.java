@@ -2,14 +2,14 @@ package net.bensdeals.activity;
 
 import android.os.Bundle;
 import android.view.Window;
-import com.flurry.android.FlurryAgent;
 import com.google.inject.Inject;
-import net.bensdeals.R;
 import net.bensdeals.network.ImageLoader;
+import net.bensdeals.utils.Reporter;
 import roboguice.activity.RoboActivity;
 
 public abstract class BaseActivity extends RoboActivity {
     protected @Inject ImageLoader imageLoader;
+    protected @Inject Reporter reporter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public abstract class BaseActivity extends RoboActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FlurryAgent.onStartSession(this, getString(R.string.flurry_id));
+        reporter.startSession(this);
     }
 
     @Override
@@ -32,6 +32,6 @@ public abstract class BaseActivity extends RoboActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        FlurryAgent.onEndSession(this);
+        reporter.endSession(this);
     }
 }

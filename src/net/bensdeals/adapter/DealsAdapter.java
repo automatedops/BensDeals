@@ -73,7 +73,7 @@ public class DealsAdapter extends PagerAdapter {
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         super.setPrimaryItem(container, position, object);
-        indicatorView.setSelected(position + 1);
+        indicatorView.setSelected(position);
     }
 
     @Override

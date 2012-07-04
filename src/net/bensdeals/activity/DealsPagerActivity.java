@@ -14,6 +14,7 @@ import net.bensdeals.adapter.DealsAdapter;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.network.core.RemoteTaskCallback;
+import net.bensdeals.utils.Reporter;
 import net.bensdeals.views.IndicatorView;
 import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
@@ -33,6 +34,7 @@ public class DealsPagerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deal_pager_layout);
         viewPager.setAdapter(adapter.setOnIndexChangedListener(indicatorView));
+        reporter.report(Reporter.ON_APP_START);
         fetchXML();
     }
 
@@ -42,7 +44,7 @@ public class DealsPagerActivity extends BaseActivity {
             @Override
             public void onTaskSuccess(List<Deal> list) {
                 adapter.replaceAll(list);
-                indicatorView.setSelected(1);
+                indicatorView.setSelected(0);
             }
 
             @Override
