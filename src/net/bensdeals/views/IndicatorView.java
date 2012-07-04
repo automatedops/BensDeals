@@ -10,14 +10,14 @@ import android.view.View;
 public class IndicatorView extends View {
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     public int selected = 0;
-    private static final int TOTAL_COUNT = 20 + 1;
+    private static final int TOTAL_COUNT = 20;
 
     public IndicatorView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     public void setSelected(int selected) {
-        if(this.selected == selected) return;
+        if (this.selected == selected) return;
         this.selected = selected;
         postInvalidate();
     }
@@ -25,9 +25,9 @@ public class IndicatorView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         int width = getWidth() / TOTAL_COUNT;
-        for (int i = 1; i < TOTAL_COUNT; i++) {
+        for (int i = 0; i < TOTAL_COUNT; i++) {
             paint.setColor(i == this.selected ? Color.WHITE : Color.GRAY);
-            canvas.drawCircle(width * i + width/2, width, width/3, paint);
+            canvas.drawCircle(width * i + width / 2, width, width / 3, paint);
         }
     }
 }

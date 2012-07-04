@@ -20,8 +20,6 @@ public class DealItemView extends LinearLayout {
     private ImageView imageView;
     private TextView descText;
     public View shareButton;
-    public static final String HTTP_BENS_PREFIX = "http://www.bensbargains.com/";
-    public static final String HTTP_PREFIX = "http://";
 
     public DealItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -33,8 +31,6 @@ public class DealItemView extends LinearLayout {
         titleText = (TextView) findViewById(R.id.title_text);
         imageView = (ImageView) findViewById(R.id.gallery_image);
         descText = (TextView) findViewById(R.id.desc_text);
-        int heightPixels = getResources().getDisplayMetrics().heightPixels;
-        imageView.getLayoutParams().height = (int) (heightPixels * 0.45);
         shareButton = findViewById(R.id.share_button);
     }
 

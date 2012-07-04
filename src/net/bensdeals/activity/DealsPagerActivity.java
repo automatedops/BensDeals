@@ -1,6 +1,7 @@
 package net.bensdeals.activity;
 
 import android.app.ProgressDialog;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
@@ -23,7 +24,7 @@ public class DealsPagerActivity extends BaseActivity {
     @Inject DealsAdapter adapter;
     @Inject RemoteTask remoteTask;
     @InjectResource(R.string.url_homepage) String path;
-    @InjectView(R.id.deals_view_pager) ViewPager galleryView;
+    @InjectView(R.id.deals_view_pager) ViewPager viewPager;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
     protected ProgressDialog dialog;
 
@@ -31,7 +32,7 @@ public class DealsPagerActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deal_pager_layout);
-        galleryView.setAdapter(adapter.setOnIndexChangedListener(indicatorView));
+        viewPager.setAdapter(adapter.setOnIndexChangedListener(indicatorView));
         fetchXML();
     }
 
@@ -71,5 +72,12 @@ public class DealsPagerActivity extends BaseActivity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         fetchXML();
         return super.onMenuItemSelected(featureId, item);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        adapter.setOrientation(newConfig);
+        viewPager.setAdapter(adapter);
     }
 }

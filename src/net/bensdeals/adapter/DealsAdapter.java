@@ -1,5 +1,7 @@
 package net.bensdeals.adapter;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +15,37 @@ import net.bensdeals.views.IndicatorView;
 
 import java.util.List;
 
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+import static net.bensdeals.adapter.DealsAdapter.Orientation.LANDSCAPE;
+import static net.bensdeals.adapter.DealsAdapter.Orientation.PORTRAIT;
+
 public class DealsAdapter extends PagerAdapter {
+    private Orientation orientation;
+    public enum Orientation {
+        LANDSCAPE {
+            @Override
+            public int getLayout() {
+                return R.layout.deal_item_layout_landscape;
+            }
+        },
+        PORTRAIT {
+            @Override
+            public int getLayout() {
+                return R.layout.deal_item_layout_portrait;
+            }
+        };
+
+        public abstract int getLayout();
+    }
     List<Deal> items = Lists.newArrayList();
 
     private LayoutInflaterWithInjection<DealItemView> inflater;
     private IndicatorView indicatorView;
 
     @Inject
-    public DealsAdapter(LayoutInflaterWithInjection<DealItemView> inflater) {
+    public DealsAdapter(LayoutInflaterWithInjection<DealItemView> inflater, Context context) {
         this.inflater = inflater;
+        setOrientation(context.getResources().getConfiguration());
     }
 
     @Override
@@ -41,7 +65,7 @@ public class DealsAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        DealItemView dealItemView = inflater.inflate(R.layout.deal_item_layout);
+        DealItemView dealItemView = inflater.inflate(orientation.getLayout());
         container.addView(dealItemView, 0);
         return dealItemView.render(items.get(position));
     }
@@ -70,5 +94,9 @@ public class DealsAdapter extends PagerAdapter {
     public PagerAdapter setOnIndexChangedListener(IndicatorView indicatorView) {
         this.indicatorView = indicatorView;
         return this;
+    }
+
+    public void setOrientation(Configuration configuration) {
+        this.orientation = ORIENTATION_LANDSCAPE == configuration.orientation ? LANDSCAPE : PORTRAIT;
     }
 }
