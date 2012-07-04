@@ -1,4 +1,4 @@
-package net.bensdeals.util;
+package net.bensdeals.utils;
 
 import android.content.Context;
 import android.widget.ImageView;

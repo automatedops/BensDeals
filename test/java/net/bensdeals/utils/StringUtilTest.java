@@ -1,7 +1,6 @@
-package net.bensdeals.util;
+package net.bensdeals.utils;
 
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
-import net.bensdeals.utils.StringUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

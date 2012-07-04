@@ -6,4 +6,19 @@
     <string name="crittercism_app_id">4fec01526c36f935a4000005</string>
     <string name="refresh_title_case">Refresh</string>
     <string name="flurry_id">KV3GWTQSR7WS53T4KSWB</string>
+    <plurals name="minutes_format">
+        <item quantity="zero">1 minute ago</item>
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+    <plurals name="hours_format">
+        <item quantity="zero">1 hour ago</item>
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+    <plurals name="days_format">
+        <item quantity="zero">1 day ago</item>
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d days ago</item>
+    </plurals>
 </resources>

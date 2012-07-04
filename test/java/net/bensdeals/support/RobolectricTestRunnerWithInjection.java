@@ -7,8 +7,10 @@ import net.bensdeals.activity.DealsApplication;
 import net.bensdeals.network.ImageLoader;
 import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.provider.CacheDirProvider;
-import net.bensdeals.util.TestImageLoader;
-import net.bensdeals.util.TestRemoteTask;
+import net.bensdeals.utils.CurrentDateProvider;
+import net.bensdeals.utils.TestCurrentDateProvider;
+import net.bensdeals.utils.TestImageLoader;
+import net.bensdeals.utils.TestRemoteTask;
 import org.junit.runners.model.InitializationError;
 import roboguice.config.AbstractAndroidModule;
 
@@ -43,6 +45,7 @@ public class RobolectricTestRunnerWithInjection extends RobolectricTestRunner {
             bind(ExecutorService.class).annotatedWith(Names.named("draw")).toInstance(newFixedThreadPool(2));
             bind(ImageLoader.class).to(TestImageLoader.class);
             bind(RemoteTask.class).to(TestRemoteTask.class);
+            bind(CurrentDateProvider.class).to(TestCurrentDateProvider.class);
         }
     }
 }

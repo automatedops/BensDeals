@@ -2,6 +2,7 @@ package net.bensdeals.model;
 
 import com.google.inject.internal.Lists;
 import net.bensdeals.utils.ALog;
+import net.bensdeals.utils.DateFormatter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -10,6 +11,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import static net.bensdeals.network.core.Xmls.getDocument;
@@ -22,7 +24,7 @@ public class Deal implements Serializable {
     String description;
     String imageUrl;
     String link;
-    String data;
+    Date date;
 
     public String getTitle() {
         return title;
@@ -60,12 +62,12 @@ public class Deal implements Serializable {
         return this;
     }
 
-    public String getDate() {
-        return data;
+    public Date getDate() {
+        return date;
     }
 
-    public Deal setData(String data) {
-        this.data = data;
+    public Deal setDate(Date date) {
+        this.date = date;
         return this;
     }
 
@@ -85,7 +87,7 @@ public class Deal implements Serializable {
         } else if ("link".equals(nodeName)) {
             this.link = item.getChildNodes().item(0).getNodeValue();
         } else if ("pubDate".equals(nodeName)) {
-            this.data = item.getChildNodes().item(0).getNodeValue();
+            this.date = DateFormatter.stringToDate(item.getChildNodes().item(0).getNodeValue());
         }
     }
 

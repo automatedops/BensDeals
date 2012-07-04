@@ -10,11 +10,14 @@ import net.bensdeals.R;
 import net.bensdeals.model.Deal;
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
 import net.bensdeals.support.TestCase;
-import net.bensdeals.util.TestImageLoader;
 import net.bensdeals.utils.LayoutInflaterWithInjection;
+import net.bensdeals.utils.TestCurrentDateProvider;
+import net.bensdeals.utils.TestImageLoader;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.Date;
 
 import static com.pivotallabs.robolectricgem.expect.Expect.expect;
 import static com.xtremelabs.robolectric.Robolectric.shadowOf;
@@ -22,6 +25,7 @@ import static com.xtremelabs.robolectric.Robolectric.shadowOf;
 @RunWith(RobolectricTestRunnerWithInjection.class)
 public class DealItemViewTest extends TestCase {
     @Inject LayoutInflaterWithInjection<DealItemView> inflater;
+    @Inject TestCurrentDateProvider dateProvider;
     @Inject TestImageLoader imageLoader;
     public DealItemView dealItemView;
     public Deal deal;
@@ -29,14 +33,16 @@ public class DealItemViewTest extends TestCase {
     private ImageView imageView;
     private TextView descText;
     private View shareButton;
+    public TextView timeText;
 
     @Before
     public void setup() throws Exception {
         dealItemView = inflater.inflate(R.layout.deal_item_layout_portrait);
-        deal = new Deal().setDescription("deal desc").setLink("some/web/link").setTitle("deal title").setImageUrl("some/deal/image");
+        deal = new Deal().setDescription("deal desc").setLink("some/web/link").setTitle("deal title").setImageUrl("some/deal/image").setDate(new Date());
         titleText = (TextView) findViewById(R.id.title_text);
         imageView = (ImageView) findViewById(R.id.gallery_image);
         descText = (TextView) findViewById(R.id.desc_text);
+        timeText = (TextView) findViewById(R.id.deal_time_text);
         shareButton = findViewById(R.id.share_button);
     }
 
@@ -47,10 +53,13 @@ public class DealItemViewTest extends TestCase {
 
     @Test
     public void testRender() throws Exception {
-        dealItemView.render(deal);
+        Date now = dateProvider.get();
+        Date date = new Date(now.getTime() - 70000l);
+        dealItemView.render(deal.setDate(date));
         expect(titleText).toHaveText("deal title");
         expect(descText).toHaveText("deal desc");
         expect(imageLoader.loadedImageUrl(imageView)).toEqual("some/deal/image");
+        expect(timeText).toHaveText("1 minute ago");
     }
 
     @Test
