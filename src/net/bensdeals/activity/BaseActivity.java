@@ -15,6 +15,11 @@ public abstract class BaseActivity extends RoboActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         FlurryAgent.onStartSession(this, getString(R.string.flurry_id));
     }
 
