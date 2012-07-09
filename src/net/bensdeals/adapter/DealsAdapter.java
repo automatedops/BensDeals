@@ -11,7 +11,6 @@ import net.bensdeals.R;
 import net.bensdeals.model.Deal;
 import net.bensdeals.utils.LayoutInflaterWithInjection;
 import net.bensdeals.views.DealItemView;
-import net.bensdeals.views.IndicatorView;
 
 import java.util.List;
 
@@ -40,7 +39,6 @@ public class DealsAdapter extends PagerAdapter {
     List<Deal> items = Lists.newArrayList();
 
     private LayoutInflaterWithInjection<DealItemView> inflater;
-    private IndicatorView indicatorView;
 
     @Inject
     public DealsAdapter(LayoutInflaterWithInjection<DealItemView> inflater, Context context) {
@@ -73,7 +71,6 @@ public class DealsAdapter extends PagerAdapter {
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         super.setPrimaryItem(container, position, object);
-        indicatorView.setSelected(position);
     }
 
     @Override
@@ -89,11 +86,6 @@ public class DealsAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
-    }
-
-    public PagerAdapter setOnIndexChangedListener(IndicatorView indicatorView) {
-        this.indicatorView = indicatorView;
-        return this;
     }
 
     public void setOrientation(Configuration configuration) {

@@ -33,7 +33,8 @@ public class DealsPagerActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deal_pager_layout);
-        viewPager.setAdapter(adapter.setOnIndexChangedListener(indicatorView));
+        viewPager.setAdapter(adapter);
+        viewPager.setOnPageChangeListener(new OnPageChangeListener(indicatorView));
         reporter.report(Reporter.ON_APP_START);
         fetchXML();
     }
@@ -45,6 +46,7 @@ public class DealsPagerActivity extends BaseActivity {
             public void onTaskSuccess(List<Deal> list) {
                 adapter.replaceAll(list);
                 indicatorView.setSelected(0);
+                viewPager.setCurrentItem(0, true);
             }
 
             @Override
@@ -81,5 +83,26 @@ public class DealsPagerActivity extends BaseActivity {
         super.onConfigurationChanged(newConfig);
         adapter.setOrientation(newConfig);
         viewPager.setAdapter(adapter);
+    }
+
+    private static class OnPageChangeListener implements ViewPager.OnPageChangeListener {
+        private IndicatorView indicatorView;
+
+        public OnPageChangeListener(IndicatorView indicatorView) {
+            this.indicatorView = indicatorView;
+        }
+
+        @Override
+        public void onPageScrolled(int i, float v, int i1) {
+        }
+
+        @Override
+        public void onPageSelected(int i) {
+            indicatorView.setSelected(i);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+        }
     }
 }
