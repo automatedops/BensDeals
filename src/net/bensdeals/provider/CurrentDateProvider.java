@@ -1,4 +1,4 @@
-package net.bensdeals.utils;
+package net.bensdeals.provider;
 
 import com.google.inject.Provider;
 

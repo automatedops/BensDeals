@@ -10,7 +10,7 @@ import com.google.inject.Inject;
 import net.bensdeals.R;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.ImageLoader;
-import net.bensdeals.utils.CurrentDateProvider;
+import net.bensdeals.provider.CurrentDateProvider;
 import net.bensdeals.utils.DateFormatter;
 import net.bensdeals.utils.IntentUtil;
 

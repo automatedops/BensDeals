@@ -7,7 +7,7 @@ import net.bensdeals.activity.DealsApplication;
 import net.bensdeals.network.ImageLoader;
 import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.provider.CacheDirProvider;
-import net.bensdeals.utils.CurrentDateProvider;
+import net.bensdeals.provider.CurrentDateProvider;
 import net.bensdeals.utils.TestCurrentDateProvider;
 import net.bensdeals.utils.TestImageLoader;
 import net.bensdeals.utils.TestRemoteTask;

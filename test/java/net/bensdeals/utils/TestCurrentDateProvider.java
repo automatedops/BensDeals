@@ -1,5 +1,7 @@
 package net.bensdeals.utils;
 
+import net.bensdeals.provider.CurrentDateProvider;
+
 import java.util.Date;
 
 public class TestCurrentDateProvider extends CurrentDateProvider {

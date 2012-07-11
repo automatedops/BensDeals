@@ -1,12 +1,15 @@
 package net.bensdeals.activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import com.google.inject.Inject;
 import net.bensdeals.R;
@@ -14,9 +17,10 @@ import net.bensdeals.adapter.DealsAdapter;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.network.core.RemoteTaskCallback;
+import net.bensdeals.provider.XMLPathProvider;
 import net.bensdeals.utils.Reporter;
+import net.bensdeals.views.ComboBox;
 import net.bensdeals.views.IndicatorView;
-import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
 
 import java.util.List;
@@ -24,9 +28,10 @@ import java.util.List;
 public class DealsPagerActivity extends BaseActivity {
     @Inject DealsAdapter adapter;
     @Inject RemoteTask remoteTask;
-    @InjectResource(R.string.url_homepage) String path;
+    @Inject XMLPathProvider xmlPathProvider;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
+    @InjectView(R.id.combo_box) ComboBox comboBox;
     protected ProgressDialog dialog;
 
     @Override
@@ -41,17 +46,20 @@ public class DealsPagerActivity extends BaseActivity {
 
     private void fetchXML() {
         createLoadingDialog();
-        remoteTask.makeRequest(path, new RemoteTaskCallback() {
+        final XMLPathProvider.XMLPath xmlPath = xmlPathProvider.get();
+        comboBox.render(xmlPath);
+        remoteTask.makeRequest(xmlPath.getPath(), new RemoteTaskCallback() {
             @Override
             public void onTaskSuccess(List<Deal> list) {
-                adapter.replaceAll(list);
-                indicatorView.setSelected(0);
                 viewPager.setCurrentItem(0, true);
+                adapter.replaceAll(list);
+                viewPager.setAdapter(adapter);
+                indicatorView.setSelected(0);
             }
 
             @Override
             public void onTaskFailed() {
-                Toast.makeText(DealsPagerActivity.this, R.string.fail_to_load, Toast.LENGTH_LONG).show();
+                Toast.makeText(DealsPagerActivity.this, getString(R.string.fail_to_load, xmlPath.getTitle()), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -62,7 +70,7 @@ public class DealsPagerActivity extends BaseActivity {
     }
 
     protected void createLoadingDialog() {
-        dialog = ProgressDialog.show(this, "", getString(R.string.loading));
+        dialog = ProgressDialog.show(this, "", getString(R.string.loading, xmlPathProvider.get().getTitle()));
     }
 
     @Override
@@ -83,6 +91,19 @@ public class DealsPagerActivity extends BaseActivity {
         super.onConfigurationChanged(newConfig);
         adapter.setOrientation(newConfig);
         viewPager.setAdapter(adapter);
+    }
+
+    public void comboBoxOnClick(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.select_a_page)
+                .setItems(R.array.xml_titles, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        XMLPathProvider.XMLPath[] values = XMLPathProvider.XMLPath.values();
+                        xmlPathProvider.set(values[values.length > i ? i : 0]);
+                        fetchXML();
+                    }
+                }).create().show();
     }
 
     private static class OnPageChangeListener implements ViewPager.OnPageChangeListener {

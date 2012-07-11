@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<net.bensdeals.views.ComboBox
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/block"
+    android:onClick="comboBoxOnClick">
+    <TextView
+        android:id="@+id/page_title_view"
+        style="@style/block"
+        android:textColor="@color/solid_white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginTop="5dip"
+        android:layout_marginLeft="15dip"/>
+</net.bensdeals.views.ComboBox>

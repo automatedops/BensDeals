@@ -2,6 +2,7 @@ package net.bensdeals.utils;
 
 import android.content.Context;
 import net.bensdeals.R;
+import net.bensdeals.provider.CurrentDateProvider;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

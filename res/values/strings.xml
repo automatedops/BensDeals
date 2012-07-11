@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BensDeals</string>
-    <string name="loading">Loading homepage…</string>
-    <string name="fail_to_load">Failed to load homepage…</string>
+    <string name="loading">Loading %s…</string>
+    <string name="fail_to_load">Failed to load %s…</string>
     <string name="crittercism_app_id">4fec01526c36f935a4000005</string>
     <string name="refresh_title_case">Refresh</string>
     <string name="flurry_id">KV3GWTQSR7WS53T4KSWB</string>
+    <string name="select_a_page">Select a page</string>
     <plurals name="minutes_format">
         <item quantity="zero">1 minute ago</item>
         <item quantity="one">%d minute ago</item>
@@ -21,4 +22,15 @@
         <item quantity="one">%d day ago</item>
         <item quantity="other">%d days ago</item>
     </plurals>
+    <array name="xml_titles">
+        <item>Homepage</item>
+        <item>Deals</item>
+        <item>Coupons</item>
+        <item>Rebates</item>
+        <item>Feebies</item>
+        <item>Most Clicked</item>
+        <item>Most Discussed</item>
+        <item>Most Bookmarked</item>
+        <item>Most Viewed</item>
+    </array>
 </resources>

@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:paddingLeft="10dip"
     android:paddingRight="10dip"
-    android:paddingTop="10dip"
+    android:paddingTop="5dip"
     >
     <net.bensdeals.views.RoundCornerImageView
         android:id="@+id/gallery_image"
