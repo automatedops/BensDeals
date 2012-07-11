@@ -30,4 +30,9 @@ public class TestRemoteTask extends RemoteTask {
     public String getLatestRequestPath() {
         return requests.get(requests.size()-1).first;
     }
+
+    public void simulateFailedResponse() {
+        Pair<String, RemoteTaskCallback> remove = requests.remove(0);
+        remove.second.onTaskFailed();
+    }
 }

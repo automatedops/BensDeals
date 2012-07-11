@@ -5,4 +5,5 @@
     <color name="light_navy_blue">#5A70A2</color>
     <color name="dark_navy_blue">#3A4F7C</color>
     <color name="light_blue">#ff46c7ff</color>
+    <color name="transparent">#0fff</color>
 </resources>

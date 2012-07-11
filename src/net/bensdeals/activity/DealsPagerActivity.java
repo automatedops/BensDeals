@@ -10,10 +10,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 import com.google.inject.Inject;
 import net.bensdeals.R;
 import net.bensdeals.adapter.DealsAdapter;
+import net.bensdeals.listener.OnPageChangeListener;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.network.core.RemoteTaskCallback;
@@ -29,6 +29,7 @@ public class DealsPagerActivity extends BaseActivity {
     @Inject DealsAdapter adapter;
     @Inject RemoteTask remoteTask;
     @Inject XMLPathProvider xmlPathProvider;
+    @Inject OnPageChangeListener onPageChangeListener;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
     @InjectView(R.id.combo_box) ComboBox comboBox;
@@ -39,7 +40,7 @@ public class DealsPagerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deal_pager_layout);
         viewPager.setAdapter(adapter);
-        viewPager.setOnPageChangeListener(new OnPageChangeListener(indicatorView));
+        viewPager.setOnPageChangeListener(onPageChangeListener.setIndicatorView(indicatorView));
         reporter.report(Reporter.ON_APP_START);
         fetchXML();
     }
@@ -47,19 +48,18 @@ public class DealsPagerActivity extends BaseActivity {
     private void fetchXML() {
         createLoadingDialog();
         final XMLPathProvider.XMLPath xmlPath = xmlPathProvider.get();
-        comboBox.render(xmlPath);
         remoteTask.makeRequest(xmlPath.getPath(), new RemoteTaskCallback() {
             @Override
             public void onTaskSuccess(List<Deal> list) {
+                comboBox.render(xmlPath);
                 viewPager.setCurrentItem(0, true);
                 adapter.replaceAll(list);
-                viewPager.setAdapter(adapter);
-                indicatorView.setSelected(0);
+                resetAdapter();
             }
 
             @Override
             public void onTaskFailed() {
-                Toast.makeText(DealsPagerActivity.this, getString(R.string.fail_to_load, xmlPath.getTitle()), Toast.LENGTH_LONG).show();
+                new AlertDialog.Builder(DealsPagerActivity.this).setMessage(getString(R.string.fail_to_load, xmlPath.getTitle())).create().show();
             }
 
             @Override
@@ -90,7 +90,12 @@ public class DealsPagerActivity extends BaseActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         adapter.setOrientation(newConfig);
+        resetAdapter();
+    }
+
+    private void resetAdapter() {
         viewPager.setAdapter(adapter);
+        indicatorView.setSelected(0);
     }
 
     public void comboBoxOnClick(View view) {
@@ -106,24 +111,4 @@ public class DealsPagerActivity extends BaseActivity {
                 }).create().show();
     }
 
-    private static class OnPageChangeListener implements ViewPager.OnPageChangeListener {
-        private IndicatorView indicatorView;
-
-        public OnPageChangeListener(IndicatorView indicatorView) {
-            this.indicatorView = indicatorView;
-        }
-
-        @Override
-        public void onPageScrolled(int i, float v, int i1) {
-        }
-
-        @Override
-        public void onPageSelected(int i) {
-            indicatorView.setSelected(i);
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int i) {
-        }
-    }
 }
