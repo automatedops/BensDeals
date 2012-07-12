@@ -46,7 +46,7 @@ public class XMLPathProvider implements Provider<XMLPathProvider.XMLPath> {
         COUPONS("http://bensbargains.net/coupons/rss/", "Coupons"),
         REBATES("http://bensbargains.net/rebates/rss/", "Rebates"),
         FEEBIES("http://bensbargains.net/free-stuff/rss/", "Feebies"),
-        MOSTCLICKED("http://bensbargains.net/most/popular/rss/", "Most Cliked"),
+        MOSTCLICKED("http://bensbargains.net/most/popular/rss/", "Most Clicked"),
         MOSTDISCUSSED("http://bensbargains.net/most/discussed/rss/", "Most Discussed"),
         MOSTBOOKMARKED("http://bensbargains.net/most/bookmarked/rss/", "Most Bookmarked"),
         MOSTVIEWED("http://bensbargains.net/most/viewed/rss/", "Most Viewed");

@@ -30,6 +30,7 @@ public class ComboBox extends LinearLayout {
 
     public void render(XMLPathProvider.XMLPath xmlPath) {
         titleText.setText(xmlPath.getTitle());
+        setVisibility(VISIBLE);
     }
 
     @Override

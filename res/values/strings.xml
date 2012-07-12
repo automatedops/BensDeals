@@ -5,6 +5,7 @@
     <string name="fail_to_load">Failed to load %s…</string>
     <string name="crittercism_app_id">4fec01526c36f935a4000005</string>
     <string name="refresh_title_case">Refresh</string>
+    <string name="pages_title_case">Pages</string>
     <string name="flurry_id">KV3GWTQSR7WS53T4KSWB</string>
     <string name="select_a_page">Select a page</string>
     <plurals name="minutes_format">
@@ -22,7 +23,7 @@
         <item quantity="one">%d day ago</item>
         <item quantity="other">%d days ago</item>
     </plurals>
-    <array name="xml_titles">
+    <string-array name="xml_titles">
         <item>Homepage</item>
         <item>Deals</item>
         <item>Coupons</item>
@@ -32,5 +33,5 @@
         <item>Most Discussed</item>
         <item>Most Bookmarked</item>
         <item>Most Viewed</item>
-    </array>
+    </string-array>
 </resources>

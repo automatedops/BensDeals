@@ -82,7 +82,16 @@ public class DealsPagerActivity extends BaseActivity {
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        fetchXML();
+        int itemId = item.getItemId();
+        switch (itemId) {
+            case R.id.item_refresh:
+                fetchXML();
+                break;
+            case R.id.item_pages:
+                comboBoxOnClick(null);
+                break;
+            default:
+        }
         return super.onMenuItemSelected(featureId, item);
     }
 

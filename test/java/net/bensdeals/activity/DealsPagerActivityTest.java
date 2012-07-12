@@ -1,5 +1,6 @@
 package net.bensdeals.activity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.res.Configuration;
 import android.support.v4.view.PagerAdapter;
@@ -8,6 +9,7 @@ import com.google.inject.Inject;
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.shadows.ShadowAlertDialog;
 import com.xtremelabs.robolectric.shadows.ShadowDialog;
+import com.xtremelabs.robolectric.tester.android.view.TestMenuItem;
 import net.bensdeals.R;
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
 import net.bensdeals.utils.TestImageLoader;
@@ -58,8 +60,15 @@ public class DealsPagerActivityTest {
 
     @Test
     public void tappingRefreshMenu_shouldFetchDeals() throws Exception {
-        activity.onMenuItemSelected(0, null);
+        activity.onMenuItemSelected(0, new TestMenuItem(R.id.item_refresh));
         expect(remoteTask.getLatestRequestPath()).toEqual("http://bensbargains.net/rss/");
+    }
+
+    @Test
+    public void tappingPagesMenu_shouldShowDialog() throws Exception {
+        activity.onMenuItemSelected(0, new TestMenuItem(R.id.item_pages));
+        AlertDialog latestAlertDialog = ShadowAlertDialog.getLatestAlertDialog();
+        expect(latestAlertDialog).not.toBeNull();
     }
 
     @Test

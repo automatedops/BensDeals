@@ -4,4 +4,8 @@
         android:id="@+id/item_refresh"
         android:title="@string/refresh_title_case"
         android:icon="@drawable/ic_menu_refresh"/>
+    <item
+        android:id="@+id/item_pages"
+        android:title="@string/pages_title_case"
+        android:icon="@drawable/ic_menu_copy_holo_dark"/>
 </menu>
