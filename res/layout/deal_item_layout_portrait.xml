@@ -72,7 +72,7 @@
                 android:id="@+id/share_button"
                 android:layout_width="30dip"
                 android:layout_height="30dip"
-                android:src="@android:drawable/ic_menu_share"/>
+                android:src="@drawable/ic_menu_share"/>
         </LinearLayout>
     </net.bensdeals.views.RoundCornerScrollView>
 </net.bensdeals.views.DealItemView>
