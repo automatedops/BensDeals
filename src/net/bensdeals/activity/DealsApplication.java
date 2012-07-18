@@ -6,6 +6,7 @@ import com.google.inject.Module;
 import com.google.inject.name.Names;
 import net.bensdeals.R;
 import net.bensdeals.provider.CacheDirProvider;
+import net.bensdeals.utils.Config;
 import roboguice.application.RoboApplication;
 
 import java.io.File;
@@ -16,6 +17,7 @@ import static java.util.concurrent.Executors.newFixedThreadPool;
 
 public class DealsApplication extends RoboApplication {
     private Module module = new AppModules();
+
     @Override
     protected void addApplicationModules(List<Module> modules) {
         modules.add(module);
@@ -28,7 +30,7 @@ public class DealsApplication extends RoboApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Crittercism.init(getApplicationContext(), getString(R.string.crittercism_app_id));
+        if (Config.LOGGING) Crittercism.init(getApplicationContext(), getString(R.string.crittercism_app_id));
     }
 
     private class AppModules implements Module {

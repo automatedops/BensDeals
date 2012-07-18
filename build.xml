@@ -105,4 +105,17 @@
         </junit>
         <fail if="junit.failure" message="Unit test(s) failed.  See reports!"/>
     </target>
+
+    <target name="config">
+        <property name="config-target-path" value="${source.dir}/net/bensdeals/utils"/>
+        <copy file="config/Config.java" todir="${config-target-path}" overwrite="true" encoding="utf-8">
+            <filterset>
+                <filter token="CONFIG.LOGGING" value="${config.logging}"/>
+            </filterset>
+        </copy>
+    </target>
+
+    <target name="reset">
+        <copy file="config/default/Config.java" todir="${source.dir}/net/bensdeals/utils" overwrite="true" encoding="utf-8"/>
+    </target>
 </project>
