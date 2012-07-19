@@ -34,6 +34,7 @@ public class DealItemViewTest extends TestCase {
     private TextView descText;
     private View shareButton;
     public TextView timeText;
+    public View container;
 
     @Before
     public void setup() throws Exception {
@@ -42,6 +43,7 @@ public class DealItemViewTest extends TestCase {
         titleText = (TextView) findViewById(R.id.title_text);
         imageView = (ImageView) findViewById(R.id.gallery_image);
         descText = (TextView) findViewById(R.id.desc_text);
+        container = findViewById(R.id.gallery_text_container);
         timeText = (TextView) findViewById(R.id.deal_time_text);
         shareButton = findViewById(R.id.share_button);
     }
@@ -66,7 +68,7 @@ public class DealItemViewTest extends TestCase {
     public void shouldHaveShareClickListener() throws Exception {
         dealItemView.render(deal);
         expect(shadowOf(shareButton).getOnClickListener()).not.toBeNull();
-        expect(shadowOf(descText).getOnClickListener()).not.toBeNull();
+        expect(shadowOf(container).getOnClickListener()).not.toBeNull();
     }
 
     @Test

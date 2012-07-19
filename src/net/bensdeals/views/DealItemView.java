@@ -24,6 +24,7 @@ public class DealItemView extends LinearLayout {
     private TextView descText;
     public View shareButton;
     public TextView timeText;
+    public View container;
 
     public DealItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -37,12 +38,13 @@ public class DealItemView extends LinearLayout {
         descText = (TextView) findViewById(R.id.desc_text);
         shareButton = findViewById(R.id.share_button);
         timeText = (TextView) findViewById(R.id.deal_time_text);
+        container = findViewById(R.id.gallery_text_container);
     }
 
     public DealItemView render(final Deal deal) {
         titleText.setText(fromHtml(deal.getTitle()));
         descText.setText(fromHtml(deal.getDescription()));
-        descText.setOnClickListener(new OnClickListener() {
+        container.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 IntentUtil.intentForWeb(getContext(), deal);
