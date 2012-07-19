@@ -1,10 +1,8 @@
 #!/bin/bash
 
-LOGGING_STRING = "public final static boolean LOGGING = false;"
-
 echo "Building BensDeals Application"
 
-ant clean config release reset
+ant clean config test release reset
 
 echo "Creating release directory : ant_build/release"
 
