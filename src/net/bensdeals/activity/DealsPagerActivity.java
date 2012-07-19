@@ -17,6 +17,7 @@ import net.bensdeals.listener.OnPageChangeListener;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.network.core.RemoteTaskCallback;
+import net.bensdeals.provider.CacheDirProvider;
 import net.bensdeals.provider.XMLPathProvider;
 import net.bensdeals.utils.Reporter;
 import net.bensdeals.views.ComboBox;
@@ -29,6 +30,7 @@ public class DealsPagerActivity extends BaseActivity {
     @Inject DealsAdapter adapter;
     @Inject RemoteTask remoteTask;
     @Inject XMLPathProvider xmlPathProvider;
+    @Inject CacheDirProvider cacheDirProvider;
     @Inject OnPageChangeListener onPageChangeListener;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
@@ -38,6 +40,7 @@ public class DealsPagerActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        cacheDirProvider.clear();
         setContentView(R.layout.deal_pager_layout);
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(onPageChangeListener.setIndicatorView(indicatorView));
