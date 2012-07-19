@@ -5,7 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
+import net.bensdeals.listener.OnIndexChangeListener;
 
 public class IndicatorView extends View {
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -14,6 +16,22 @@ public class IndicatorView extends View {
 
     public IndicatorView(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    public void setIndexChangeListener(final OnIndexChangeListener indexChangeListener) {
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (MotionEvent.ACTION_UP == motionEvent.getAction()) {
+                    float x = motionEvent.getX();
+                    int w = getWidth();
+                    int index = (int) (x / w * 19);
+                    index = selected > index ? selected - 1 : selected + 1;
+                    if (index > -1 && selected != -1) indexChangeListener.indexChanged(index);
+                }
+                return true;
+            }
+        });
     }
 
     public void setSelected(int selected) {

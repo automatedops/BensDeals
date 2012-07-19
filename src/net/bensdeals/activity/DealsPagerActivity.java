@@ -44,6 +44,7 @@ public class DealsPagerActivity extends BaseActivity {
         setContentView(R.layout.deal_pager_layout);
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(onPageChangeListener.setIndicatorView(indicatorView));
+        indicatorView.setIndexChangeListener(new OnIndexChangeListener());
         reporter.report(Reporter.ON_APP_START);
         fetchXML();
     }
@@ -67,7 +68,7 @@ public class DealsPagerActivity extends BaseActivity {
 
             @Override
             public void onTaskComplete() {
-                dialog.dismiss();
+                if (dialog != null && dialog.isShowing()) dialog.dismiss();
             }
         });
     }
@@ -123,4 +124,10 @@ public class DealsPagerActivity extends BaseActivity {
                 }).create().show();
     }
 
+    private class OnIndexChangeListener implements net.bensdeals.listener.OnIndexChangeListener {
+        @Override
+        public void indexChanged(int index) {
+            viewPager.setCurrentItem(index, true);
+        }
+    }
 }
