@@ -95,7 +95,16 @@ public class Deal implements Serializable {
         String tempUrl = desc.substring(0, desc.indexOf("/>"));
         imageUrl = tempUrl.substring(tempUrl.indexOf(prefix) + prefix.length(), tempUrl.lastIndexOf("\""));
         imageUrl = imageUrl.replaceFirst(".jpg", "l.jpg");
-        this.description = desc.substring(tempUrl.length() + 2);
+        this.description = removeIndentImage(desc.substring(tempUrl.length() + 2));
+    }
+
+    private String removeIndentImage(String substring) {
+        if (substring.startsWith("<img src=")) {
+            int start = substring.indexOf(">");
+            if (start != -1)
+                substring = substring.substring(start + 1);
+        }
+        return substring;
     }
 
     public synchronized static List<Deal> parseXml(String responseBody) throws IOException, SAXException, ParserConfigurationException {

@@ -46,4 +46,10 @@ public class DealTest {
     public void shouldUseLargeImageUrl() throws Exception {
         expect(deals.get(0).getImageUrl()).toEqual("http://cdn2.bensimages.com/img118828l.jpg");
     }
+
+    @Test
+    public void shouldRemoveIndentImage() throws Exception {
+        deals = parseXml(StringUtil.responseAsStream("feed_with_indent_image.xml"));
+        expect(deals.get(0).getDescription()).toEqual("Newegg has the MSI N670GTX-PM2D2GD5/OC GeForce GTX 670 2GB GDDR5 Overclocked Video Card for <B>$400</b> with free shipping. $30 Newegg Gift Card included with purchase. Check out this <a  rel=\"nofollow\" href=\"/link/msi-geforce-gtx-670-2gb-oc-video-card-400-at-newegg-265641/?linkid=0\" target=\"_new\">review</a> for comparison with other high end cards. Features 1344 CUDA cores.   [<a   rel=\"nofollow\" href=\"/link/msi-geforce-gtx-670-2gb-oc-video-card-400-at-newegg-265641/?linkid=1\" target=\"_new\">Compare</a>]");
+    }
 }
