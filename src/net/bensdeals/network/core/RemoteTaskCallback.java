@@ -4,8 +4,9 @@ import net.bensdeals.model.Deal;
 
 import java.util.List;
 
-public interface RemoteTaskCallback {
-    void onTaskSuccess(List<Deal> list);
-    void onTaskFailed();
-    void onTaskComplete();
+public class RemoteTaskCallback {
+    public void onTaskSuccess(List<Deal> list){}
+    public void onTaskSuccess(Response response){}
+    public void onTaskFailed(){}
+    public void onTaskComplete(){}
 }

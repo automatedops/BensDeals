@@ -15,7 +15,7 @@ public class StringUtilTest {
 
     @Test
     public void shouldReadStreamToString() throws Exception {
-        List<Deal> deals = Deal.parseXml(responseAsStream("homepage"));
+        List<Deal> deals = Deal.parseXml(responseAsStream("homepage.xml"));
         expect(deals.size()).toEqual(20);
     }
 }

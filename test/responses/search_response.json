@@ -1,0 +1,1120 @@
+  {
+ "kind": "shopping#products",
+ "etag": "\"jErtD_Q3X5jlRDg14ezk_ORvims/veI4vKnDx2OqpevuduAPqd7p_Ak\"",
+ "id": "tag:google.com,2010:shopping/products",
+ "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?country=US&q=mp3+player&alt=json",
+ "nextLink": "https://www.googleapis.com/shopping/search/v1/public/products?country=US&q=mp3+player&startIndex=26&alt=json",
+ "totalItems": 4099550,
+ "startIndex": 1,
+ "itemsPerPage": 25,
+ "currentItemCount": 25,
+ "requestId": "0COib1KaWw7ECFU92RAodVxQAAA",
+ "items": [
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/10046/10952539499641354542",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/10046/gid/10952539499641354542",
+   "product": {
+    "googleId": "10952539499641354542",
+    "author": {
+     "name": "Target",
+     "accountId": "10046"
+    },
+    "creationTime": "2012-06-03T15:18:10.000Z",
+    "modificationTime": "2012-07-30T15:01:50.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple iPod touch Black 4th Generation 8GB Touch Screen Wi-Fi MP3",
+    "description": "Find portable mp3 players at Target.com! The world's most popular portable gaming device is even more fun. Now available in black and white, ipod touch includes ios 5 with over 200 new features, like imessage, notification center, and twitter integration. Send free, unlimited text messages over wi-fi with imessage. record hd video and make facetime calls. Visit the app store to choose from over 500000 apps. Ipod touch also features icloud, which stores your music, photos, apps, and more and wirelessly pushes them to all your devices.",
+    "link": "http://www.target.com/p/Apple-iPod-touch-8GB-MP3-Player-4th-Generation-with-Touch-Screen-Wi-Fi-Black-MC540LL-A/-/A-12990622?ref=tgt_adv_XSG10001&AFID=Froogle_df&LNM=%7C12990622&CPNG=electronics&ci_src=14110944&ci_sku=12990622",
+    "brand": "Apple",
+    "condition": "new",
+    "gtin": "00885909394845",
+    "gtins": [
+     "00885909394845"
+    ],
+    "mpns": [
+     "MC540LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 183.99,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://img3.targetimg3.com/wcsstore/TargetSAS/img/p/12/99/12990622.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/1311674/6170182105934527317",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/1311674/gid/6170182105934527317",
+   "product": {
+    "googleId": "6170182105934527317",
+    "author": {
+     "name": "Best Buy",
+     "accountId": "1311674"
+    },
+    "creationTime": "2012-06-12T14:36:17.000Z",
+    "modificationTime": "2012-07-17T05:12:18.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple® - Ipod Touch® 8gb* Mp3 Player (4th Generation - Latest Model) - White",
+    "description": "The 8GB iPod touch , Apple's most popular iPod, can do even more, thanks to over 200 new software features in iOS 5. Send free unlimited text, photo and video messages over Wi-Fi to any other iOS 5 device with iMessage™. Use iCloud® to store your photos, documents, music and more, and wirelessly push them to other devices. Tight Twitter integration, Notifications and Reminders help you keep in touch with everyone and everything important in your life. Plus, the 8GB iPod touch includes the revolutionary Multi-Touch interface and Wi-Fi web browsing, HD video recording, FaceTime® camera and the high-resolution Retina™ display. Current 3rd- and 4th-generation iPod touch owners can receive a free software update to iOS 5 available through iTunes beginning October 12, 2011.",
+    "link": "http://www.bestbuy.com/site/Apple%AE+-+iPod+touch%AE+8GB*+MP3+Player+(4th+Generation+-+Latest+Model)+-+White/3109302.p?id=1218378604004&skuId=3109302",
+    "brand": "Apple&#174;",
+    "condition": "new",
+    "gtin": "00885909497232",
+    "gtins": [
+     "00885909497232"
+    ],
+    "mpns": [
+     "MD057LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 174.99,
+      "originalPrice": 199.99,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://images.bestbuy.com:80/BestBuy_US/images/products/3109/3109302_sc.jpg",
+      "status": "available"
+     },
+     {
+      "link": "http://images.bestbuy.com:80/BestBuy_US/images/products/3109/3109302_sb.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/8438988/6767509901870707045",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/8438988/gid/6767509901870707045",
+   "product": {
+    "googleId": "6767509901870707045",
+    "author": {
+     "name": "Newegg.com",
+     "accountId": "8438988"
+    },
+    "creationTime": "2012-07-13T21:34:45.000Z",
+    "modificationTime": "2012-07-30T22:11:52.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "SanDisk Sansa Clip Zip 1.1\" Black 4GB MP3 Player SDMX22-004G-A57K",
+    "description": "Height: 2.25\" Width: 1.42\" Depth: 0.58\" Weight: 0.56 oz. Memory Type: Flash Memory Expansion Slot: Micro SD/SDHC Audio Formats: MP3, WMA, secure WMA, Ogg Vorbis, and FLAC Audio Recording: Voice, FM",
+    "link": "http://www.newegg.com/Product/Product.aspx?Item=N82E16855125168&nm_mc=OTC-FroogleNEW&cm_mmc=OTC-FroogleNEW-_-MP3+/+MP4+Players-_-SanDisk-_-55125168",
+    "brand": "SanDisk",
+    "condition": "new",
+    "gtin": "00619659067793",
+    "gtins": [
+     "00619659067793"
+    ],
+    "mpns": [
+     "SDMX22-004G-A57K"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 44.99,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://images10.newegg.com/NeweggImage/productimage/A0FU_1_20120418_3281614.jpg",
+      "status": "available"
+     },
+     {
+      "link": "http://images10.newegg.com/NeweggImage/productimage/55-125-168-07.jpg"
+     },
+     {
+      "link": "http://images10.newegg.com/NeweggImage/productimage/55-125-168-08.jpg"
+     },
+     {
+      "link": "http://images10.newegg.com/NeweggImage/productimage/55-125-168-09.jpg"
+     },
+     {
+      "link": "http://images10.newegg.com/NeweggImage/productimage/55-125-168-10.jpg"
+     },
+     {
+      "link": "http://images10.newegg.com/NeweggImage/productimage/55-125-168-11.jpg"
+     },
+     {
+      "link": "http://images10.newegg.com/NeweggImage/productimage/55-125-168-12.jpg"
+     },
+     {
+      "link": "http://images10.newegg.com/NeweggImage/productimage/55-125-168-13.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/8175035/1528724307767409500",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/8175035/gid/1528724307767409500",
+   "product": {
+    "googleId": "1528724307767409500",
+    "author": {
+     "name": "Walmart",
+     "accountId": "8175035"
+    },
+    "creationTime": "2012-05-07T22:02:47.000Z",
+    "modificationTime": "2012-07-30T00:31:21.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Sony NWZ-S764BLK 8GB MP3 Player with Bluetooth, Black",
+    "description": "The Sony NWZ-S764BLK 8GB MP3 Player with Bluetooth provides you with the freedom to enjoy your music wirelessly. Experience music unplugged with integrated Bluetooth headphones, multiple format A/V playback, wireless photo sharing and legendary Sony audio quality.",
+    "link": "http://www.walmart.com/ip/Sony-NWZ-S764BLK-8GB-MP3-Player-with-Bluetooth-Black/20692715?ci_src=14110944&ci_sku=20692715&sourceid=1500000000000003142050&veh=dat",
+    "brand": "Sony",
+    "condition": "new",
+    "gtin": "00027242823907",
+    "gtins": [
+     "00027242823907"
+    ],
+    "mpns": [
+     "NWZ-S764BLK"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 89.98,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://i.walmartimages.com/i/p/00/02/72/42/82/0002724282390_500X500.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/10046/9641857572317718220",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/10046/gid/9641857572317718220",
+   "product": {
+    "googleId": "9641857572317718220",
+    "author": {
+     "name": "Target",
+     "accountId": "10046"
+    },
+    "creationTime": "2012-01-11T22:05:09.000Z",
+    "modificationTime": "2012-07-29T15:16:30.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple iPod touch White 4th Generation 8GB Touch Screen Wi-Fi MP3",
+    "description": "Find portable mp3 players at Target.com! The worlds most popular portable gaming device is even more fun. Now available in black and white, ipod touch includes ios 5 with over 200 new features, like imessage, notification center, and twitter integration. Send free, unlimited text messages over wi-fi with imessage.1 record hd video and make facetime calls.2 visit the app store to choose from over 500000 apps.3 ipod touch also features icloud, which stores your music, photos, apps, and moreand wirelessly pushes them to allyour devices.4 wi-fi internet access is required for some...",
+    "link": "http://www.target.com/p/Apple-iPod-touch-White-4th-Generation-8GB-Touch-Screen-Wi-Fi-MP3-Player-MD057LL-A/-/A-13752641?ref=tgt_adv_XSG10001&AFID=Froogle_df&LNM=%7C13752641&CPNG=electronics&ci_src=14110944&ci_sku=13752641",
+    "brand": "Apple",
+    "condition": "new",
+    "gtin": "00885909497232",
+    "gtins": [
+     "00885909497232"
+    ],
+    "mpns": [
+     "MD057LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 183.99,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://img2.targetimg2.com/wcsstore/TargetSAS/img/p/13/75/13752641.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/3958356/11281239571706711113",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/3958356/gid/11281239571706711113",
+   "product": {
+    "googleId": "11281239571706711113",
+    "author": {
+     "name": "CowBoom.com",
+     "accountId": "3958356"
+    },
+    "creationTime": "2012-07-26T06:02:00.000Z",
+    "modificationTime": "2012-07-30T06:02:00.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple MC540LL/A iPod touch 4th Gen 8GB MP3 Player",
+    "description": "Apple MC540LL/A iPod touch 4th Generation 8GB MP3 Player - Black\nThe most popular iPod is now even better. Along with the revolutionary Multi-Touch interface and Wi-Fi Web browsing, the iPod touch now includes HD video recording, FaceTime camera and the highest resolution iPod screen ever. Plus, the new Game Center feature enhances your game play. 3.5\" widescreen display\nSpecifications\nStorage Type: Flash memory\nBuilt-In Storage Capacity: 8GB\nDigital Audio Format Upgradable: Yes\nComputer Compatibility: PC and Mac\nMusic-Management Software: iTunes\nMusic Service Compatibility: iTunes\nBattery Size: Lithium-ion\nBattery Quantity: 1\nBattery Life: Up to 40 hours audio playback, up to 7 hours video playback\nConnection Transfer Rate: USB 2.0\nSystem Requirements: Windows 7, Vista, XP Home or Professional (SP3) or later Mac OS X v10.5.8 or later iTunes 10 or later USB 2.0 p",
+    "link": "http://www.cowboom.com/product/746327",
+    "brand": "Apple",
+    "condition": "used",
+    "gtin": "00885909394845",
+    "gtins": [
+     "00885909394845"
+    ],
+    "mpns": [
+     "MC540LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 129.98,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://images.cowboom.com/store/DT_746327_1.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/9180752/14182251263047539918",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/9180752/gid/14182251263047539918",
+   "product": {
+    "googleId": "14182251263047539918",
+    "author": {
+     "name": "Buy.com",
+     "accountId": "9180752"
+    },
+    "creationTime": "2012-04-18T01:32:43.000Z",
+    "modificationTime": "2012-07-29T14:09:59.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "SanDisk 8GB Sansa® Clip+ MP3 Player, Black ...",
+    "description": "The Tiny Wearable MP3 Player with BIG Sound! Enjoy more entertainment.\nThe Sansa Clip+ is a tiny MP3 player that boasts an array of cool features, as well as distinctively big sound for its small size. Rock out with up to 2000 songs on this black player. Enjoy even more entertainment when you use the expandable memory slot to play preloaded microSDHC™ cards. slotRadio™ and slotMusic cards are preloaded with tunes ready to pop into the player's memory card slot. Rock on with a 15-hour battery life.",
+    "link": "http://clickfrom.buy.com/default.asp?adid=17379&sURL=http%3A%2F%2Fwww.buy.com/prod/sandisk-8gb-sansa-clip-mp3-player-black/211933821.html%3FlistingId%3D-1",
+    "brand": "SanDisk",
+    "condition": "new",
+    "gtin": "00619659059958",
+    "gtins": [
+     "00619659059958"
+    ],
+    "mpns": [
+     "SDMX18R-008GK-A57"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 63.33,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://ak.buy.com/PI/0/500/211933821.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/8075/6436595885373388532",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/8075/gid/6436595885373388532",
+   "product": {
+    "googleId": "6436595885373388532",
+    "author": {
+     "name": "Sony – Official Store",
+     "accountId": "8075"
+    },
+    "creationTime": "2011-08-24T21:59:29.000Z",
+    "modificationTime": "2012-07-28T15:32:12.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Sony 16Gb E Series Walkman Video Mp3",
+    "description": "Sony NWZ-E465BLK Get a device that distinguishes itself from the pack. Featuring best-in-class battery life, the 16GB E Series Walkman video MP3 player provides up to 50 hours of continuous music or up to 10 hours of uninterrupted video playback on a single charge1. View photos, videos and album artwork on the large 2.0\" QVGA high-brightness color LCD (measured diagonally) or sing along to your favorite songs as karaoke mode scrolls the lyrics to the latest hits across screen. Drag-and-drop files to make transferring music, pictures, video and more a snap. Be amazed at the difference exclusive Clear Audio technologies make as the clarity and depth of digitally compressed music is restored. Don't miss out on your favorite local stations, listen to FM programming via the built-in FM tuner. Record the sound of your own voice or use your E Series as an alarm clock to wake up whenever you'd like. Included EX headphones and USB cord will get you going in no time.",
+    "link": "http://store.sony.com/webapp/wcs/stores/servlet/ProductDisplay?catalogId=10551&storeId=10151&productId=8198552921666364173&langId=-1&XID=O:NWZE465BLK:ggle:df&CAWELAID=953457466",
+    "brand": "Sony",
+    "condition": "new",
+    "gtin": "00027242823983",
+    "gtins": [
+     "00027242823983"
+    ],
+    "mpns": [
+     "NWZ-E465BLK"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 109.99,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://store.sony.com/wcsstore/SonyStyleStorefrontAssetStore/img/368x311/NWZE465BLK.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/1311674/5363407981679936970",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/1311674/gid/5363407981679936970",
+   "product": {
+    "googleId": "5363407981679936970",
+    "author": {
+     "name": "Best Buy",
+     "accountId": "1311674"
+    },
+    "creationTime": "2012-06-12T14:36:17.000Z",
+    "modificationTime": "2012-07-17T06:35:58.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Samsung - Galaxy Player 5.0 With 8gb Memory - White",
+    "description": "This Samsung Galaxy Player 5.0 features a 5\" WVGA touch-screen TFT-LCD display to ensure easy viewing and navigation through menus and features. Built-in Wi-Fi allows you to connect to the Internet without wires.",
+    "link": "http://www.bestbuy.com/site/Samsung+-+Galaxy+Player+5.0+with+8GB+Memory+-+White/3521682.p?id=1218407827059&skuId=3521682",
+    "brand": "Samsung",
+    "condition": "new",
+    "gtin": "00635753495379",
+    "gtins": [
+     "00635753495379"
+    ],
+    "mpns": [
+     "YP-G70CWY/XAA"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 219.99,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://images.bestbuy.com:80/BestBuy_US/images/products/3521/3521682_sc.jpg",
+      "status": "available"
+     },
+     {
+      "link": "http://images.bestbuy.com:80/BestBuy_US/images/products/3521/3521682_ra.jpg"
+     },
+     {
+      "link": "http://images.bestbuy.com:80/BestBuy_US/images/products/2711/2711058_ba.jpg"
+     },
+     {
+      "link": "http://images.bestbuy.com:80/BestBuy_US/images/products/3521/3521682_sb.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/4008471/7944694881684075133",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/4008471/gid/7944694881684075133",
+   "product": {
+    "googleId": "7944694881684075133",
+    "author": {
+     "name": "Kmart",
+     "accountId": "4008471"
+    },
+    "creationTime": "2012-06-09T18:43:40.000Z",
+    "modificationTime": "2012-07-29T18:00:18.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Coby MP3 Video Player with Touchscreen Control and Camera",
+    "description": "COBY MP828 - Digital AV recorder - flash 4 GB - 2.8\" - 240 x 320 - black",
+    "link": "http://www.kmart.com/shc/s/p_10151_10104_018V003964468000P",
+    "brand": "COBY",
+    "condition": "new",
+    "gtin": "00716829782811",
+    "gtins": [
+     "00716829782811"
+    ],
+    "mpns": [
+     "MP8284G"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 44.99,
+      "shipping": 6.95,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://s.shld.net/is/image/Sears/spin_prod_205801001",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/8068/18225661974888497710",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/8068/gid/18225661974888497710",
+   "product": {
+    "googleId": "18225661974888497710",
+    "author": {
+     "name": "RadioShack",
+     "accountId": "8068"
+    },
+    "creationTime": "2012-03-19T00:08:10.000Z",
+    "modificationTime": "2012-07-30T20:16:48.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "SanDisk® 4GB Sansa® Clip Zip™ MP3 Player (Black)",
+    "description": "Let your favorite songs always take you places, with the SanDisk 4GB Sansa Clip Zip MP3 Player.",
+    "link": "http://www.radioshack.com/entry.point?entry=12241413&source=CAFGL_DF&utm_source=GL&utm_medium=CSE&utm_campaign=product:12241413:RSK&CAWELAID=1049304402",
+    "brand": "SanDisk",
+    "condition": "new",
+    "gtin": "00619659067793",
+    "gtins": [
+     "00619659067793"
+    ],
+    "mpns": [
+     "11507642"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 49.99,
+      "shipping": 6.99,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://rsk.imageg.net/graphics/product_images/pRS1-11507642reg.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/3622330/12873855343696711192",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/3622330/gid/12873855343696711192",
+   "product": {
+    "googleId": "12873855343696711192",
+    "author": {
+     "name": "Apple Store",
+     "accountId": "3622330"
+    },
+    "creationTime": "2010-09-03T04:21:06.000Z",
+    "modificationTime": "2012-07-29T12:46:02.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "iPod nano 16GB - Graphite",
+    "description": "Music, fitness, and more Tap into your favorite songs. Track your workouts and stay motivated. Tune in to your favorite radio station. And keep beautiful time with fun, new clock faces. A rocking design. Small and sleek, iPod nano clips on anywhere and goes everywhere. And with larger icons and an easy, intuitive interface, it puts your music and more right at your fingertips. iPod nano 16GB - Graphite",
+    "link": "http://store.apple.com/us/xc/product/MC694LL/A?aosid=p228&cid=AOS-US-CSE-Google&site=Google",
+    "brand": "Apple",
+    "condition": "new",
+    "gtin": "00885909424184",
+    "gtins": [
+     "00885909424184"
+    ],
+    "mpns": [
+     "MC694LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 149.0,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://store.storeimages.cdn-apple.com/2661/as-images.apple.com/is/image/AppleInc/MC694?wid=600&hei=600&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/1172711/16218478889088530950",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/1172711/gid/16218478889088530950",
+   "product": {
+    "googleId": "16218478889088530950",
+    "author": {
+     "name": "B&H Photo-Video-Audio",
+     "accountId": "1172711"
+    },
+    "creationTime": "2011-10-12T14:56:40.000Z",
+    "modificationTime": "2012-07-30T17:28:30.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple 8GB iPod touch MC540LL/A",
+    "description": "Apple's popular 8GB iPod touch now reaches its 4th generation offering an incredible iPod video camera pocket computer and portable game player all in a single sleek unit with exceptional battery life. The iPod touch offers the same powerful A4 processor as the iPhone 4 as well as the stunning Retina Display with a Multi-Touch interface which allows you to use your fingers to control all aspects of the iPod.The touch has front and rear cameras for taking photos and videos as well as having live video chats over WiFi with FaceTime. The internal accelerometer and 3-axis gyroscope provide more motion gestures and terrific precision for an amazing gaming experience which can be combined with the Game Center feature of iOS 5 to play against your friends. The touch also connects to the App Store and iTunes offers multitasking allows you to connect to the Internet check email and much more. MC540LL/A 8GB iPod touch (4th Generation) Feature Highlights: 8GB iPod touch (4th Generation), 4th Generation, 3.5\" Multi-Touch Retina Display, A4 Processor, Front and Rear Cameras with FaceTime, HD Video Recording and Editing, Game Center, WiFi & Bluetooth 2.1 + EDR Connectivity, Nike+iPod, Mac and PC Compatible, Stereo Earbuds",
+    "link": "http://www.bhphotovideo.com/c/product/733677-REG/Apple_MC540LL_A_8GB_iPod_touch_4th.html/?BI=1239&kw=APIPODT48",
+    "brand": "Apple",
+    "condition": "new",
+    "gtin": "00885909394845",
+    "gtins": [
+     "00885909394845"
+    ],
+    "mpns": [
+     "MC540LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 189.95,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://www.bhphotovideo.com/images/images345x345/733677.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/8175035/6261797952942750381",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/8175035/gid/6261797952942750381",
+   "product": {
+    "googleId": "6261797952942750381",
+    "author": {
+     "name": "Walmart",
+     "accountId": "8175035"
+    },
+    "creationTime": "2012-06-16T05:41:50.000Z",
+    "modificationTime": "2012-07-30T00:31:21.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple iPod touch, 8GB (with FaceTime Camera and Retina Display)",
+    "description": "The world' most popular portable gaming device is now even more fun. Listen to your favorite albums. Send text messages over Wi-Fi with iMessage. Record HD video. Make FaceTime calls. iPod touch even works with iCloud, which stores your content and pushes it to all your devices.",
+    "link": "http://www.walmart.com/ip/Apple-iPod-touch-8GB-with-FaceTime-Camera-and-Retina-Display/15075124?ci_src=14110944&ci_sku=15075124&sourceid=1500000000000003142050&veh=dat",
+    "brand": "Apple",
+    "condition": "new",
+    "gtin": "00885909394845",
+    "gtins": [
+     "00885909394845"
+    ],
+    "mpns": [
+     "MC540LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 187.99,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://i.walmartimages.com/i/p/00/88/59/09/39/0088590939484_500X500.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/9144804/9211965789591207922",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/9144804/gid/9211965789591207922",
+   "product": {
+    "googleId": "9211965789591207922",
+    "author": {
+     "name": "Sears - Central Supply Co.",
+     "accountId": "9144804"
+    },
+    "creationTime": "2012-07-11T08:41:17.000Z",
+    "modificationTime": "2012-07-26T21:45:48.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "(Refurbished) Apple iPod touch 8GB (4th Generation)",
+    "description": "(Refurbished) The most popular Apple iPod is now even better. Along with the revolutionary Multi-Touch interface and Wi-Fi Web browsing, the 8GB iPod touch now includes HD video recording, FaceTime camera and the highest resolution iPod screen ever. Plus, the new 8GB iPod touch Game Center enhances your game play. The 8GB iPod touch has a lithium-ion battery that lasts up to 40 hours with up to 7 hours of video playback. Store over 1750 songs with your 8GB iPod touch and up to 10000 digital photos or ten hours of video. The 8GB iPod touch also allows you to watch your favorite movies over and over again. Take your 8GB iPod touch to the gym or to the park. You'll never leave home without it.",
+    "link": "http://www.sears.com/shc/s/p_10153_12605_SPM6605325301P?sid=IDx20101019x00001a&ci_src=184425893&ci_sku=SPM6090752107",
+    "brand": "Apple",
+    "condition": "refurbished",
+    "mpns": [
+     "MC540LLA"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 181.95,
+      "shipping": 8.2,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://c.shld.net/rpx/i/s/pi/mp/17533/6090752107p?src=http%3A%2F%2Fimages.advancedb2b.com%2Fproduct%2F37237_1.jpg&d=62956ca56550b73be5d2a83ae9fe8f12cf341cea",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/1247713/7719298152255209563",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/1247713/gid/7719298152255209563",
+   "product": {
+    "googleId": "7719298152255209563",
+    "author": {
+     "name": "Sam's Club",
+     "accountId": "1247713"
+    },
+    "creationTime": "2012-06-21T16:10:39.000Z",
+    "modificationTime": "2012-07-29T15:57:35.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple iPod Classic - 160GB - Black - MP3 Players",
+    "description": "Now you can take it with you. All of it. Available in 80GB and 160GB models that hold up to 40000 songs, 200 hours of video, 25000 photos, or some of each, the new iPod classic fills your pocket with sight and sound. In a completely new, even thinner, anodized aluminum design, this iPod is a modern classic. An enhanced interface provides a whole new way to browse your albums, playlists, movies, and more. And Cover Flow lets you flip through your music by album artwork. Discovering new music, movies, TV shows, games, audiobooks, and podcasts is easy on the iTunes Store. Even rent a movie from iTunes and watch it on the go. To get everything into your pocket, just connect iPod classic to your Mac or PC, and iTunes transfers your music and more in one seamless sync.",
+    "link": "http://www.samsclub.com/sams/shop/product.jsp?productId=prod1180317&pid=CSE_Froogle&ci_src=14110944&ci_sku=sku1098001",
+    "brand": "Apple",
+    "condition": "new",
+    "gtin": "00885909341320",
+    "gtins": [
+     "00885909341320"
+    ],
+    "mpns": [
+     "MC297LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 251.88,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://s7d2.scene7.com/is/image/samsclub/s7product/0088590934132_A.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/1324698/17266704603730884454",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/1324698/gid/17266704603730884454",
+   "product": {
+    "googleId": "17266704603730884454",
+    "author": {
+     "name": "toysrus.com",
+     "accountId": "1324698"
+    },
+    "creationTime": "2012-02-26T23:28:18.000Z",
+    "modificationTime": "2012-07-30T12:33:57.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Coby 8GB Touch MP3 Player - Black",
+    "description": "With Coby's MP828 Video Camera & MP3 Media Player, the best in digital entertainment is at your fingertips. This ultra-sleek design features cutting-edge touchscreen controls, giving you quick & easy access to your entire media library. Enjoy music, video and photos, all with a 2.8\" widescreen LCD for a great viewing experience. USB 2.0 and Coby Media Manager (PC or Mac) makes it easy to manage, sync, and transfer your media at high speed. FM radio also included. Coby 8GB Touch MP3 Player features: 2.8 inch widescreen TFT LCD Display Intuitive touchscreen controls Integrated flash memory Multimedia powerhouse plays music, video, photos, and text Built in Video Camera and Integrated FM radio ID3 and LRC support for song and lyric information display USB 2.0 Hi-speed for fast file transfers Integrated rechargeable battery Audio Format Support: MP3, WMA Video Format Support: MTV Photo Format Support: JPG Text Format Support: TXT OS Support: Windows Vista/XP/2000",
+    "link": "http://www.toysrus.com/entry.point?entry=4436163&source=CAFGL_DF:4436163:TRUS&CAWELAID=668590920",
+    "brand": "Coby Electronics 1003433",
+    "condition": "new",
+    "gtin": "00716829782835",
+    "gtins": [
+     "00716829782835"
+    ],
+    "mpns": [
+     "421A9407"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 59.99,
+      "shipping": 5.28,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://trus.imageg.net/graphics/product_images/pTRU1-8584000reg.jpg",
+      "status": "available"
+     },
+     {
+      "link": "http://trus.imageg.net/graphics/product_images/pTRU1-8584000dt.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/5961897/11785010430355309492",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/5961897/gid/11785010430355309492",
+   "product": {
+    "googleId": "11785010430355309492",
+    "author": {
+     "name": "Fingerhut",
+     "accountId": "5961897"
+    },
+    "creationTime": "2012-06-16T19:38:11.000Z",
+    "modificationTime": "2012-07-29T22:36:07.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple iPod 8GB 4th Generation Black Touch",
+    "description": "Music video and more! Take it all with you.31/2\" color touch screen display8GB internal memory stores up to 1750 songs 10000 digital photos or 10 hours of videoRecords and plays HD video; supports H 264 MPEG4 Video and Motion JPEGSurf the web with builtin WiFiFaceTime cameraEnhance your games with the Game Center featureRechargeable lithiumion battery up to 40 hours audio playback or 7 hours video playbackIncludes earphones USB cable dock connector and quick start guideWindows and Maccompatible Dimensions 2.3\"W x .28\"D x 4.4\"H; weighs 3.56 oz.Limited warranty",
+    "link": "http://www.fingerhut.com/product/apple-ipod-8gb-4th-generation-black-touch/nl522.uts?CTid=661&ci_src=14110944&ci_sku=4NL5220000010",
+    "brand": "Apple",
+    "condition": "new",
+    "gtin": "00885909394845",
+    "gtins": [
+     "00885909394845"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 269.99,
+      "shipping": 23.94,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://s7d5.scene7.com/is/image/bluestembrands/NL522_A_999",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/9119074/5943821792601407217",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/9119074/gid/5943821792601407217",
+   "product": {
+    "googleId": "5943821792601407217",
+    "author": {
+     "name": "Sears",
+     "accountId": "9119074"
+    },
+    "creationTime": "2012-04-12T17:16:18.000Z",
+    "modificationTime": "2012-07-29T21:08:16.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "SanDisk SANSA Clip Zip MP3 Player, 8GB Black",
+    "description": "SanDisk Sansa Clip Zip - Digital player / radio - flash 8 GB - WMA, AAC, Ogg, MP3 - display: 1.1\" - stealth black",
+    "link": "http://www.sears.com/shc/s/p_10153_12605_05726402000P?sid=IDx20070921x00003a&ci_src=14110944&ci_sku=05726402000",
+    "brand": "SanDisk",
+    "condition": "new",
+    "mpns": [
+     "SDMX22008GA57K"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 71.99,
+      "shipping": 6.95,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://s.shld.net/is/image/Sears/spin_prod_609367501",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/2890843/10261689805999071816",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/2890843/gid/10261689805999071816",
+   "product": {
+    "googleId": "10261689805999071816",
+    "author": {
+     "name": "Overstock.com",
+     "accountId": "2890843"
+    },
+    "creationTime": "2012-04-25T07:13:52.000Z",
+    "modificationTime": "2012-07-30T07:18:52.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "SanDisk Sansa Clip Plus 8GB MP3 Player (Refurbished) (Black)",
+    "description": "Get your move on while listening to music wherever you go with the Sansa Clip Plus MP3 player from SanDisk. This super tiny MP3 player features a bright screen for easy viewing of menu selections and all of the player's cool features. Plays music, audio books and podcasts Large, bright OLED screen allows for simple user interface and easy viewing Expandable microSD and microSDHC memory card slot grows with your music library and easily loads slotRadio or slotMusic cards Long-life, rechargeable battery for continuous playback Up to 15 hours of battery life Digital FM tuner with 40 presets for listening to your favorite sports and music stations Integrated voice recorder with built-in microphone High-speed transfer with USB 2.0 Solid state flash memory for skip-free playback of music A wearable clip for hands-free portability Holds up to 4000 WMA songs, 2000 MP3 songs Compatibility: Supports MP3, WMA, secure WMA, Audible, Ogg Vorbis, FLAC file formats Display: 4-line OLED 1-inch screen Interface: Directional navigation pad Capacity: 8GB (32GB with microSD slot expansion) Model: SDMX18R-008GK-A57 Dimensions: 1.4 inches x 0.8 inches x 0.6 inches Weight: 0.8 ounces Minimum system requirements: Windows XP SP2, Linux, or Mac OS X 10.3 Windows Media Player 10, CD-ROM drive USB 2.0 high-power port required for hi-speed transfer Included items: Sansa Clip Plus 8GB MP3 player, USB 2.0 transfer cable, Earphones, Quick Start Guide",
+    "link": "http://www.overstock.com/Electronics/SanDisk-Sansa-Clip-Plus-8GB-MP3-Player-Refurbished/5886005/product.html?cid=123620",
+    "brand": "SanDisk",
+    "condition": "refurbished",
+    "mpns": [
+     "SDMX18R-008GK-A57"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 50.99,
+      "shipping": 1.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://ak1.ostkcdn.com/images/products/L13593541.jpg",
+      "status": "available"
+     },
+     {
+      "link": "http://ak1.ostkcdn.com/images/products/MLA13593541.jpg"
+     },
+     {
+      "link": "http://ak1.ostkcdn.com/images/products/MLB13593541.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/3958356/12341429140013629642",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/3958356/gid/12341429140013629642",
+   "product": {
+    "googleId": "12341429140013629642",
+    "author": {
+     "name": "CowBoom.com",
+     "accountId": "3958356"
+    },
+    "creationTime": "2012-07-23T16:18:18.000Z",
+    "modificationTime": "2012-07-30T06:02:00.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple MC544LL/A iPod Touch 4th Gen 32GB MP3 Player",
+    "description": "Apple iPod Touch 32GB 4th Generation Digital MP3 Player - Black\nThe most popular iPod is now even better. Along with the revolutionary Multi-Touch interface and Wi-Fi Web browsing, the iPod touch now includes HD video recording, FaceTime camera and the highest resolution iPod screen ever. Plus, the new Game Center feature enhances your game play.\nSpecifications\nStorage Type: Flash memory\nBuilt-In Storage Capacity: 32GB\nDigital Audio Format Upgradable: Yes\nComputer Compatibility: PC and Mac\nMusic-Management Software: iTunes\nMusic Service Compatibility: iTunes\nBattery Size: Lithium-ion\nBattery Quantity: 1\nBattery Life: Up to 40 hours audio playback, up to 7 hours video playback\nConnection Transfer Rate: USB 2.0\nHeadphone Type: Earphones\nSystem Requirements: Windows 7, Vista, XP Home or Professional (SP3) or later Mac OS X v10.5.8 or later iTunes 10 or later USB 2.0",
+    "link": "http://www.cowboom.com/product/744234",
+    "brand": "Apple",
+    "condition": "used",
+    "gtin": "00885909395095",
+    "gtins": [
+     "00885909395095"
+    ],
+    "mpns": [
+     "MC544LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 169.99,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://images.cowboom.com/store/DT_744234_1.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/12145/15488894310106249466",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/12145/gid/15488894310106249466",
+   "product": {
+    "googleId": "15488894310106249466",
+    "author": {
+     "name": "Musicians Friend",
+     "accountId": "12145"
+    },
+    "creationTime": "2012-06-14T16:06:41.000Z",
+    "modificationTime": "2012-07-30T04:29:58.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple Ipod Touch 8G - White (4Th Gen)",
+    "description": "The new iPod Touch is a sensational way to enjoy your favorite music, apps, games, photos and more, all in an extremely mobile, lightweight device. The new 4th generation iPod Touch now comes in two different colors: black and white, and includes iOS 5; which gives you 200 exciting new options, including iCloud, a new service from Apple that stores all of your media and makes it accessible on your other devices, without the need to constantly sync them to your computer.FaceTimeSome things are just better explained face-to-face, even when youre miles apart. Video-calling on iPod touch means your friends can see what youre up to, when youre up to it. With a tap, you can call someone on an iPhone, iPad 2, iPod touch, or Mac over Wi-Fi. FaceTime works right out of the box; just enter your Apple ID and email address and youre ready-to-go. You can also create a new email account just for FaceTime.iPod touch has two built-in cameras, one on the front above the display and one on the back. The",
+    "link": "http://www.musiciansfriend.com/pro-audio/apple-ipod-touch-8g--white-4th-gen/h78999000000000?src=3WFRWXX&CAWELAID=1100614964",
+    "brand": "Apple",
+    "condition": "new",
+    "gtin": "00885909497232",
+    "gtins": [
+     "00885909497232"
+    ],
+    "mpns": [
+     "MD057LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 199.0,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://static.musiciansfriend.com/derivates/18/001/676/721/DV016_Jpg_Large_H78999_laydown.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/4008471/4253845637180753905",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/4008471/gid/4253845637180753905",
+   "product": {
+    "googleId": "4253845637180753905",
+    "author": {
+     "name": "Kmart",
+     "accountId": "4008471"
+    },
+    "creationTime": "2012-05-14T19:01:00.000Z",
+    "modificationTime": "2012-07-29T18:00:18.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "SanDisk MP3 Player, Sansa Clip 8GB Black",
+    "description": "SanDisk Sansa Clip+ - Digital player / radio - flash 8 GB - WMA, Ogg, MP3 - display: 1\" - sleek black",
+    "link": "http://www.kmart.com/shc/s/p_10151_10104_018V002281615000P",
+    "brand": "SANDISK CORPORATION",
+    "condition": "new",
+    "gtin": "00619659059958",
+    "gtins": [
+     "00619659059958"
+    ],
+    "mpns": [
+     "SDMX18R008GKA57"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 62.99,
+      "shipping": 6.95,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://s.shld.net/is/image/Sears/05714775000_20100313080143824",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/7933/5505892288382575458",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/7933/gid/5505892288382575458",
+   "product": {
+    "googleId": "5505892288382575458",
+    "author": {
+     "name": "Office Depot",
+     "accountId": "7933"
+    },
+    "creationTime": "2010-07-30T17:52:56.000Z",
+    "modificationTime": "2012-07-30T08:35:10.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "SanDisk Sansa Clip 8GB MP3 Player With FM Tuner, Black",
+    "description": "Compact player attaches to your clothes for hands-free listening Wearable MP3 player is great for running, commuting and more. 8GB capacity stores up to 2000 songs (depending on file size). Built-in FM tuner with 40 preset stations. Play continuously for up to 15 hours! Digital voice recorder remembers your messages for later. 4-line screen is easy to read, easy to use. Includes USB 2.0 transfer cable, earphones and an installation CD with user guide. SanDisk Sansa Clip 8GB MP3 Player With FM Tuner, Black is one of many MP3/MP4/MP5 Players available through Office Depot. Made by SanDisk.",
+    "link": "http://www.officedepot.com/a/products/936414/SanDisk-Sansa-Clip-8GB-MP3-Player/?cm_mmc=Mercent-_-Google-_-Audio_and_Video_Electronics-_-936414-%7Bcopy:IQ_PE%7D&mr:trackingCode=50743671-5121-DF11-9B13-0019B9C043EB&mr:referralID=NA",
+    "brand": "SanDisk",
+    "condition": "new",
+    "gtin": "00619659059958",
+    "gtins": [
+     "00619659059958"
+    ],
+    "mpns": [
+     "SDMX18R-008GK-A57"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 62.95,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://www.officedepot.com/pictures/us/od/sk/lg/936414_sk_lg.jpg",
+      "status": "available"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "shopping#product",
+   "id": "tag:google.com,2010:shopping/products/1311674/5613539934278963025",
+   "selfLink": "https://www.googleapis.com/shopping/search/v1/public/products?alt=json/1311674/gid/5613539934278963025",
+   "product": {
+    "googleId": "5613539934278963025",
+    "author": {
+     "name": "Best Buy",
+     "accountId": "1311674"
+    },
+    "creationTime": "2012-06-12T14:36:17.000Z",
+    "modificationTime": "2012-07-17T05:59:35.000Z",
+    "country": "US",
+    "language": "en",
+    "title": "Apple® - Ipod Touch® 8gb* Mp3 Player (4th Generation - Latest Model) - Black",
+    "description": "The most popular Apple iPod is now even better. Along with the revolutionary Multi-Touch interface and Wi-Fi Web browsing, the 8GB iPod touch now includes HD video recording, FaceTime camera and the highest resolution iPod screen ever. Plus, the new 8GB iPod touch Game Center enhances your game play. The 8GB iPod touch has a lithium-ion battery that lasts up to 40 hours with up to 7 hours of video playback. Store over 1750 songs with your 8GB iPod touch and up to 10000 digital photos or ten hours of video. The 8GB iPod touch also allows you to watch your favorite movies over and over again. Take your 8GB iPod touch to the gym or to the park. You'll never leave home without it. Current 3rd- and 4th-generation iPod touch owners can receive a free software update to iOS 5 available through iTunes beginning October 12, 2011.",
+    "link": "http://www.bestbuy.com/site/Apple%AE+-+iPod+touch%AE+8GB*+MP3+Player+(4th+Generation+-+Latest+Model)+-+Black/9225377.p?id=1218062715447&skuId=9225377",
+    "brand": "Apple&#174;",
+    "condition": "new",
+    "gtin": "00885909394845",
+    "gtins": [
+     "00885909394845"
+    ],
+    "mpns": [
+     "MC540LL/A"
+    ],
+    "inventories": [
+     {
+      "channel": "online",
+      "availability": "inStock",
+      "price": 174.99,
+      "originalPrice": 199.99,
+      "shipping": 0.0,
+      "currency": "USD"
+     }
+    ],
+    "images": [
+     {
+      "link": "http://images.bestbuy.com:80/BestBuy_US/images/products/9225/9225377_sc.jpg",
+      "status": "available"
+     },
+     {
+      "link": "http://images.bestbuy.com:80/BestBuy_US/images/products/9225/9225377_sb.jpg"
+     }
+    ]
+   }
+  }
+ ]
+}

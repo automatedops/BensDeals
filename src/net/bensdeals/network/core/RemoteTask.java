@@ -1,51 +1,59 @@
 package net.bensdeals.network.core;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import net.bensdeals.model.Deal;
-import net.bensdeals.utils.ALog;
+import net.bensdeals.network.request.ApiRequest;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.List;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
 
-import static net.bensdeals.model.Deal.parseXml;
 @Singleton
 public class RemoteTask {
-    Context context;
+    private DefaultHttpClient httpClient;
 
     @Inject
-    public RemoteTask(Context context) {
-        this.context = context;
+    public RemoteTask(DefaultHttpClient httpClient) {
+        this.httpClient = httpClient;
     }
 
     public void makeRequest(final String path, final RemoteTaskCallback callback) {
-        new AsyncTask<Void, Void, List<Deal>>() {
+        new RemoteFeedRequestTask(path, callback).execute(((Void) null));
+    }
+
+    public void makeRequest(final ApiRequest apiRequest, final RemoteTaskCallback callback) {
+        new AsyncTask<Void, Void, Response>() {
             @Override
-            protected List<Deal> doInBackground(Void... voids) {
+            protected Response doInBackground(Void... voids) {
                 try {
-                    URL url = new URL(path);
-                    URLConnection conn = url.openConnection();
-                    InputStream inputStream = conn.getInputStream();
-                    return parseXml(inputStream);
-                } catch (Exception e) {
-                    ALog.e(e);
+                    String url = apiRequest.getUrl();
+                    HttpGet get = new HttpGet(url);
+                    Map<String, String> headers = apiRequest.getHeaders();
+                    Set<String> keySet = headers.keySet();
+                    for (String key : keySet) get.addHeader(key, headers.get(key));
+                    Response response = new Response(httpClient.execute(get).getStatusLine().getStatusCode(), httpClient.execute(get).getEntity().getContent(), apiRequest.getResponseClass());
+                    response.assignEntity();
+                    return response;
+                } catch (IOException ignored) {
                 }
-                return null;
+                return new Response(500, null, null);
             }
 
             @Override
-            protected void onPostExecute(List<Deal> list) {
-                if (list != null) {
-                    callback.onTaskSuccess(list);
+            protected void onPostExecute(Response response) {
+                super.onPostExecute(response);
+                if (response.isSuccessResponse()) {
+                    callback.onTaskSuccess(response);
                 } else {
                     callback.onTaskFailed();
                 }
                 callback.onTaskComplete();
             }
-        }.execute(((Void) null));
+
+        }.execute((Void) null);
     }
+
 }

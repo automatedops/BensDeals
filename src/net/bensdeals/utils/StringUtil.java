@@ -11,11 +11,7 @@ public class StringUtil {
     private static final int BUFFER_SIZE = 4096;
 
     public static FileInputStream responseAsStream(String filename) throws IOException {
-        if (!filename.endsWith(".xml")) {
-            filename += ".xml";
-        }
-        File file = new File("test/responses", filename);
-        return new FileInputStream(file);
+        return new FileInputStream(new File("test/responses", filename));
     }
 
     public static String fromStream(InputStream inputStream) throws IOException {
