@@ -1,6 +1,5 @@
 package net.bensdeals.utils;
 
-import android.content.Context;
 import android.util.Pair;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -14,8 +13,8 @@ import java.util.List;
 public class TestRemoteTask extends RemoteTask {
     List<Pair<String, RemoteTaskCallback>> requests = Lists.newArrayList();
     @Inject
-    public TestRemoteTask(Context context) {
-        super(context);
+    public TestRemoteTask() {
+        super(null);
     }
 
     @Override

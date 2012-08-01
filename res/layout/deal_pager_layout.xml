@@ -12,7 +12,7 @@
         android:layout_marginRight="10dip"/>
     <LinearLayout
         android:id="@+id/combo_box_container"
-        style="@style/block"
+        style="@style/wrap"
         android:onClick="comboBoxOnClick"
         android:layout_alignParentTop="true">
         <include
@@ -20,6 +20,16 @@
             layout="@layout/deal_combo_box_layout"
             />
     </LinearLayout>
+    <ImageView
+        android:layout_height="35dip"
+        android:layout_width="35dip"
+        android:src="@drawable/ic_menu_search_holo_dark"
+        android:layout_alignParentRight="true"
+        android:layout_alignBaseline="@id/combo_box_container"
+        android:onClick="onSearchClick"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        />
     <android.support.v4.view.ViewPager
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"

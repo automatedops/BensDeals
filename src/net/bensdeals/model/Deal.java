@@ -1,5 +1,6 @@
 package net.bensdeals.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.inject.internal.Lists;
 import net.bensdeals.utils.ALog;
 import net.bensdeals.utils.DateFormatter;
@@ -131,5 +132,14 @@ public class Deal implements Serializable {
             if (childNodes == null) continue;
             deals.add(new Deal().parse(childNodes));
         }
+    }
+
+    @JsonIgnore
+    public String getBrandName() {
+        int index = title.indexOf("$");
+        if(index > 0) {
+            return title.substring(0, index);
+        }
+        return "";
     }
 }

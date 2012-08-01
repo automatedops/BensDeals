@@ -4,13 +4,13 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 import com.google.inject.Inject;
 import net.bensdeals.R;
 import net.bensdeals.adapter.DealsAdapter;
@@ -23,14 +23,8 @@ import net.bensdeals.provider.XMLPathProvider;
 import net.bensdeals.utils.Reporter;
 import net.bensdeals.views.ComboBox;
 import net.bensdeals.views.IndicatorView;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import roboguice.inject.InjectView;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
 import java.util.List;
 
 public class DealsPagerActivity extends BaseActivity {
@@ -54,34 +48,6 @@ public class DealsPagerActivity extends BaseActivity {
         indicatorView.setIndexChangeListener(new OnIndexChangeListener());
         reporter.report(Reporter.ON_APP_START);
         fetchXML();
-    }
-
-    private void fetchSearch() {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                try {
-                    DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
-                    HttpGet httpGet = new HttpGet(new URI("https://www.googleapis.com/shopping/search/v1/public/products?key=AIzaSyCHiDtmHLFMNcrYx5asFzP5THm3KP1O534&country=US&q=mp3+player&alt=json"));
-                    HttpResponse execute = defaultHttpClient.execute(httpGet);
-                    InputStream content = execute.getEntity().getContent();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-                return null;
-            }
-
-            public String fromStream(InputStream inputStream) throws IOException {
-                int bufSize = 1028;
-                byte[] buffer = new byte[bufSize];
-                int inSize;
-                StringBuilder stringBuilder = new StringBuilder();
-                while ((inSize = inputStream.read(buffer)) > 0) {
-                    stringBuilder.append(new String(buffer, 0, inSize));
-                }
-                return stringBuilder.toString();
-            }
-        }.execute((Void) null);
     }
 
     private void fetchXML() {
@@ -157,6 +123,12 @@ public class DealsPagerActivity extends BaseActivity {
                         fetchXML();
                     }
                 }).create().show();
+    }
+
+    public void onSearchClick(View view) {
+        Deal item = adapter.getItem(viewPager.getCurrentItem());
+        String brandName = item.getBrandName();
+        Toast.makeText(this, brandName, Toast.LENGTH_LONG).show();
     }
 
     private class OnIndexChangeListener implements net.bensdeals.listener.OnIndexChangeListener {

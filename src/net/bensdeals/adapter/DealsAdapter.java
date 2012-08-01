@@ -20,6 +20,7 @@ import static net.bensdeals.adapter.DealsAdapter.Orientation.PORTRAIT;
 
 public class DealsAdapter extends PagerAdapter {
     private Orientation orientation;
+
     public enum Orientation {
         LANDSCAPE {
             @Override
@@ -35,9 +36,9 @@ public class DealsAdapter extends PagerAdapter {
         };
 
         public abstract int getLayout();
+
     }
     List<Deal> items = Lists.newArrayList();
-
     private LayoutInflaterWithInjection<DealItemView> inflater;
 
     @Inject
@@ -90,5 +91,9 @@ public class DealsAdapter extends PagerAdapter {
 
     public void setOrientation(Configuration configuration) {
         this.orientation = ORIENTATION_LANDSCAPE == configuration.orientation ? LANDSCAPE : PORTRAIT;
+    }
+
+    public Deal getItem(int currentItem) {
+        return items.get(currentItem);
     }
 }
