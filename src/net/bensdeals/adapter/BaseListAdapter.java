@@ -25,7 +25,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
         return i;
     }
 
-    public final void replaceAll(List<T> items) {
+    public void replaceAll(List<T> items) {
         this.items.clear();
         this.items.addAll(items);
         notifyDataSetChanged();

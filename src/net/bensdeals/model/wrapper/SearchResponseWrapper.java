@@ -26,7 +26,19 @@ public class SearchResponseWrapper {
         this.items = items;
     }
     
-    public static class SearchItemWrapper {
+    public static class SearchItemWrapper implements Comparable{
         public @JsonProperty("product") SearchItem item = new SearchItem();
+
+        @Override
+        public int compareTo(Object o) {
+            List<SearchItem.Prices> itemPrices = item.getPrices();
+            List<SearchItem.Prices> searchItemPrices = ((SearchItemWrapper) o).item.getPrices();
+            return itemPrices.isEmpty() ? -1 : searchItemPrices.isEmpty() ? -1 : (int)(getPrice(itemPrices) - getPrice(searchItemPrices));
+        }
+
+        private float getPrice(List<SearchItem.Prices> prices) {
+            SearchItem.Prices price = prices.get(0);
+            return price.getPrice() + price.getShipping();
+        }
     }
 }

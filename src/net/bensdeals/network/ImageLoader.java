@@ -19,8 +19,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-import static android.os.Process.THREAD_PRIORITY_DEFAULT;
-import static android.os.Process.THREAD_PRIORITY_DISPLAY;
+import static android.os.Process.THREAD_PRIORITY_URGENT_DISPLAY;
 import static android.os.Process.setThreadPriority;
 
 @Singleton
@@ -78,7 +77,7 @@ public class ImageLoader {
         public Drawable call() throws Exception {
             InputStream inputStream = null;
             try {
-                setThreadPriority(THREAD_PRIORITY_DEFAULT);
+                setThreadPriority(THREAD_PRIORITY_URGENT_DISPLAY);
                 inputStream = urlStreamer.get(imageUrl);
                 return Drawable.createFromStream(inputStream, "src");
             } catch (IOException e) {
@@ -107,7 +106,7 @@ public class ImageLoader {
 
         public Void call() {
             try {
-                setThreadPriority(THREAD_PRIORITY_DISPLAY);
+                setThreadPriority(THREAD_PRIORITY_URGENT_DISPLAY);
                 final Drawable drawable = drawableFuture.get();
                 if (imageUrl.equals(imageView.getTag())) {
                     new Handler(mainLooper).post(new Runnable() {

@@ -8,6 +8,9 @@ import net.bensdeals.model.wrapper.SearchResponseWrapper;
 import net.bensdeals.utils.LayoutInflaterWithInjection;
 import net.bensdeals.views.SearchItemView;
 
+import java.util.Collections;
+import java.util.List;
+
 public class SearchAdapter extends BaseListAdapter<SearchResponseWrapper.SearchItemWrapper> {
     LayoutInflaterWithInjection<View> inflater;
 
@@ -22,5 +25,11 @@ public class SearchAdapter extends BaseListAdapter<SearchResponseWrapper.SearchI
         if(view == null)
             view = inflater.inflate(R.layout.search_item_layout);
         return ((SearchItemView) view).renderSearchItem(searchItemWrapper);
+    }
+
+    @Override
+    public void replaceAll(List<SearchResponseWrapper.SearchItemWrapper> items) {
+        Collections.sort(items);
+        super.replaceAll(items);
     }
 }
