@@ -35,5 +35,9 @@ public class SearchResponseWrapperTest {
         expect(item.getLink()).toEqual("http://www.target.com/p/Apple-iPod-touch-8GB-MP3-Player-4th-Generation-with-Touch-Screen-Wi-Fi-Black-MC540LL-A/-/A-12990622?ref=tgt_adv_XSG10001&AFID=Froogle_df&LNM=%7C12990622&CPNG=electronics&ci_src=14110944&ci_sku=12990622");
         expect(item.getDescription()).toEqual("Find portable mp3 players at Target.com! The world's most popular portable gaming device is even more fun. Now available in black and white, ipod touch includes ios 5 with over 200 new features, like imessage, notification center, and twitter integration. Send free, unlimited text messages over wi-fi with imessage. record hd video and make facetime calls. Visit the app store to choose from over 500000 apps. Ipod touch also features icloud, which stores your music, photos, apps, and more and wirelessly pushes them to all your devices.");
         expect(item.getImages().get(0).getLink()).toEqual("http://img3.targetimg3.com/wcsstore/TargetSAS/img/p/12/99/12990622.jpg");
+        expect(item.getPrices().get(0).getPrice()).toEqual(183.99f);
+        expect(item.getPrices().get(0).getShipping()).toEqual(0.0f);
+        expect(item.getPrices().get(0).isFreeShipping()).toBeTrue();
+
     }
 }

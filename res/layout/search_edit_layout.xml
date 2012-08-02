@@ -14,19 +14,16 @@
     <EditText
         android:id="@+id/search_edittext"
         style="@style/block"
-        android:layout_weight="1"
-        android:background="@color/transparent"
         android:layout_toLeftOf="@id/search_button"
+        android:background="@color/transparent"
+        android:imeOptions="actionSearch"
         android:inputType="textMultiLine"
-        android:inputMethod=""
         android:hint="@string/search"
         android:textColor="@color/white"
         android:paddingLeft="10dip"
         android:paddingTop="10dip"
         android:paddingBottom="10dip"
         android:ellipsize="end"
-        android:imeOptions="actionSearch"
-        android:imeActionLabel="@string/search"
         />
     <TextView
         android:id="@+id/search_text"

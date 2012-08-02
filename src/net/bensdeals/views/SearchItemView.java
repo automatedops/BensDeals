@@ -28,7 +28,7 @@ public class SearchItemView extends RelativeLayout {
         super.onFinishInflate();
         itemImage = (ImageView) findViewById(R.id.search_item_image);
         itemTitle = (TextView) findViewById(R.id.search_item_title);
-        itemDesc = (TextView) findViewById(R.id.search_item_desc);
+        itemDesc = (TextView) findViewById(R.id.search_item_info);
     }
 
     public SearchItemView renderSearchItem(SearchResponseWrapper.SearchItemWrapper searchItemWrapper) {
@@ -39,7 +39,7 @@ public class SearchItemView extends RelativeLayout {
             imageLoader.loadImage(itemImage, image.getLink());
         }
         itemTitle.setText(item.getTitle());
-        itemDesc.setText(item.getDescription());
+        itemDesc.setText(item.printPrice());
         return this;
     }
 }

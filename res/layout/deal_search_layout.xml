@@ -6,5 +6,8 @@
     <ListView
         android:id="@+id/deal_search_list_view"
         style="@style/fill"
+        android:fadingEdgeLength="0dip"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@null"
         />
 </LinearLayout>
