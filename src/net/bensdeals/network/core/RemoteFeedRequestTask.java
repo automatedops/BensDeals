@@ -2,6 +2,7 @@ package net.bensdeals.network.core;
 
 import android.os.AsyncTask;
 import net.bensdeals.model.Deal;
+import net.bensdeals.network.callbacks.RemoteTaskCallback;
 import net.bensdeals.utils.ALog;
 
 import java.io.InputStream;

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<net.bensdeals.views.SearchItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/block">
+    <ImageView
+        android:id="@+id/search_item_image"
+        android:layout_height="100dip"
+        android:layout_width="80dip"
+        android:scaleType="centerCrop"
+        android:layout_alignParentLeft="true"
+        />
+    <TextView
+        android:id="@+id/search_item_title"
+        style="@style/block"
+        android:layout_toRightOf="@id/search_item_image"/>
+    <TextView
+        android:id="@+id/search_item_desc"
+        style="@style/block"
+        android:layout_toRightOf="@id/search_item_image"
+        android:layout_below="@id/search_item_title"/>
+</net.bensdeals.views.SearchItemView>

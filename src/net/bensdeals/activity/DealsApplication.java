@@ -6,13 +6,16 @@ import com.google.inject.Module;
 import com.google.inject.name.Names;
 import net.bensdeals.R;
 import net.bensdeals.provider.CacheDirProvider;
+import net.bensdeals.provider.HttpClientProvider;
 import net.bensdeals.utils.Config;
+import org.apache.http.impl.client.DefaultHttpClient;
 import roboguice.application.RoboApplication;
 
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
+import static com.google.inject.Scopes.SINGLETON;
 import static java.util.concurrent.Executors.newFixedThreadPool;
 
 public class DealsApplication extends RoboApplication {
@@ -39,6 +42,7 @@ public class DealsApplication extends RoboApplication {
             binder.bind(File.class).annotatedWith(Names.named("cacheDir")).toProvider(CacheDirProvider.class);
             binder.bind(ExecutorService.class).annotatedWith(Names.named("download")).toInstance(newFixedThreadPool(3));
             binder.bind(ExecutorService.class).annotatedWith(Names.named("draw")).toInstance(newFixedThreadPool(2));
+            binder.bind(DefaultHttpClient.class).toProvider(new HttpClientProvider()).in(SINGLETON);
         }
     }
 }

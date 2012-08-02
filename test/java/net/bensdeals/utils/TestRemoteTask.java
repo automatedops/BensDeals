@@ -5,7 +5,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.internal.Lists;
 import net.bensdeals.network.core.RemoteTask;
-import net.bensdeals.network.core.RemoteTaskCallback;
+import net.bensdeals.network.callbacks.RemoteTaskCallback;
 
 import java.util.List;
 

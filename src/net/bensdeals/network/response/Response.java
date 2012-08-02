@@ -1,10 +1,13 @@
-package net.bensdeals.network.core;
+package net.bensdeals.network.response;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.bensdeals.utils.ALog;
+import org.apache.http.Header;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.zip.GZIPInputStream;
 
 public class Response<T> {
     public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()
@@ -15,10 +18,25 @@ public class Response<T> {
     private final InputStream inputStream;
     private T entity;
 
-    public Response(int statusCode, InputStream inputStream, Class<T> responseClass) {
+    public Response(int statusCode, InputStream inputStream, Header[] headers, Class<T> responseClass) {
         this.responseClass = responseClass;
-        this.inputStream = inputStream;
         this.statusCode = statusCode;
+        this.inputStream = ensureZippedStream(headers, inputStream);
+    }
+
+    private InputStream ensureZippedStream(Header[] headers, InputStream inputStream) {
+        if(headers == null || headers.length == 0) return inputStream;
+        for (Header header : headers) {
+            if ("gzip".equals(header.getValue())) {
+                try {
+                    return new GZIPInputStream(inputStream);
+                } catch (IOException e) {
+                    ALog.e(e);
+                    return null;
+                }
+            }
+        }
+        return inputStream;
     }
 
     public T getEntity() {
@@ -32,7 +50,8 @@ public class Response<T> {
     public void assignEntity() {
         try {
             entity = OBJECT_MAPPER.readValue(inputStream, responseClass);
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            ALog.e(e);
         }
     }
 }

@@ -27,6 +27,6 @@ public class SearchResponseWrapper {
     }
     
     public static class SearchItemWrapper {
-        @JsonProperty("product") SearchItem item = new SearchItem();
+        public @JsonProperty("product") SearchItem item = new SearchItem();
     }
 }

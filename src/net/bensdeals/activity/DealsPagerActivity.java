@@ -10,14 +10,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 import com.google.inject.Inject;
 import net.bensdeals.R;
 import net.bensdeals.adapter.DealsAdapter;
 import net.bensdeals.listener.OnPageChangeListener;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.core.RemoteTask;
-import net.bensdeals.network.core.RemoteTaskCallback;
+import net.bensdeals.network.callbacks.RemoteTaskCallback;
 import net.bensdeals.provider.CacheDirProvider;
 import net.bensdeals.provider.XMLPathProvider;
 import net.bensdeals.utils.Reporter;
@@ -126,9 +125,7 @@ public class DealsPagerActivity extends BaseActivity {
     }
 
     public void onSearchClick(View view) {
-        Deal item = adapter.getItem(viewPager.getCurrentItem());
-        String brandName = item.getBrandName();
-        Toast.makeText(this, brandName, Toast.LENGTH_LONG).show();
+        startActivity(DealSearchActivity.intentFor(this, adapter.getCount() == 0 ? "" : adapter.getItem(viewPager.getCurrentItem()).getBrandName()));
     }
 
     private class OnIndexChangeListener implements net.bensdeals.listener.OnIndexChangeListener {

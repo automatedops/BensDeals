@@ -1,7 +1,7 @@
 package net.bensdeals.model.wrapper;
 
 import net.bensdeals.model.SearchItem;
-import net.bensdeals.network.core.Response;
+import net.bensdeals.network.response.Response;
 import net.bensdeals.utils.StringUtil;
 import org.junit.Before;
 import org.junit.Test;
