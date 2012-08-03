@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<net.bensdeals.views.EmptyContentView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/block">
+    <TextView
+        android:id="@+id/empty_content_text"
+        style="@style/block"
+        android:gravity="center"
+        android:layout_margin="20dip"
+        android:text="@string/no_results"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:visibility="gone"
+        />
+</net.bensdeals.views.EmptyContentView>

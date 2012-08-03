@@ -9,6 +9,7 @@
     <string name="search">Search</string>
     <string name="searching">Searching</string>
     <string name="invalid_input">Invalid Search Keywords</string>
+    <string name="no_results">No results found</string>
 
     <plurals name="minutes_format">
         <item quantity="zero">1 minute ago</item>

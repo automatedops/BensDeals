@@ -16,10 +16,13 @@ import net.bensdeals.network.callbacks.TaskCallback;
 import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.network.request.SearchRequest;
 import net.bensdeals.utils.IntentUtil;
+import net.bensdeals.views.EmptyContentView;
 import net.bensdeals.views.SearchEditView;
 import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
 import roboguice.util.Strings;
+
+import java.util.List;
 
 import static net.bensdeals.utils.IntentExtra.PREFIX_EXTRA;
 
@@ -27,6 +30,7 @@ public class DealSearchActivity extends BaseActivity implements AdapterView.OnIt
     @InjectView(R.id.deal_search_list_view) ListView listView;
     @InjectResource(R.string.shopping_api_key) String key;
     @Inject SearchEditView editView;
+    @Inject EmptyContentView footer;
     @Inject SearchAdapter adapter;
     @Inject RemoteTask remoteTask;
 
@@ -36,6 +40,7 @@ public class DealSearchActivity extends BaseActivity implements AdapterView.OnIt
         editView.setEditText(getIntent().getStringExtra(PREFIX_EXTRA));
         editView.setOnSearchListener(new SearchListener());
         listView.addHeaderView(editView, null, false);
+        listView.addFooterView(footer, null, false);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
     }
@@ -61,7 +66,13 @@ public class DealSearchActivity extends BaseActivity implements AdapterView.OnIt
                     @Override
                     public void onTaskSuccess(SearchResponseWrapper response) {
                         super.onTaskSuccess(response);
-                        adapter.replaceAll(response.getItems());
+                        List<SearchResponseWrapper.SearchItemWrapper> items = response.getItems();
+                        if(!items.isEmpty()){
+                            footer.hide();
+                            adapter.replaceAll(items);
+                        } else {
+                            footer.show();
+                        }
                     }
 
                     @Override
