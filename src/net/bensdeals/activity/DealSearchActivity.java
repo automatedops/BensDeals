@@ -3,6 +3,8 @@ package net.bensdeals.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.google.inject.Inject;
@@ -13,6 +15,7 @@ import net.bensdeals.model.wrapper.SearchResponseWrapper;
 import net.bensdeals.network.callbacks.TaskCallback;
 import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.network.request.SearchRequest;
+import net.bensdeals.utils.IntentUtil;
 import net.bensdeals.views.SearchEditView;
 import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
@@ -20,7 +23,7 @@ import roboguice.util.Strings;
 
 import static net.bensdeals.utils.IntentExtra.PREFIX_EXTRA;
 
-public class DealSearchActivity extends BaseActivity {
+public class DealSearchActivity extends BaseActivity implements AdapterView.OnItemClickListener{
     @InjectView(R.id.deal_search_list_view) ListView listView;
     @InjectResource(R.string.api_key) String key;
     @Inject SearchEditView editView;
@@ -34,10 +37,19 @@ public class DealSearchActivity extends BaseActivity {
         editView.setOnSearchListener(new SearchListener());
         listView.addHeaderView(editView, null, false);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
     }
 
     public static Intent intentFor(Context context, String prefix) {
         return new Intent(context, DealSearchActivity.class).putExtra(PREFIX_EXTRA, prefix);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        SearchResponseWrapper.SearchItemWrapper item = adapter.getItem(i);
+        if (item != null && !Strings.isEmpty(item.item.getLink())) {
+            IntentUtil.intentForWeb(this, item.item.getLink());
+        }
     }
 
     private class SearchListener implements OnSearchListener {

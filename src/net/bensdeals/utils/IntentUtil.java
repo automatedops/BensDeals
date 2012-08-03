@@ -18,9 +18,9 @@ public class IntentUtil {
         }
     }
 
-    public static void intentForWeb(Context context, Deal deal) {
+    public static void intentForWeb(Context context, String uriString) {
         try {
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deal.getLink())));
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uriString)));
         } catch (Exception ignored) {
         }
     }

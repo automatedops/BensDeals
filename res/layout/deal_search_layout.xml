@@ -9,5 +9,6 @@
         android:fadingEdgeLength="0dip"
         android:cacheColorHint="@color/transparent"
         android:divider="@null"
+        android:listSelector="@drawable/blue_stroke_selector"
         />
 </LinearLayout>

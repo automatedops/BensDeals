@@ -47,7 +47,7 @@ public class DealItemView extends LinearLayout {
         container.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                IntentUtil.intentForWeb(getContext(), deal);
+                IntentUtil.intentForWeb(getContext(), deal.getLink());
             }
         });
         imageLoader.loadImage(imageView, deal.getImageUrl());
