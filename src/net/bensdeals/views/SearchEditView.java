@@ -6,12 +6,14 @@ import android.graphics.Paint;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.google.inject.Inject;
 import com.google.inject.ProvidedBy;
 import com.google.inject.Provider;
@@ -91,11 +93,18 @@ public class SearchEditView extends RelativeLayout implements View.OnClickListen
 
     private void doSearch() {
         if (searchListener != null) {
-            ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(searchEditText.getWindowToken(), RESULT_UNCHANGED_SHOWN);
-            searchText.setVisibility(VISIBLE);
-            searchEditText.setVisibility(GONE);
-            searchText.setText(searchEditText.getText().toString());
-            searchListener.onSearch(searchEditText.getText().toString());
+            String searchKeywords = searchEditText.getText().toString();
+            if (!Strings.isEmpty(searchKeywords)) {
+                ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(searchEditText.getWindowToken(), RESULT_UNCHANGED_SHOWN);
+                searchText.setText(searchKeywords);
+                searchText.setVisibility(VISIBLE);
+                searchEditText.setVisibility(GONE);
+                searchListener.onSearch(searchKeywords);
+            } else {
+                Toast toast = Toast.makeText(getContext(), R.string.invalid_input, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
         }
     }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 import com.google.inject.Inject;
+import com.xtremelabs.robolectric.shadows.ShadowToast;
 import net.bensdeals.R;
 import net.bensdeals.listener.OnSearchListener;
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
@@ -54,6 +55,13 @@ public class SearchEditViewTest {
         textView.performClick();
         expect(editText).toBeVisible();
         expect(textView).toBeInvisible();
+    }
+
+    @Test
+    public void shouldToastIfHaveInvalidInput() throws Exception {
+        editText.setText("");
+        searchButton.performClick();
+        expect(ShadowToast.getTextOfLatestToast()).toEqual("Invalid Search Keywords");
     }
 
     private View findViewById(int viewId) {

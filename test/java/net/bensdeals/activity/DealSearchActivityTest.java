@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import com.google.inject.Inject;
-import com.xtremelabs.robolectric.shadows.ShadowToast;
 import net.bensdeals.R;
 import net.bensdeals.adapter.SearchAdapter;
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
@@ -64,12 +63,6 @@ public class DealSearchActivityTest {
         Intent intent = shadowOf(activity).peekNextStartedActivity();
         expect(intent).not.toBeNull();
         expect(intent.getAction()).toEqual(Intent.ACTION_VIEW);
-    }
-
-    @Test
-    public void shouldToastIfHaveInvalidInput() throws Exception {
-        doSearch("");
-        expect(ShadowToast.getTextOfLatestToast()).toEqual("Invalid Search Keywords");
     }
 
     private void doSearch(String searchText) {

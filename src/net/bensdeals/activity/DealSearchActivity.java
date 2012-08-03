@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 import com.google.inject.Inject;
 import net.bensdeals.R;
 import net.bensdeals.adapter.SearchAdapter;
@@ -26,7 +25,7 @@ import java.util.List;
 
 import static net.bensdeals.utils.IntentExtra.PREFIX_EXTRA;
 
-public class DealSearchActivity extends BaseActivity implements AdapterView.OnItemClickListener{
+public class DealSearchActivity extends BaseActivity implements AdapterView.OnItemClickListener {
     @InjectView(R.id.deal_search_list_view) ListView listView;
     @InjectResource(R.string.shopping_api_key) String key;
     @Inject SearchEditView editView;
@@ -60,29 +59,25 @@ public class DealSearchActivity extends BaseActivity implements AdapterView.OnIt
     private class SearchListener implements OnSearchListener {
         @Override
         public void onSearch(final String searchText) {
-            if (!Strings.isEmpty(searchText)) {
-                createLoadingDialog(getString(R.string.searching));
-                remoteTask.makeRequest(new SearchRequest(key, searchText), new TaskCallback<SearchResponseWrapper>(){
-                    @Override
-                    public void onTaskSuccess(SearchResponseWrapper response) {
-                        super.onTaskSuccess(response);
-                        List<SearchResponseWrapper.SearchItemWrapper> items = response.getItems();
-                        if(!items.isEmpty()){
-                            footer.hide();
-                            adapter.replaceAll(items);
-                        } else {
-                            footer.show();
-                        }
+            createLoadingDialog(getString(R.string.searching));
+            remoteTask.makeRequest(new SearchRequest(key, searchText), new TaskCallback<SearchResponseWrapper>() {
+                @Override
+                public void onTaskSuccess(SearchResponseWrapper response) {
+                    super.onTaskSuccess(response);
+                    List<SearchResponseWrapper.SearchItemWrapper> items = response.getItems();
+                    if (!items.isEmpty()) {
+                        footer.hide();
+                        adapter.replaceAll(items);
+                    } else {
+                        footer.show();
                     }
+                }
 
-                    @Override
-                    public void onTaskComplete() {
-                        if (dialog != null && dialog.isShowing()) dialog.dismiss();
-                    }
-                });
-            } else {
-                Toast.makeText(DealSearchActivity.this, R.string.invalid_input, Toast.LENGTH_LONG).show();
-            }
+                @Override
+                public void onTaskComplete() {
+                    if (dialog != null && dialog.isShowing()) dialog.dismiss();
+                }
+            });
         }
     }
 }
