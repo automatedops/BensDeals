@@ -25,9 +25,7 @@ public class ComboBoxTest {
 
     @Test
     public void render_shouldShowComboBox() throws Exception {
-        expect(comboBox).toBeInvisible();
         comboBox.render(XMLPathProvider.XMLPath.DEALS);
-        expect(comboBox).toBeVisible();
         expect(((TextView) comboBox.findViewById(R.id.page_title_view))).toHaveText("Deals");
     }
 }

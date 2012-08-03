@@ -50,10 +50,10 @@ public class DealPagerActivity extends BaseActivity {
     private void fetchXML() {
         createLoadingDialog(getString(R.string.loading, xmlPathProvider.get().getTitle()));
         final XMLPathProvider.XMLPath xmlPath = xmlPathProvider.get();
+        comboBox.render(xmlPath);
         remoteTask.makeRequest(xmlPath.getPath(), new RemoteTaskCallback() {
             @Override
             public void onTaskSuccess(List<Deal> list) {
-                comboBox.render(xmlPath);
                 viewPager.setCurrentItem(0, true);
                 adapter.replaceAll(list);
                 resetAdapter();
@@ -61,6 +61,7 @@ public class DealPagerActivity extends BaseActivity {
 
             @Override
             public void onTaskFailed() {
+                comboBox.failedToLoad(xmlPath);
                 new AlertDialog.Builder(DealPagerActivity.this).setMessage(getString(R.string.fail_to_load, xmlPath.getTitle())).create().show();
             }
 

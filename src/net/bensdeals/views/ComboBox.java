@@ -10,9 +10,9 @@ import android.util.TypedValue;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import net.bensdeals.R;
-import net.bensdeals.provider.XMLPathProvider;
 
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
+import static net.bensdeals.provider.XMLPathProvider.XMLPath;
 
 public class ComboBox extends LinearLayout {
     public TextView titleText;
@@ -35,11 +35,6 @@ public class ComboBox extends LinearLayout {
         titleText = (TextView) findViewById(R.id.page_title_view);
     }
 
-    public void render(XMLPathProvider.XMLPath xmlPath) {
-        titleText.setText(xmlPath.getTitle());
-        setVisibility(VISIBLE);
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -56,5 +51,17 @@ public class ComboBox extends LinearLayout {
         path.lineTo(getRight() - WIDTH, getBottom());
         path.close();
         canvas.drawPath(path, paint);
+    }
+
+    public void render(XMLPath xmlPath) {
+        setTitle(xmlPath.getTitle());
+    }
+
+    public void failedToLoad(XMLPath xmlPath) {
+        setTitle(getResources().getString(R.string.fail_to_load, xmlPath.getTitle()));
+    }
+
+    private void setTitle(String title) {
+        titleText.setText(title);
     }
 }

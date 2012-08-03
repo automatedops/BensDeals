@@ -1,5 +1,6 @@
 package net.bensdeals.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -71,6 +72,11 @@ public class DealSearchActivity extends BaseActivity implements AdapterView.OnIt
                     } else {
                         footer.show();
                     }
+                }
+
+                @Override
+                public void onTaskFailed() {
+                    new AlertDialog.Builder(DealSearchActivity.this).setMessage(getString(R.string.fail_to_load, "search results")).create().show();
                 }
 
                 @Override

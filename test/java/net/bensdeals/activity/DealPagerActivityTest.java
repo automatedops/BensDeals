@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.res.Configuration;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.TextView;
 import com.google.inject.Inject;
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.shadows.ShadowAlertDialog;
@@ -17,6 +18,7 @@ import net.bensdeals.support.RobolectricTestRunnerWithInjection;
 import net.bensdeals.utils.IntentExtra;
 import net.bensdeals.utils.TestImageLoader;
 import net.bensdeals.utils.TestRemoteTask;
+import net.bensdeals.views.ComboBox;
 import net.bensdeals.views.IndicatorView;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -34,6 +36,7 @@ public class DealPagerActivityTest {
     @Inject TestRemoteTask remoteTask;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
+    @InjectView(R.id.combo_box) ComboBox comboBox;
 
     @Test
     public void onCreate_shouldSetAdapter() throws Exception {
@@ -64,6 +67,7 @@ public class DealPagerActivityTest {
 
     @Test
     public void tappingRefreshMenu_shouldFetchDeals() throws Exception {
+        activity.onCreate(null);
         activity.onMenuItemSelected(0, new TestMenuItem(R.id.item_refresh));
         expect(remoteTask.getLatestDealRequestPath()).toEqual("http://bensbargains.net/rss/");
     }
@@ -108,6 +112,7 @@ public class DealPagerActivityTest {
         ShadowAlertDialog dialog = shadowOf(ShadowAlertDialog.getLatestAlertDialog());
         expect(dialog.isShowing()).toBeTrue();
         expect(dialog.getMessage()).toEqual("Failed to load Homepage…");
+        expect(((TextView) comboBox.findViewById(R.id.page_title_view))).toHaveText("Failed to load Homepage…");
     }
 
     @Test

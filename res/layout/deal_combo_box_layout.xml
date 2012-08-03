@@ -4,7 +4,7 @@
     style="@style/wrap"
     android:background="@color/transparent"
     android:paddingLeft="15dip"
-    android:visibility="invisible">
+    >
     <TextView
         android:id="@+id/page_title_view"
         style="@style/wrap"
