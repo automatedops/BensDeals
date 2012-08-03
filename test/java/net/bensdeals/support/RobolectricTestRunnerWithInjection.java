@@ -3,7 +3,7 @@ package net.bensdeals.support;
 import com.google.inject.name.Names;
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
-import net.bensdeals.activity.DealsApplication;
+import net.bensdeals.activity.DealApplication;
 import net.bensdeals.network.ImageLoader;
 import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.provider.CacheDirProvider;
@@ -32,7 +32,7 @@ public class RobolectricTestRunnerWithInjection extends RobolectricTestRunner {
 
     @Override
     public void prepareTest(Object test) {
-        DealsApplication application = (DealsApplication) Robolectric.application;
+        DealApplication application = (DealApplication) Robolectric.application;
         application.setModule(new TestApplicationModule());
         application.getInjector().injectMembers(test);
     }

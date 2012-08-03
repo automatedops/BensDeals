@@ -24,8 +24,8 @@ import static com.pivotallabs.robolectricgem.expect.Expect.expect;
 import static com.xtremelabs.robolectric.Robolectric.shadowOf;
 
 @RunWith(RobolectricTestRunnerWithInjection.class)
-public class DealsPagerActivityTest {
-    @Inject DealsPagerActivity activity;
+public class DealPagerActivityTest {
+    @Inject DealPagerActivity activity;
     @Inject TestImageLoader imageLoader;
     @Inject TestRemoteTask remoteTask;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;

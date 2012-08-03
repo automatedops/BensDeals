@@ -15,10 +15,10 @@ import net.bensdeals.views.DealItemView;
 import java.util.List;
 
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
-import static net.bensdeals.adapter.DealsAdapter.Orientation.LANDSCAPE;
-import static net.bensdeals.adapter.DealsAdapter.Orientation.PORTRAIT;
+import static net.bensdeals.adapter.DealAdapter.Orientation.LANDSCAPE;
+import static net.bensdeals.adapter.DealAdapter.Orientation.PORTRAIT;
 
-public class DealsAdapter extends PagerAdapter {
+public class DealAdapter extends PagerAdapter {
     private Orientation orientation;
 
     public enum Orientation {
@@ -42,7 +42,7 @@ public class DealsAdapter extends PagerAdapter {
     private LayoutInflaterWithInjection<DealItemView> inflater;
 
     @Inject
-    public DealsAdapter(LayoutInflaterWithInjection<DealItemView> inflater, Context context) {
+    public DealAdapter(LayoutInflaterWithInjection<DealItemView> inflater, Context context) {
         this.inflater = inflater;
         setOrientation(context.getResources().getConfiguration());
     }

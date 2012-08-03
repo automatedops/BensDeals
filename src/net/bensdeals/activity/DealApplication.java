@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutorService;
 import static com.google.inject.Scopes.SINGLETON;
 import static java.util.concurrent.Executors.newFixedThreadPool;
 
-public class DealsApplication extends RoboApplication {
+public class DealApplication extends RoboApplication {
     private Module module = new AppModules();
 
     @Override

@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import com.google.inject.Inject;
 import net.bensdeals.R;
-import net.bensdeals.adapter.DealsAdapter;
+import net.bensdeals.adapter.DealAdapter;
 import net.bensdeals.listener.OnPageChangeListener;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.callbacks.RemoteTaskCallback;
@@ -25,8 +25,8 @@ import roboguice.inject.InjectView;
 
 import java.util.List;
 
-public class DealsPagerActivity extends BaseActivity {
-    @Inject DealsAdapter adapter;
+public class DealPagerActivity extends BaseActivity {
+    @Inject DealAdapter adapter;
     @Inject RemoteTask remoteTask;
     @Inject XMLPathProvider xmlPathProvider;
     @Inject CacheDirProvider cacheDirProvider;
@@ -61,7 +61,7 @@ public class DealsPagerActivity extends BaseActivity {
 
             @Override
             public void onTaskFailed() {
-                new AlertDialog.Builder(DealsPagerActivity.this).setMessage(getString(R.string.fail_to_load, xmlPath.getTitle())).create().show();
+                new AlertDialog.Builder(DealPagerActivity.this).setMessage(getString(R.string.fail_to_load, xmlPath.getTitle())).create().show();
             }
 
             @Override
