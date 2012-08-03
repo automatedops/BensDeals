@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="api_key">AIzaSyCHiDtmHLFMNcrYx5asFzP5THm3KP1O534</string>
+    <string name="shopping_api_key">AIzaSyCHiDtmHLFMNcrYx5asFzP5THm3KP1O534</string>
+    <string name="flurry_key">KV3GWTQSR7WS53T4KSWB</string>
+    <string name="crittercism_key">4fec01526c36f935a4000005</string>
 </resources>

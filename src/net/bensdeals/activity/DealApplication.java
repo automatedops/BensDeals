@@ -33,7 +33,7 @@ public class DealApplication extends RoboApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (Config.LOGGING) Crittercism.init(getApplicationContext(), getString(R.string.crittercism_app_id));
+        if (Config.LOGGING) Crittercism.init(getApplicationContext(), getString(R.string.crittercism_key));
     }
 
     private class AppModules implements Module {

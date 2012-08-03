@@ -17,7 +17,7 @@ public class Reporter {
 
     public void startSession(Context context) {
         if (Config.LOGGING)
-            FlurryAgent.onStartSession(context, context.getString(R.string.flurry_id));
+            FlurryAgent.onStartSession(context, context.getString(R.string.flurry_key));
     }
 
     public void endSession(Context context) {

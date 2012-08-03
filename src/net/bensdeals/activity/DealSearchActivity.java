@@ -25,7 +25,7 @@ import static net.bensdeals.utils.IntentExtra.PREFIX_EXTRA;
 
 public class DealSearchActivity extends BaseActivity implements AdapterView.OnItemClickListener{
     @InjectView(R.id.deal_search_list_view) ListView listView;
-    @InjectResource(R.string.api_key) String key;
+    @InjectResource(R.string.shopping_api_key) String key;
     @Inject SearchEditView editView;
     @Inject SearchAdapter adapter;
     @Inject RemoteTask remoteTask;
