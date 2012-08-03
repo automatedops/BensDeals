@@ -9,9 +9,12 @@ import com.google.inject.Inject;
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.shadows.ShadowAlertDialog;
 import com.xtremelabs.robolectric.shadows.ShadowDialog;
+import com.xtremelabs.robolectric.shadows.ShadowIntent;
 import com.xtremelabs.robolectric.tester.android.view.TestMenuItem;
 import net.bensdeals.R;
+import net.bensdeals.adapter.DealAdapter;
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
+import net.bensdeals.utils.IntentExtra;
 import net.bensdeals.utils.TestImageLoader;
 import net.bensdeals.utils.TestRemoteTask;
 import net.bensdeals.views.IndicatorView;
@@ -26,6 +29,7 @@ import static com.xtremelabs.robolectric.Robolectric.shadowOf;
 @RunWith(RobolectricTestRunnerWithInjection.class)
 public class DealPagerActivityTest {
     @Inject DealPagerActivity activity;
+    @Inject DealAdapter adapter;
     @Inject TestImageLoader imageLoader;
     @Inject TestRemoteTask remoteTask;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
@@ -61,7 +65,7 @@ public class DealPagerActivityTest {
     @Test
     public void tappingRefreshMenu_shouldFetchDeals() throws Exception {
         activity.onMenuItemSelected(0, new TestMenuItem(R.id.item_refresh));
-        expect(remoteTask.getLatestRequestPath()).toEqual("http://bensbargains.net/rss/");
+        expect(remoteTask.getLatestDealRequestPath()).toEqual("http://bensbargains.net/rss/");
     }
 
     @Test
@@ -100,9 +104,20 @@ public class DealPagerActivityTest {
     @Test
     public void onLoadFailure_shouldShowAlertDialog() throws Exception {
         activity.onCreate(null);
-        remoteTask.simulateFailedResponse();
+        remoteTask.simulateFailedDealResponse();
         ShadowAlertDialog dialog = shadowOf(ShadowAlertDialog.getLatestAlertDialog());
         expect(dialog.isShowing()).toBeTrue();
         expect(dialog.getMessage()).toEqual("Failed to load Homepage…");
+    }
+
+    @Test
+    public void tappingSearchIcon_shouldLaunchSearchActivity() throws Exception {
+        activity.onCreate(null);
+        remoteTask.simulateSuccessDealResponse("homepage.xml");
+        expect(activity.adapter.getCount()).toEqual(20);
+        activity.onSearchClick(null);
+        ShadowIntent intent = shadowOf(shadowOf(activity).peekNextStartedActivity());
+        expect(intent.getIntentClass().getSimpleName()).toEqual(DealSearchActivity.class.getSimpleName());
+        expect(intent.getSerializableExtra(IntentExtra.PREFIX_EXTRA)).toEqual("3-Year Subscription to Muscle &amp; Fitness ");
     }
 }

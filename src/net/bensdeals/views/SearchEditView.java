@@ -3,6 +3,7 @@ package net.bensdeals.views;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.text.Html;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.KeyEvent;
@@ -61,7 +62,7 @@ public class SearchEditView extends RelativeLayout implements View.OnClickListen
 
     public void setEditText(String prefix) {
         if (Strings.isEmpty(prefix)) return;
-        searchEditText.setText(prefix);
+        searchEditText.setText(Html.fromHtml(prefix));
     }
 
     public void setOnSearchListener(OnSearchListener searchListener) {
