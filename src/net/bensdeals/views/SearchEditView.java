@@ -78,16 +78,6 @@ public class SearchEditView extends RelativeLayout implements View.OnClickListen
         canvas.drawLine(getLeft() + getPaddingLeft(), getBottom(), getRight(), getBottom(), paint);
     }
 
-    private void doSearch() {
-        if (searchListener != null) {
-            ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(searchEditText.getWindowToken(), RESULT_UNCHANGED_SHOWN);
-            searchText.setVisibility(VISIBLE);
-            searchEditText.setVisibility(GONE);
-            searchText.setText(searchEditText.getText().toString());
-            searchListener.onSearch(searchEditText.getText().toString());
-        }
-    }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -96,6 +86,16 @@ public class SearchEditView extends RelativeLayout implements View.OnClickListen
                 break;
             case R.id.search_button:
                 doSearch();
+        }
+    }
+
+    private void doSearch() {
+        if (searchListener != null) {
+            ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(searchEditText.getWindowToken(), RESULT_UNCHANGED_SHOWN);
+            searchText.setVisibility(VISIBLE);
+            searchEditText.setVisibility(GONE);
+            searchText.setText(searchEditText.getText().toString());
+            searchListener.onSearch(searchEditText.getText().toString());
         }
     }
 
