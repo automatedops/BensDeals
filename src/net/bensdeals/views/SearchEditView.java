@@ -21,10 +21,11 @@ import roboguice.util.Strings;
 
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH;
-import static android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT;
+import static android.view.inputmethod.InputMethodManager.RESULT_UNCHANGED_SHOWN;
+import static android.view.inputmethod.InputMethodManager.SHOW_FORCED;
 
 @ProvidedBy(SearchEditView.ViewProvider.class)
-public class SearchEditView extends RelativeLayout implements View.OnClickListener, TextView.OnEditorActionListener {
+public class SearchEditView extends RelativeLayout implements View.OnClickListener {
     public View searchButton;
     public EditText searchEditText;
     private OnSearchListener searchListener;
@@ -43,7 +44,16 @@ public class SearchEditView extends RelativeLayout implements View.OnClickListen
         super.onFinishInflate();
         searchButton = findViewById(R.id.search_button);
         searchEditText = (EditText) findViewById(R.id.search_edittext);
-        searchEditText.setOnEditorActionListener(this);
+        searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int imeAction, KeyEvent keyEvent) {
+                if (imeAction == IME_ACTION_SEARCH) {
+                    doSearch();
+                    return true;
+                }
+                return false;
+            }
+        });
         searchText = (TextView) findViewById(R.id.search_text);
         searchText.setOnClickListener(this);
         searchButton.setOnClickListener(this);
@@ -67,6 +77,16 @@ public class SearchEditView extends RelativeLayout implements View.OnClickListen
         canvas.drawLine(getLeft() + getPaddingLeft(), getBottom(), getRight(), getBottom(), paint);
     }
 
+    private void doSearch() {
+        if (searchListener != null) {
+            ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(searchEditText.getWindowToken(), RESULT_UNCHANGED_SHOWN);
+            searchText.setVisibility(VISIBLE);
+            searchEditText.setVisibility(GONE);
+            searchText.setText(searchEditText.getText().toString());
+            searchListener.onSearch(searchEditText.getText().toString());
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -78,30 +98,11 @@ public class SearchEditView extends RelativeLayout implements View.OnClickListen
         }
     }
 
-    private void doSearch() {
-        if (searchListener != null) {
-            searchListener.onSearch(searchEditText.getText().toString());
-            searchText.setText(searchEditText.getText().toString());
-            searchText.setVisibility(VISIBLE);
-            ((InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(searchEditText.getWindowToken(), InputMethodManager.HIDE_IMPLICIT_ONLY);
-            searchEditText.setVisibility(GONE);
-        }
-    }
-
     private void showEditText() {
-        searchText.setVisibility(GONE);
+        searchText.setVisibility(INVISIBLE);
         searchEditText.setVisibility(VISIBLE);
-        ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, SHOW_IMPLICIT);
+        ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, SHOW_FORCED);
         searchEditText.requestFocus();
-    }
-
-    @Override
-    public boolean onEditorAction(TextView textView, int imeAction, KeyEvent keyEvent) {
-        if(imeAction == IME_ACTION_SEARCH) {
-            doSearch();
-            return true;
-        }
-        return false;
     }
 
     public static class ViewProvider implements Provider<SearchEditView> {

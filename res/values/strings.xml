@@ -9,6 +9,7 @@
     <string name="flurry_id">KV3GWTQSR7WS53T4KSWB</string>
     <string name="select_a_page">Select a page</string>
     <string name="search">Search</string>
+    <string name="searching">Searching</string>
     <string name="invalid_input">Invalid Input Keywords</string>
 
     <plurals name="minutes_format">

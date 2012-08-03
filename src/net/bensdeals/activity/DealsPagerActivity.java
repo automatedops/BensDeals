@@ -1,7 +1,6 @@
 package net.bensdeals.activity;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,8 +14,8 @@ import net.bensdeals.R;
 import net.bensdeals.adapter.DealsAdapter;
 import net.bensdeals.listener.OnPageChangeListener;
 import net.bensdeals.model.Deal;
-import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.network.callbacks.RemoteTaskCallback;
+import net.bensdeals.network.core.RemoteTask;
 import net.bensdeals.provider.CacheDirProvider;
 import net.bensdeals.provider.XMLPathProvider;
 import net.bensdeals.utils.Reporter;
@@ -35,7 +34,6 @@ public class DealsPagerActivity extends BaseActivity {
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
     @InjectView(R.id.combo_box) ComboBox comboBox;
-    protected ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +48,7 @@ public class DealsPagerActivity extends BaseActivity {
     }
 
     private void fetchXML() {
-        createLoadingDialog();
+        createLoadingDialog(getString(R.string.loading, xmlPathProvider.get().getTitle()));
         final XMLPathProvider.XMLPath xmlPath = xmlPathProvider.get();
         remoteTask.makeRequest(xmlPath.getPath(), new RemoteTaskCallback() {
             @Override
@@ -71,10 +69,6 @@ public class DealsPagerActivity extends BaseActivity {
                 if (dialog != null && dialog.isShowing()) dialog.dismiss();
             }
         });
-    }
-
-    protected void createLoadingDialog() {
-        dialog = ProgressDialog.show(this, "", getString(R.string.loading, xmlPathProvider.get().getTitle()));
     }
 
     @Override

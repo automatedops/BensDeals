@@ -11,31 +11,31 @@
         android:layout_alignParentRight="true"
         android:padding="7dip"
         />
-    <EditText
-        android:id="@+id/search_edittext"
-        style="@style/block"
-        android:layout_toLeftOf="@id/search_button"
-        android:background="@color/transparent"
-        android:imeOptions="actionSearch"
-        android:inputType="textMultiLine"
-        android:hint="@string/search"
-        android:textColor="@color/white"
-        android:paddingLeft="10dip"
-        android:paddingTop="10dip"
-        android:paddingBottom="10dip"
-        android:ellipsize="end"
-        />
     <TextView
         android:id="@+id/search_text"
         style="@style/block"
         android:layout_toLeftOf="@id/search_button"
         android:layout_centerVertical="true"
-        android:background="@color/transparent"
         android:textColor="@color/white"
         android:layout_margin="10dip"
         android:textSize="18sp"
         android:singleLine="true"
-        android:ellipsize="end"
-        android:visibility="gone"
+        android:visibility="invisible"
+        />
+    <EditText
+        android:id="@+id/search_edittext"
+        style="@style/block"
+        android:layout_toLeftOf="@id/search_button"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10dip"
+        android:paddingTop="10dip"
+        android:paddingBottom="10dip"
+        android:textColor="@color/white"
+        android:imeOptions="actionSearch"
+        android:imeActionLabel="@string/search"
+        android:hint="@string/search"
+        android:inputType="textAutoComplete"
+        android:singleLine="true"
+        android:background="@null"
         />
 </net.bensdeals.views.SearchEditView>
