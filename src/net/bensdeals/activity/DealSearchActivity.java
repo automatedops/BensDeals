@@ -28,6 +28,7 @@ import java.util.List;
 import static net.bensdeals.utils.IntentExtra.PREFIX_EXTRA;
 import static net.bensdeals.utils.Reporter.KEY_SEARCH_KEYWORDS;
 import static net.bensdeals.utils.Reporter.ON_SEARCH;
+import static net.bensdeals.utils.Reporter.ON_SEARCH_VIEW;
 
 public class DealSearchActivity extends BaseActivity implements AdapterView.OnItemClickListener {
     @InjectView(R.id.deal_search_list_view) ListView listView;
@@ -40,12 +41,14 @@ public class DealSearchActivity extends BaseActivity implements AdapterView.OnIt
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deal_search_layout);
-        editView.setEditText(getIntent().getStringExtra(PREFIX_EXTRA));
+        String stringExtra = getIntent().getStringExtra(PREFIX_EXTRA);
+        editView.setEditText(stringExtra);
         editView.setOnSearchListener(new SearchListener());
         listView.addHeaderView(editView, null, false);
         listView.addFooterView(footer, null, false);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+        reporter.report(ON_SEARCH_VIEW, Pair.create(KEY_SEARCH_KEYWORDS, stringExtra));
     }
 
     public static Intent intentFor(Context context, String prefix) {

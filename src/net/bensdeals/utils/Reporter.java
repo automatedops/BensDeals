@@ -14,6 +14,7 @@ import java.util.Map;
 public class Reporter {
     public static final String ON_APP_START = "ON_APP_START";
     public static final String ON_SEARCH = "ON_SEARCH";
+    public static final String ON_SEARCH_VIEW = "ON_SEARCH_VIEW";
     public static final String KEY_SEARCH_KEYWORDS = "KEY_SEARCH_KEYWORDS";
 
     @Inject
