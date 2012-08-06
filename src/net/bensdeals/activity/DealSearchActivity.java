@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -25,6 +26,8 @@ import roboguice.util.Strings;
 import java.util.List;
 
 import static net.bensdeals.utils.IntentExtra.PREFIX_EXTRA;
+import static net.bensdeals.utils.Reporter.KEY_SEARCH_KEYWORDS;
+import static net.bensdeals.utils.Reporter.ON_SEARCH;
 
 public class DealSearchActivity extends BaseActivity implements AdapterView.OnItemClickListener {
     @InjectView(R.id.deal_search_list_view) ListView listView;
@@ -84,6 +87,7 @@ public class DealSearchActivity extends BaseActivity implements AdapterView.OnIt
                     if (dialog != null && dialog.isShowing()) dialog.dismiss();
                 }
             });
+            reporter.report(ON_SEARCH, Pair.create(KEY_SEARCH_KEYWORDS, searchText));
         }
     }
 }
