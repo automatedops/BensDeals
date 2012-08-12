@@ -28,6 +28,7 @@
         style="@style/block"
         android:layout_toRightOf="@id/search_item_image"
         android:layout_below="@id/search_item_title"
+        android:textColor="@color/light_grey"
         android:layout_marginTop="5dip"
         android:focusable="false"
         />
