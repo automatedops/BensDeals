@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Android 4.0 Google API libs">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/android-sdk-macosx/add-ons/addon-google_apis-google-14/libs/maps.jar!/" />
+      <root url="jar://$USER_HOME$/android-sdk-macosx/platforms/android-14/android.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs-src/android-src/10/sources.zip!/" />
+    </SOURCES>
+  </library>
+</component>
