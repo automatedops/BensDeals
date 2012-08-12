@@ -59,19 +59,7 @@ public class DealSearchActivityTest {
         doSearch(prefix);
         remoteTask.simulateSuccessResponse("search_response.json");
         expect(listView.getAdapter().getCount()).toEqual(25);
-        listView.performItemClick(null, 1, 0);
-        Intent intent = shadowOf(activity).peekNextStartedActivity();
-        expect(intent).not.toBeNull();
-        expect(intent.getAction()).toEqual(Intent.ACTION_VIEW);
-    }
-
-    @Test
-    public void tappingListItem_shouldLaunchWebBrowserIfCountIsGreater() throws Exception {
-        doSearch(prefix);
-        remoteTask.simulateSuccessResponse("search_response.json");
-        expect(listView.getAdapter().getCount()).toEqual(25);
-        listView.performItemClick(null, 25, 0);
-
+        shadowOf(listView).performItemClick(null, 25, 0);
         Intent intent = shadowOf(activity).peekNextStartedActivity();
         expect(intent).not.toBeNull();
         expect(intent.getAction()).toEqual(Intent.ACTION_VIEW);
