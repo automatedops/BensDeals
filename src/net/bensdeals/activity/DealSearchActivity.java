@@ -57,7 +57,7 @@ public class DealSearchActivity extends BaseActivity implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        SearchResponseWrapper.SearchItemWrapper item = adapter.getItem(i);
+        SearchResponseWrapper.SearchItemWrapper item = adapter.getItem(Math.min(adapter.getCount() - 1, i));
         if (item != null && !Strings.isEmpty(item.item.getLink())) {
             IntentUtil.intentForWeb(this, item.item.getLink());
         }

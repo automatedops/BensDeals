@@ -65,6 +65,19 @@ public class DealSearchActivityTest {
         expect(intent.getAction()).toEqual(Intent.ACTION_VIEW);
     }
 
+    @Test
+    public void tappingListItem_shouldLaunchWebBrowserIfCountIsGreater() throws Exception {
+        doSearch(prefix);
+        remoteTask.simulateSuccessResponse("search_response.json");
+        expect(listView.getAdapter().getCount()).toEqual(25);
+        listView.performItemClick(null, 25, 0);
+
+        Intent intent = shadowOf(activity).peekNextStartedActivity();
+        expect(intent).not.toBeNull();
+        expect(intent.getAction()).toEqual(Intent.ACTION_VIEW);
+        expect(intent.getData().toString()).toEqual("http://www.fingerhut.com/product/apple-ipod-8gb-4th-generation-black-touch/nl522.uts?CTid=661&ci_src=14110944&ci_sku=4NL5220000010");
+    }
+
     private void doSearch(String searchText) {
         searchEdit.setText(searchText);
         activity.findViewById(R.id.search_button).performClick();
