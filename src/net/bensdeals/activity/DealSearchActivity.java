@@ -82,7 +82,8 @@ public class DealSearchActivity extends BaseActivity implements AdapterView.OnIt
 
                 @Override
                 public void onTaskFailed() {
-                    new AlertDialog.Builder(DealSearchActivity.this).setMessage(getString(R.string.fail_to_load, "search results")).create().show();
+                    if (!DealSearchActivity.this.isFinishing())
+                        new AlertDialog.Builder(DealSearchActivity.this).setMessage(getString(R.string.fail_to_load, "search results")).create().show();
                 }
 
                 @Override

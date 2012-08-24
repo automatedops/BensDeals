@@ -62,7 +62,8 @@ public class DealPagerActivity extends BaseActivity {
             @Override
             public void onTaskFailed() {
                 comboBox.failedToLoad(xmlPath);
-                new AlertDialog.Builder(DealPagerActivity.this).setMessage(getString(R.string.fail_to_load, xmlPath.getTitle())).create().show();
+                if (!DealPagerActivity.this.isFinishing())
+                    new AlertDialog.Builder(DealPagerActivity.this).setMessage(getString(R.string.fail_to_load, xmlPath.getTitle())).create().show();
             }
 
             @Override
