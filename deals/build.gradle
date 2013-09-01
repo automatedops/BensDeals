@@ -1,0 +1,189 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+        classpath 'com.squareup.gradle:gradle-android-test-plugin:0.9.+'
+    }
+}
+
+apply plugin: 'android'
+apply plugin: 'android-test'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion "18.0.1"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 18
+    }
+
+//    For adding Intellij Robolectric testing
+    sourceSets {
+        instrumentTest {
+            java.srcDir file('src/test/java')
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../scripts/debug.keystore")
+        }
+
+        release {
+            storeFile file("../scripts/debug.keystore")
+//            keyAlias ""
+//            storePassword ""
+//            keyPassword ""
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            signingConfig signingConfigs.debug
+            buildConfig "public final static boolean IS_DEBUG = true;"
+        }
+
+        release {
+            debuggable true
+            signingConfig signingConfigs.release
+            buildConfig "public final static boolean IS_DEBUG = true;"
+        }
+
+        store {
+            debuggable false
+            signingConfig signingConfigs.release
+            buildConfig "public final static boolean IS_DEBUG = false;"
+        }
+
+        applicationVariants.all { variant ->
+            def file = variant.outputFile
+            variant.outputFile = new File(file.parent, file.name.replace(".apk", "-" + getEnvironment() + "-" + getVersionName() + ".apk"))
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:13.0.+'
+    compile 'org.apache.commons:commons-lang3:3.1'
+    compile 'com.squareup.dagger:dagger:1.0.1'
+    compile 'com.squareup.dagger:dagger-compiler:1.0.1'
+    compile 'com.squareup:javawriter:1.0.5'
+    compile 'javax.inject:javax.inject:1'
+    compile 'com.squareup:otto:1.3.3'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.squareup:tape:1.1.0'
+    compile 'com.jakewharton:butterknife:2.0.1'
+    compile 'com.squareup.okhttp:okhttp:1.1.1'
+    compile 'com.squareup.picasso:picasso:2.0.0'
+    compile 'com.google.guava:guava:14.0.1'
+    compile fileTree('libs')
+
+    testCompile 'com.google.android:android:4.0.1.2'
+    testCompile 'junit:junit:4.11'
+    testCompile 'com.squareup:fest-android:1.0.5'
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
+    testCompile 'org.easytesting:fest-util:1.2.5'
+    testCompile fileTree('libs_test')
+
+    instrumentTestCompile 'com.jayway.android.robotium:robotium-solo:4.2'
+    instrumentTestCompile 'com.squareup.spoon:spoon-client:1.0.5'
+
+    // For adding Intellij Robolectric testing
+    instrumentTestCompile 'com.google.android:android:4.0.1.2'
+    instrumentTestCompile 'junit:junit:4.11'
+    instrumentTestCompile 'com.squareup:fest-android:1.0.5'
+    instrumentTestCompile 'org.easytesting:fest-assert-core:2.0M10'
+    instrumentTestCompile 'org.easytesting:fest-util:1.2.5'
+    instrumentTestCompile fileTree('libs_test')
+}
+
+task spoon(type: JavaExec, dependsOn: ["assembleDebug", "assembleTest"]) {
+    main = "-jar"
+    args relativePath("../scripts/spoon-runner-1.0.5-jar-with-dependencies.jar")
+    args "--apk"
+    args relativePath("build/apk/banjo-debug-unaligned-prod-" + getVersionName() + ".apk")
+    args "--test-apk"
+    args relativePath("build/apk/banjo-test-unaligned.apk")
+    args "--output"
+    args "build/spoon"
+    logger.info "main=${main},classpath=${classpath},args=${args}"
+}
+
+task runspoon(type: JavaExec) {
+    main = "-jar"
+    args relativePath("../scripts/spoon-runner-1.0.5-jar-with-dependencies.jar")
+    args "--apk"
+    args relativePath("build/apk/banjo-debug-unaligned-prod-" + getVersionName() + ".apk")
+    args "--test-apk"
+    args relativePath("build/apk/banjo-test-unaligned.apk")
+    args "--output"
+    args "build/spoon"
+    logger.info "main=${main},classpath=${classpath},args=${args}"
+}
+
+public String getVersionName() {
+    int BUFFER_SIZE = 4096;
+    String versionNamePrefix = "app_version";
+    String versionName = "";
+    try {
+        FileInputStream inputStream = new FileInputStream(new File("banjo/src/main/res/values/keys.xml"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream), BUFFER_SIZE);
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                int index = line.indexOf(versionNamePrefix);
+                if (index > 0) {
+                    String substring = line.substring(index);
+                    int endIndex = substring.indexOf("<");
+
+                    versionName = substring.substring(versionNamePrefix.length() + 2, endIndex);
+                    break;
+                }
+            }
+        } finally {
+            inputStream.close();
+        }
+
+        println "Version Name : " + versionName
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return versionName
+}
+
+private String getEnvironment() {
+    int BUFFER_SIZE = 4096;
+    String envNamePrefix = "environment";
+    String envName = "";
+    try {
+        FileInputStream inputStream = new FileInputStream(new File("banjo/src/main/res/values/env.xml"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream), BUFFER_SIZE);
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                int index = line.indexOf(envNamePrefix);
+                if (index > 0) {
+                    String substring = line.substring(index);
+                    int endIndex = substring.indexOf("<");
+                    envName = substring.substring(envNamePrefix.length() + 2, endIndex);
+                    break;
+                }
+            }
+        } finally {
+            inputStream.close();
+        }
+
+        println "Environment Name : " + envName
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return envName.equals("production") ? "prod" : "staging";
+}

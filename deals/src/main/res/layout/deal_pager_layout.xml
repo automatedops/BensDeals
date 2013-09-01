@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/fill">
+    <net.bensdeals.views.IndicatorView
+        android:id="@+id/indicator"
+        android:layout_height="40dip"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"/>
+    <LinearLayout
+        android:id="@+id/combo_box_container"
+        style="@style/wrap"
+        android:onClick="comboBoxOnClick"
+        android:layout_alignParentTop="true">
+        <include
+            android:id="@+id/combo_box"
+            layout="@layout/deal_combo_box_layout"
+            />
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:id="@+id/deals_view_pager"
+        android:layout_above="@id/indicator"
+        android:layout_below="@id/combo_box_container"/>
+</RelativeLayout>
+

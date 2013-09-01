@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Test libs">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/libs/test" />
-      <root url="file://$PROJECT_DIR$/libs" />
+      <root url="file://$PROJECT_DIR$/deals/libs/test" />
+      <root url="file://$PROJECT_DIR$/deals/libs" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

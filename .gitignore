@@ -1,12 +1,52 @@
-.DS_Store
-.git.bak/
-.idea/workspace.xml
-.idea/uiDesigner.xml
-ant_build/
+lt application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
 bin/
 gen/
+*gradle/
+*build/
+*.DS_Store
+
+*/bin/
+*/gen/
 out/
+target/
 tmp/
-key/
+
+# Local configuration file (sdk path, etc)
 local.properties
-ant.properties
+
+# Environment file
+res/values/env.xml
+builds/
+build/
+*/build/
+banjo/build/
+external/actionbarsherlock/build/
+external/google-play-services_lib/build/
+
+# Eclipse project files
+.classpath
+.project
+*.prefs
+
+# Intellij project files
+.idea/
+*.iml
+
+*/.DS_Store
+.DS_Store
+
+.gradle/*
+*.name
+target/
+
+ant_out/
