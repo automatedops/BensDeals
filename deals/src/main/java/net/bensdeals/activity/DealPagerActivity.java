@@ -4,40 +4,51 @@ import javax.inject.Inject;
 import java.util.List;
 
 import android.app.AlertDialog;
-import android.content.res.Configuration;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.SpinnerAdapter;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.google.common.collect.Lists;
+import com.haarman.listviewanimations.swinginadapters.prepared.SwingBottomInAnimationAdapter;
+import com.haarman.listviewanimations.swinginadapters.prepared.SwingRightInAnimationAdapter;
 import butterknife.InjectView;
 import net.bensdeals.R;
-import net.bensdeals.adapter.DealAdapter;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.RemoteTask;
 import net.bensdeals.network.callbacks.RemoteTaskCallback;
 import net.bensdeals.provider.CacheDirProvider;
 import net.bensdeals.provider.XMLPathProvider;
 import net.bensdeals.utils.Reporter;
+import net.bensdeals.views.DealItemView;
 
 public class DealPagerActivity extends BaseActivity {
-    @Inject DealAdapter adapter;
     @Inject RemoteTask remoteTask;
     @Inject XMLPathProvider xmlPathProvider;
     @Inject CacheDirProvider cacheDirProvider;
-    @InjectView(R.id.deals_view_pager) ViewPager viewPager;
+    @InjectView(R.id.list) ListView mListView;
     private XMLPathProvider.XMLPath mXmlPath;
+    private DealPagerActivity.DealListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deal_pager_layout);
         cacheDirProvider.clear();
-        viewPager.setAdapter(adapter);
         reporter.report(Reporter.ON_APP_START);
+
+        mAdapter = new DealListAdapter(this);
+        SwingRightInAnimationAdapter animationAdapter = new SwingRightInAnimationAdapter(new SwingBottomInAnimationAdapter(mAdapter));
+        animationAdapter.setAbsListView(mListView);
+        mListView.setAdapter(animationAdapter);
 
         SpinnerAdapter spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, xmlPathProvider.getNames());
         getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
@@ -59,9 +70,7 @@ public class DealPagerActivity extends BaseActivity {
         remoteTask.makeRequest(xmlPath.getPath(), new RemoteTaskCallback() {
             @Override
             public void onTaskSuccess(List<Deal> list) {
-                viewPager.setCurrentItem(0, true);
-                adapter.replaceAll(list);
-                resetAdapter();
+                mAdapter.replaceAll(list);
             }
 
             @Override
@@ -93,21 +102,43 @@ public class DealPagerActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        adapter.setOrientation(newConfig);
-        resetAdapter();
-    }
+    private class DealListAdapter extends BaseAdapter {
+        private List<Deal> mItems = Lists.newArrayList();
+        private final LayoutInflater mLayoutInflater;
 
-    private void resetAdapter() {
-        viewPager.setAdapter(adapter);
-    }
+        public DealListAdapter(Context context) {
+            mLayoutInflater = LayoutInflater.from(context);
+        }
 
-    private class OnIndexChangeListener implements net.bensdeals.listener.OnIndexChangeListener {
         @Override
-        public void indexChanged(int index) {
-            viewPager.setCurrentItem(index, true);
+        public int getCount() {
+            return mItems.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return mItems.get(i);
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            if (view == null) {
+                view = mLayoutInflater.inflate(R.layout.deal_item_layout_landscape, viewGroup, false);
+            }
+            return ((DealItemView) view).render(mItems.get(i));
+        }
+
+        public void replaceAll(List<Deal> list) {
+            if (list != null) {
+                mItems.clear();
+                mItems.addAll(list);
+                notifyDataSetChanged();
+            }
         }
     }
 }

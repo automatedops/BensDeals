@@ -3,10 +3,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/fill">
-    <android.support.v4.view.ViewPager
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:id="@+id/deals_view_pager"
-        />
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:id="@+id/deals_view_pager"-->
+        <!--/>-->
+    <ListView
+        android:id="@+id/list"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
 </LinearLayout>
 

@@ -80,6 +80,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.0.0'
     compile 'com.google.guava:guava:14.0.1'
     compile 'com.android.support:support-v4:18.0.+'
+    compile 'com.nineoldandroids:library:2.4.0'
     compile project(':submodule:actionbarsherlock')
     compile fileTree('libs')
 
