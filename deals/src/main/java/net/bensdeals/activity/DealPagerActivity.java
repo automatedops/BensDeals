@@ -16,23 +16,19 @@ import com.actionbarsherlock.view.MenuItem;
 import butterknife.InjectView;
 import net.bensdeals.R;
 import net.bensdeals.adapter.DealAdapter;
-import net.bensdeals.listener.OnPageChangeListener;
 import net.bensdeals.model.Deal;
 import net.bensdeals.network.RemoteTask;
 import net.bensdeals.network.callbacks.RemoteTaskCallback;
 import net.bensdeals.provider.CacheDirProvider;
 import net.bensdeals.provider.XMLPathProvider;
 import net.bensdeals.utils.Reporter;
-import net.bensdeals.views.IndicatorView;
 
 public class DealPagerActivity extends BaseActivity {
     @Inject DealAdapter adapter;
     @Inject RemoteTask remoteTask;
     @Inject XMLPathProvider xmlPathProvider;
     @Inject CacheDirProvider cacheDirProvider;
-    @Inject OnPageChangeListener onPageChangeListener;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
-    @InjectView(R.id.indicator) IndicatorView indicatorView;
     private XMLPathProvider.XMLPath mXmlPath;
 
     @Override
@@ -41,8 +37,6 @@ public class DealPagerActivity extends BaseActivity {
         setContentView(R.layout.deal_pager_layout);
         cacheDirProvider.clear();
         viewPager.setAdapter(adapter);
-        viewPager.setOnPageChangeListener(onPageChangeListener.setIndicatorView(indicatorView));
-        indicatorView.setIndexChangeListener(new OnIndexChangeListener());
         reporter.report(Reporter.ON_APP_START);
 
         SpinnerAdapter spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, xmlPathProvider.getNames());
@@ -108,7 +102,6 @@ public class DealPagerActivity extends BaseActivity {
 
     private void resetAdapter() {
         viewPager.setAdapter(adapter);
-        indicatorView.setSelected(0);
     }
 
     private class OnIndexChangeListener implements net.bensdeals.listener.OnIndexChangeListener {

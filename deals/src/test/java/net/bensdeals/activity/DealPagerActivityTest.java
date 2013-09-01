@@ -1,32 +1,23 @@
 package net.bensdeals.activity;
 
+import javax.inject.Inject;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.res.Configuration;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.widget.TextView;
 
-import com.xtremelabs.robolectric.Robolectric;
-import com.xtremelabs.robolectric.shadows.ShadowAlertDialog;
-import com.xtremelabs.robolectric.shadows.ShadowDialog;
-import com.xtremelabs.robolectric.shadows.ShadowIntent;
-import com.xtremelabs.robolectric.tester.android.view.TestMenuItem;
+import butterknife.InjectView;
 import net.bensdeals.R;
 import net.bensdeals.adapter.DealAdapter;
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
 import net.bensdeals.utils.IntentExtra;
 import net.bensdeals.utils.TestImageLoader;
 import net.bensdeals.utils.TestRemoteTask;
-import net.bensdeals.views.ComboBox;
-import net.bensdeals.views.IndicatorView;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import roboguice.inject.InjectView;
-
-import static com.pivotallabs.robolectricgem.expect.Expect.expect;
-import static com.xtremelabs.robolectric.Robolectric.shadowOf;
 
 @RunWith(RobolectricTestRunnerWithInjection.class)
 public class DealPagerActivityTest {
@@ -35,8 +26,6 @@ public class DealPagerActivityTest {
     @Inject TestImageLoader imageLoader;
     @Inject TestRemoteTask remoteTask;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
-    @InjectView(R.id.indicator) IndicatorView indicatorView;
-    @InjectView(R.id.combo_box) ComboBox comboBox;
 
     @Test
     public void onCreate_shouldSetAdapter() throws Exception {
@@ -80,16 +69,6 @@ public class DealPagerActivityTest {
     }
 
     @Test
-    public void onConfigurationChanged_shouldSetIndexToFirst() throws Exception {
-        activity.onCreate(null);
-        indicatorView.setSelected(2);
-        Configuration configuration = new Configuration();
-        configuration.orientation = Configuration.ORIENTATION_PORTRAIT;
-        activity.onConfigurationChanged(configuration);
-        expect(indicatorView.selected).toEqual(0);
-    }
-
-    @Test
     public void onConfigurationChanged_shouldResetAdapter() throws Exception {
         activity.onCreate(null);
         viewPager.setAdapter(null);
@@ -112,7 +91,6 @@ public class DealPagerActivityTest {
         ShadowAlertDialog dialog = shadowOf(ShadowAlertDialog.getLatestAlertDialog());
         expect(dialog.isShowing()).toBeTrue();
         expect(dialog.getMessage()).toEqual("Failed to load Homepage…");
-        expect(((TextView) comboBox.findViewById(R.id.page_title_view))).toHaveText("Failed to load Homepage…");
     }
 
     @Test
