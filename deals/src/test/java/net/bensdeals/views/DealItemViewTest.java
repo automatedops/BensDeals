@@ -1,5 +1,8 @@
 package net.bensdeals.views;
 
+import javax.inject.Inject;
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
@@ -15,8 +18,6 @@ import net.bensdeals.utils.TestImageLoader;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.util.Date;
 
 import static com.pivotallabs.robolectricgem.expect.Expect.expect;
 import static com.xtremelabs.robolectric.Robolectric.shadowOf;
@@ -37,7 +38,7 @@ public class DealItemViewTest extends TestCase {
 
     @Before
     public void setup() throws Exception {
-        dealItemView = inflater.inflate(R.layout.deal_item_layout_portrait);
+        dealItemView = inflater.inflate(R.layout.deal_item_layout);
         deal = new Deal().setDescription("deal desc").setLink("some/web/link").setTitle("deal title").setImageUrl("some/deal/image").setDate(new Date());
         titleText = (TextView) findViewById(R.id.title_text);
         imageView = (ImageView) findViewById(R.id.gallery_image);
@@ -56,7 +57,7 @@ public class DealItemViewTest extends TestCase {
     public void testRender() throws Exception {
         Date now = dateProvider.get();
         Date date = new Date(now.getTime() - 70000l);
-        dealItemView.render(deal.setDate(date));
+        dealItemView.render(deal.setDate(date), dateProvider);
         expect(titleText).toHaveText("deal title");
         expect(descText).toHaveText("deal desc");
         expect(imageLoader.loadedImageUrl(imageView)).toEqual("some/deal/image");
@@ -65,14 +66,14 @@ public class DealItemViewTest extends TestCase {
 
     @Test
     public void shouldHaveShareClickListener() throws Exception {
-        dealItemView.render(deal);
+        dealItemView.render(deal, dateProvider);
         expect(shadowOf(shareButton).getOnClickListener()).not.toBeNull();
         expect(shadowOf(container).getOnClickListener()).not.toBeNull();
     }
 
     @Test
     public void shouldLaunchShareIntent() throws Exception {
-        dealItemView.render(deal);
+        dealItemView.render(deal, dateProvider);
         shareButton.performClick();
         Intent intent = shadowOf(new Activity()).peekNextStartedActivity();
         expect(intent.getAction()).toEqual(Intent.ACTION_CHOOSER);

@@ -15,7 +15,7 @@ import dagger.Module;
 import dagger.Provides;
 import net.bensdeals.activity.DealApplication;
 import net.bensdeals.activity.DealPagerActivity;
-import net.bensdeals.adapter.DealAdapter;
+import net.bensdeals.adapter.DealListAdapter;
 import net.bensdeals.network.RemoteTask;
 import net.bensdeals.provider.CacheDirProvider;
 import net.bensdeals.provider.CurrentDateProvider;
@@ -30,7 +30,7 @@ import net.bensdeals.views.DealItemView;
                 DealApplication.class,
 
                 DealPagerActivity.class,
-                DealAdapter.class,
+                DealListAdapter.class,
                 DealItemView.class
         }
 )

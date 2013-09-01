@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 
 import butterknife.InjectView;
 import net.bensdeals.R;
-import net.bensdeals.adapter.DealAdapter;
 import net.bensdeals.support.RobolectricTestRunnerWithInjection;
 import net.bensdeals.utils.IntentExtra;
 import net.bensdeals.utils.TestImageLoader;
@@ -22,7 +21,6 @@ import org.junit.runner.RunWith;
 @RunWith(RobolectricTestRunnerWithInjection.class)
 public class DealPagerActivityTest {
     @Inject DealPagerActivity activity;
-    @Inject DealAdapter adapter;
     @Inject TestImageLoader imageLoader;
     @Inject TestRemoteTask remoteTask;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
