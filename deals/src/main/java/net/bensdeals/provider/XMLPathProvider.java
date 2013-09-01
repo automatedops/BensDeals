@@ -23,6 +23,16 @@ public class XMLPathProvider implements Provider<XMLPathProvider.XMLPath> {
         return path;
     }
 
+    public String[] getNames() {
+        XMLPath[] values = XMLPath.values();
+        String[] names = new String[values.length];
+        for (int i = 0; i < values.length; i++) {
+            XMLPath value = values[i];
+            names[i] = value.getTitle();
+        }
+        return names;
+    }
+
     public XMLPathProvider set(final XMLPath xmlPath) {
         this.path = xmlPath;
         new AsyncTask<Void, Void, Void>() {
@@ -35,6 +45,18 @@ public class XMLPathProvider implements Provider<XMLPathProvider.XMLPath> {
             }
         }.execute((Void) null);
         return this;
+    }
+
+    public int getLastPageIndex() {
+        XMLPath[] values = XMLPath.values();
+        XMLPath xmlPath = get();
+        for (int i = 0; i < values.length; i++) {
+            XMLPath value = values[i];
+            if (xmlPath == value) {
+                return i;
+            }
+        }
+        return 0;
     }
 
     public enum XMLPath {

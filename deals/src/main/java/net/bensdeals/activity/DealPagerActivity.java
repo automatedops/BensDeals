@@ -4,15 +4,15 @@ import javax.inject.Inject;
 import java.util.List;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.SpinnerAdapter;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import butterknife.InjectView;
 import net.bensdeals.R;
 import net.bensdeals.adapter.DealAdapter;
@@ -23,7 +23,6 @@ import net.bensdeals.network.callbacks.RemoteTaskCallback;
 import net.bensdeals.provider.CacheDirProvider;
 import net.bensdeals.provider.XMLPathProvider;
 import net.bensdeals.utils.Reporter;
-import net.bensdeals.views.ComboBox;
 import net.bensdeals.views.IndicatorView;
 
 public class DealPagerActivity extends BaseActivity {
@@ -34,7 +33,7 @@ public class DealPagerActivity extends BaseActivity {
     @Inject OnPageChangeListener onPageChangeListener;
     @InjectView(R.id.deals_view_pager) ViewPager viewPager;
     @InjectView(R.id.indicator) IndicatorView indicatorView;
-    @InjectView(R.id.combo_box) ComboBox comboBox;
+    private XMLPathProvider.XMLPath mXmlPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +44,24 @@ public class DealPagerActivity extends BaseActivity {
         viewPager.setOnPageChangeListener(onPageChangeListener.setIndicatorView(indicatorView));
         indicatorView.setIndexChangeListener(new OnIndexChangeListener());
         reporter.report(Reporter.ON_APP_START);
-        fetchXML();
+
+        SpinnerAdapter spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, xmlPathProvider.getNames());
+        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        getSupportActionBar().setListNavigationCallbacks(spinnerAdapter, new ActionBar.OnNavigationListener() {
+            @Override
+            public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+                XMLPathProvider.XMLPath xmlPath = XMLPathProvider.XMLPath.values()[itemPosition];
+                fetchXML(xmlPath);
+                xmlPathProvider.set(xmlPath);
+                return true;
+            }
+        });
+        getSupportActionBar().setSelectedNavigationItem(xmlPathProvider.getLastPageIndex());
     }
 
-    private void fetchXML() {
-        createLoadingDialog(getString(R.string.loading, xmlPathProvider.get().getTitle()));
-        final XMLPathProvider.XMLPath xmlPath = xmlPathProvider.get();
-        comboBox.render(xmlPath);
+    private void fetchXML(final XMLPathProvider.XMLPath xmlPath) {
+        mXmlPath = xmlPath;
+        createLoadingDialog(getString(R.string.loading, xmlPath.getTitle()));
         remoteTask.makeRequest(xmlPath.getPath(), new RemoteTaskCallback() {
             @Override
             public void onTaskSuccess(List<Deal> list) {
@@ -62,7 +72,6 @@ public class DealPagerActivity extends BaseActivity {
 
             @Override
             public void onTaskFailed() {
-                comboBox.failedToLoad(xmlPath);
                 if (!DealPagerActivity.this.isFinishing())
                     new AlertDialog.Builder(DealPagerActivity.this).setMessage(getString(R.string.fail_to_load, xmlPath.getTitle())).create().show();
             }
@@ -75,25 +84,19 @@ public class DealPagerActivity extends BaseActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
+    public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+        MenuInflater inflater = getSupportMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        switch (itemId) {
-            case R.id.item_refresh:
-                fetchXML();
-                break;
-            case R.id.item_pages:
-                comboBoxOnClick(null);
-                break;
-            default:
+        if (itemId == R.id.item_refresh) {
+            fetchXML(mXmlPath);
         }
-        return super.onMenuItemSelected(featureId, item);
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -106,19 +109,6 @@ public class DealPagerActivity extends BaseActivity {
     private void resetAdapter() {
         viewPager.setAdapter(adapter);
         indicatorView.setSelected(0);
-    }
-
-    public void comboBoxOnClick(View view) {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.select_a_page)
-                .setItems(R.array.xml_titles, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        XMLPathProvider.XMLPath[] values = XMLPathProvider.XMLPath.values();
-                        xmlPathProvider.set(values[values.length > i ? i : 0]);
-                        fetchXML();
-                    }
-                }).create().show();
     }
 
     private class OnIndexChangeListener implements net.bensdeals.listener.OnIndexChangeListener {

@@ -1,2 +1,4 @@
-include ':deals'
+include ':deals',
+        ':submodule:actionbarsherlock'
+
 

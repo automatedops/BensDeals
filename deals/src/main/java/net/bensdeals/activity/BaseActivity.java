@@ -2,24 +2,23 @@ package net.bensdeals.activity;
 
 import javax.inject.Inject;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import butterknife.Views;
 import net.bensdeals.utils.Reporter;
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends SherlockFragmentActivity {
     protected @Inject Reporter reporter;
     protected ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         ((DealApplication) getApplication()).inject(this);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     @Override
