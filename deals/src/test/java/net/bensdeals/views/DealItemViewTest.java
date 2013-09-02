@@ -38,7 +38,7 @@ public class DealItemViewTest extends TestCase {
 
     @Before
     public void setup() throws Exception {
-        dealItemView = inflater.inflate(R.layout.deal_item_layout);
+        dealItemView = inflater.inflate(R.layout.deal_item);
         deal = new Deal().setDescription("deal desc").setLink("some/web/link").setTitle("deal title").setImageUrl("some/deal/image").setDate(new Date());
         titleText = (TextView) findViewById(R.id.title_text);
         imageView = (ImageView) findViewById(R.id.gallery_image);

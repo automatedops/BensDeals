@@ -32,7 +32,7 @@ public class DealListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public Deal getItem(int i) {
         return mItems.get(i);
     }
 
@@ -44,7 +44,7 @@ public class DealListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if (view == null) {
-            view = mLayoutInflater.inflate(R.layout.deal_item_layout, null, false);
+            view = mLayoutInflater.inflate(R.layout.deal_item, null, false);
         }
         return ((DealItemView) view).render(mItems.get(i), dateProvider);
     }

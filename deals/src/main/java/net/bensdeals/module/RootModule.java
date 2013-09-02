@@ -14,6 +14,7 @@ import com.squareup.okhttp.OkHttpClient;
 import dagger.Module;
 import dagger.Provides;
 import net.bensdeals.activity.DealApplication;
+import net.bensdeals.activity.DealDetailActivity;
 import net.bensdeals.activity.DealPagerActivity;
 import net.bensdeals.adapter.DealListAdapter;
 import net.bensdeals.network.RemoteTask;
@@ -31,7 +32,8 @@ import net.bensdeals.views.DealItemView;
 
                 DealPagerActivity.class,
                 DealListAdapter.class,
-                DealItemView.class
+                DealItemView.class,
+                DealDetailActivity.class
         }
 )
 public class RootModule {

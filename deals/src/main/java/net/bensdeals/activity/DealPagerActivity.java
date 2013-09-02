@@ -5,6 +5,8 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SpinnerAdapter;
@@ -35,7 +37,7 @@ public class DealPagerActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.deal_pager_layout);
+        setContentView(R.layout.deal_pager);
         cacheDirProvider.clear();
         reporter.report(Reporter.ON_APP_START);
 
@@ -43,6 +45,13 @@ public class DealPagerActivity extends BaseActivity {
         SwingRightInAnimationAdapter animationAdapter = new SwingRightInAnimationAdapter(new SwingBottomInAnimationAdapter(mAdapter));
         animationAdapter.setAbsListView(mListView);
         mListView.setAdapter(animationAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Deal item = mAdapter.getItem(i);
+                DealDetailActivity.start(DealPagerActivity.this, item);
+            }
+        });
 
         SpinnerAdapter spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, xmlPathProvider.getNames());
         getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);

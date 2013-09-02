@@ -3,9 +3,11 @@ package net.bensdeals.model;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.common.collect.Lists;
 import net.bensdeals.utils.ALog;
@@ -17,7 +19,7 @@ import org.xml.sax.SAXException;
 import static net.bensdeals.network.core.Xmls.getDocument;
 import static net.bensdeals.network.core.Xmls.getDocumentFromStream;
 
-public class Deal implements Serializable {
+public class Deal implements Parcelable {
     private static final String prefix = "src=\"";
     public static final String DEAL_NODE_NAME = "item";
     String title;
@@ -25,6 +27,26 @@ public class Deal implements Serializable {
     String imageUrl;
     String link;
     Date date;
+
+    public Deal(Parcel in) {
+        title = in.readString();
+        description = in.readString();
+        imageUrl = in.readString();
+        link = in.readString();
+        date = new Date(in.readLong());
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(title);
+        parcel.writeString(description);
+        parcel.writeString(imageUrl);
+        parcel.writeString(link);
+        parcel.writeLong(date == null ? 0l : date.getTime());
+    }
+
+    public Deal() {
+    }
 
     public String getTitle() {
         return title;
@@ -135,9 +157,24 @@ public class Deal implements Serializable {
 
     public String getBrandName() {
         int index = title.indexOf("$");
-        if(index > 0) {
+        if (index > 0) {
             return title.substring(0, index);
         }
         return "";
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Parcelable.Creator<Deal> CREATOR = new Parcelable.Creator<Deal>() {
+        public Deal createFromParcel(Parcel in) {
+            return new Deal(in);
+        }
+
+        public Deal[] newArray(int size) {
+            return new Deal[size];
+        }
+    };
 }
