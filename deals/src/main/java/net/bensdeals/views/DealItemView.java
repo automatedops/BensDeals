@@ -29,7 +29,7 @@ public class DealItemView extends LinearLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         titleText = (TextView) findViewById(R.id.title_text);
-        imageView = (ImageView) findViewById(R.id.gallery_image);
+        imageView = (ImageView) findViewById(R.id.image);
         timeText = (TextView) findViewById(R.id.deal_time_text);
     }
 

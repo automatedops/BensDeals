@@ -20,6 +20,7 @@ import butterknife.InjectView;
 import net.bensdeals.R;
 import net.bensdeals.adapter.DealListAdapter;
 import net.bensdeals.model.Deal;
+import net.bensdeals.model.ViewInfo;
 import net.bensdeals.network.RemoteTask;
 import net.bensdeals.network.callbacks.RemoteTaskCallback;
 import net.bensdeals.provider.CacheDirProvider;
@@ -49,7 +50,8 @@ public class DealPagerActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Deal item = mAdapter.getItem(i);
-                DealDetailActivity.start(DealPagerActivity.this, item);
+                ViewInfo viewInfo = ViewInfo.create(view.findViewById(R.id.image));
+                DealDetailActivity.start(DealPagerActivity.this, item, viewInfo);
             }
         });
 

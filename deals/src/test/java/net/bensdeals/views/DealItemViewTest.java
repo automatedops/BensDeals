@@ -41,7 +41,7 @@ public class DealItemViewTest extends TestCase {
         dealItemView = inflater.inflate(R.layout.deal_item);
         deal = new Deal().setDescription("deal desc").setLink("some/web/link").setTitle("deal title").setImageUrl("some/deal/image").setDate(new Date());
         titleText = (TextView) findViewById(R.id.title_text);
-        imageView = (ImageView) findViewById(R.id.gallery_image);
+        imageView = (ImageView) findViewById(R.id.image);
         descText = (TextView) findViewById(R.id.desc_text);
         container = findViewById(R.id.gallery_text_container);
         timeText = (TextView) findViewById(R.id.deal_time_text);

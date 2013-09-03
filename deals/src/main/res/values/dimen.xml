@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_image_dimen">100dp</dimen>
+    <dimen name="font_size_title">18sp</dimen>
+    <dimen name="font_size_subtitle">16sp</dimen>
+</resources>
