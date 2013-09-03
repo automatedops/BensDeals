@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.os.Handler;
@@ -32,6 +34,12 @@ class DealFetchRunnable implements Runnable {
             HttpURLConnection connection = mClient.open(new URL(mPath));
             in = connection.getInputStream();
             final List<Deal> deals = Deal.parseXml(in);
+            Collections.sort(deals, new Comparator<Deal>() {
+                @Override
+                public int compare(Deal deal, Deal deal2) {
+                    return deal2.getDate().compareTo(deal.getDate());
+                }
+            });
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
