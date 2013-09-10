@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.ViewTreeObserver;
-import android.view.animation.AccelerateInterpolator;
+import android.text.Html;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.squareup.picasso.Picasso;
@@ -23,6 +23,8 @@ public class DealDetailActivity extends BaseActivity {
     private ViewInfo mViewInfo;
 
     @InjectView(R.id.image) ImageView mImageView;
+    @InjectView(R.id.title) TextView mTitleView;
+    @InjectView(R.id.subtitle) TextView mSubtitleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,44 +43,79 @@ public class DealDetailActivity extends BaseActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         Picasso.with(this).load(mDeal.getImageUrl()).into(mImageView);
 
+        mTitleView.setText(Html.fromHtml(mDeal.getTitle()));
+        mSubtitleView.setText(Html.fromHtml(mDeal.getDescription()));
         startAnimation();
     }
 
     private void startAnimation() {
-        if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.HONEYCOMB_MR2) {
+        mTitleView.setVisibility(View.VISIBLE);
+        mSubtitleView.setVisibility(View.VISIBLE);
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.HONEYCOMB_MR2) {
             return;
         }
-        mImageView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            @Override
-            public boolean onPreDraw() {
-                mImageView.getViewTreeObserver().removeOnPreDrawListener(this);
 
-                int[] screenLocation = new int[2];
-                mImageView.getLocationOnScreen(screenLocation);
-
-                float leftDelta = mViewInfo.getLeft() - screenLocation[0];
-                float topDelta = mViewInfo.getTop() - screenLocation[1];
-
-                float widthScale = mViewInfo.getWidth() / mImageView.getWidth();
-                float heightScale = mViewInfo.getHeight() / mImageView.getHeight();
-
-
-                DisplayMetrics metrics = getResources().getDisplayMetrics();
-                int width = mImageView.getWidth();
-
-
-                mImageView.setPivotX(0);
-                mImageView.setPivotY(0);
-                mImageView.setScaleX(widthScale);
-                mImageView.setScaleY(heightScale);
-                mImageView.setTranslationX(leftDelta);
-                mImageView.setTranslationY(topDelta);
-                mImageView.setAlpha(0.25f);
-
-                mImageView.animate().setDuration(700).scaleX(1).scaleY(1).translationX((metrics.widthPixels - width) / 2).translationY(0).setInterpolator(new AccelerateInterpolator()).alpha(1);
-                return true;
-            }
-        });
+//        mImageView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+//            @Override
+//            public boolean onPreDraw() {
+//                mImageView.getViewTreeObserver().removeOnPreDrawListener(this);
+//
+//                int[] screenLocation = new int[2];
+//                mImageView.getLocationOnScreen(screenLocation);
+//
+//                float leftDelta = mViewInfo.getLeft() - screenLocation[0];
+//                float topDelta = mViewInfo.getTop() - screenLocation[1];
+//
+//                float widthScale = mViewInfo.getWidth() / mImageView.getWidth();
+//                float heightScale = mViewInfo.getHeight() / mImageView.getHeight();
+//
+//
+//                DisplayMetrics metrics = getResources().getDisplayMetrics();
+//                int width = mImageView.getWidth();
+//
+//
+//                mImageView.setPivotX(0);
+//                mImageView.setPivotY(0);
+//                mImageView.setScaleX(widthScale);
+//                mImageView.setScaleY(heightScale);
+//                mImageView.setTranslationX(leftDelta);
+//                mImageView.setTranslationY(topDelta);
+//                mImageView.setAlpha(0.25f);
+//
+//                mImageView.animate()
+//                        .setDuration(700)
+//                        .scaleX(1)
+//                        .scaleY(1)
+//                        .translationX((metrics.widthPixels - width) / 2).translationY(0)
+//                        .setInterpolator(new AccelerateInterpolator()).alpha(1)
+//                        .setListener(new Animator.AnimatorListener() {
+//                            @Override
+//                            public void onAnimationStart(Animator animator) {
+//                            }
+//
+//                            @Override
+//                            public void onAnimationEnd(Animator animator) {
+//                                mTitleView.setAlpha(0);
+//                                mSubtitleView.setAlpha(0);
+//                                mTitleView.animate().alpha(1f).setDuration(300l);
+//                                mSubtitleView.animate().alpha(1f).setDuration(300l);
+//
+//                                mTitleView.setVisibility(View.VISIBLE);
+//                                mSubtitleView.setVisibility(View.VISIBLE);
+//                            }
+//
+//                            @Override
+//                            public void onAnimationCancel(Animator animator) {
+//                            }
+//
+//                            @Override
+//                            public void onAnimationRepeat(Animator animator) {
+//                            }
+//                        });
+//                return true;
+//            }
+//        });
     }
 
     @Override
